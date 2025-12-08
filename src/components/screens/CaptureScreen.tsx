@@ -317,7 +317,7 @@ export const CaptureScreen: React.FC<ScreenProps> = ({
           <Rows spacing="1u">
             <Title size="medium">
               <FormattedMessage
-                defaultMessage="📸 Capture Session Active"
+                defaultMessage="Capture Session Active"
                 description="Screen title"
               />
             </Title>
@@ -335,7 +335,7 @@ export const CaptureScreen: React.FC<ScreenProps> = ({
           <Alert tone="positive">
             <Text>
               <FormattedMessage
-                defaultMessage="✅ Camera link copied to clipboard! Paste it in a new browser tab."
+                defaultMessage="Camera link copied to clipboard! Paste it in a new browser tab."
                 description="Link copied message"
               />
             </Text>
@@ -357,11 +357,11 @@ export const CaptureScreen: React.FC<ScreenProps> = ({
         <Button variant="primary" onClick={handleCopyLink} stretch>
           {linkCopied
             ? intl.formatMessage({
-                defaultMessage: "✓ Link Copied!",
+                defaultMessage: "Link Copied!",
                 description: "Copied button text",
               })
             : intl.formatMessage({
-                defaultMessage: "📋 Copy Camera Link",
+                defaultMessage: "Copy Camera Link",
                 description: "Copy link button",
               })}
         </Button>

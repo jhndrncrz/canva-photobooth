@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -653,7 +655,7 @@
   <!-- Main Content -->
   <main class="main-content">
     <div class="container">
-      <h1>📸 Capture Your Moment</h1>
+      <h1><i class="ph ph-camera"></i> Capture Your Moment</h1>
       <p class="subtitle" id="subtitle">Get ready to take your photos!</p>
 
       <div id="loading" class="loading">
@@ -666,7 +668,7 @@
       <div id="camera-section" style="display: none;">
         <!-- Mode indicator -->
         <div class="mode-indicator" id="mode-indicator">
-          <span id="mode-icon">📸</span>
+          <span id="mode-icon"><i class="ph ph-camera"></i></span>
           <span id="mode-text">Manual Mode</span>
         </div>
 
@@ -689,23 +691,23 @@
           </div>
           <div class="flash-overlay" id="flash-overlay"></div>
           <div class="pause-indicator" id="pause-indicator">
-            <span>⏸️</span>
+            <span><i class="ph ph-pause"></i></span>
           </div>
         </div>
 
         <!-- Toolbar -->
         <div class="toolbar">
           <button class="toolbar-btn" id="btn-mirror" title="Toggle mirror">
-            🪞 Mirror
+            <i class="ph ph-swap"></i> Mirror
           </button>
           <button class="toolbar-btn" id="btn-grid" title="Toggle grid overlay">
-            ⊞ Grid
+            <i class="ph ph-grid-four"></i> Grid
           </button>
           <button class="toolbar-btn" id="btn-switch-camera" title="Switch camera">
-            🔄 Switch
+            <i class="ph ph-camera-rotate"></i> Switch
           </button>
           <button class="toolbar-btn" id="btn-fullscreen" title="Fullscreen">
-            ⛶ Fullscreen
+            <i class="ph ph-arrows-out"></i> Fullscreen
           </button>
         </div>
 
@@ -713,15 +715,15 @@
 
         <!-- Main controls -->
         <div class="controls" id="controls">
-          <button id="btn-capture" class="btn-primary">📸 Take Photo</button>
-          <button id="btn-retake" class="btn-secondary" style="display: none;">↩️ Retake Last</button>
+          <button id="btn-capture" class="btn-primary"><i class="ph ph-camera"></i> Take Photo</button>
+          <button id="btn-retake" class="btn-secondary" style="display: none;"><i class="ph ph-arrow-counter-clockwise"></i> Retake Last</button>
         </div>
 
         <!-- Auto mode controls -->
         <div class="controls" id="auto-controls" style="display: none;">
-          <button id="btn-start-auto" class="btn-success">▶️ Start Auto Capture</button>
-          <button id="btn-pause" class="btn-secondary" style="display: none;">⏸️ Pause</button>
-          <button id="btn-stop-auto" class="btn-danger btn-small" style="display: none;">⏹ Stop</button>
+          <button id="btn-start-auto" class="btn-success"><i class="ph ph-play"></i> Start Auto Capture</button>
+          <button id="btn-pause" class="btn-secondary" style="display: none;"><i class="ph ph-pause"></i> Pause</button>
+          <button id="btn-stop-auto" class="btn-danger btn-small" style="display: none;"><i class="ph ph-stop"></i> Stop</button>
         </div>
 
         <!-- Thumbnails -->
@@ -730,24 +732,24 @@
 
       <!-- Review Carousel -->
       <div class="carousel-container" id="carousel-container">
-        <h2 style="margin-bottom: 15px;">📷 Review Your Photos</h2>
+        <h2 style="margin-bottom: 15px;"><i class="ph ph-images"></i> Review Your Photos</h2>
         <div class="carousel" id="carousel">
           <div class="carousel-inner" id="carousel-inner"></div>
-          <button class="carousel-nav prev" id="carousel-prev">❮</button>
-          <button class="carousel-nav next" id="carousel-next">❯</button>
+          <button class="carousel-nav prev" id="carousel-prev"><i class="ph ph-caret-left"></i></button>
+          <button class="carousel-nav next" id="carousel-next"><i class="ph ph-caret-right"></i></button>
         </div>
         <div class="carousel-indicators" id="carousel-indicators"></div>
         <div class="carousel-caption" id="carousel-caption">Photo 1 of 3</div>
         
         <div class="controls" style="margin-top: 20px;">
-          <button id="btn-submit" class="btn-success">✅ Submit All Photos</button>
-          <button id="btn-retake-current" class="btn-secondary">🔄 Retake This Photo</button>
-          <button id="btn-retake-all" class="btn-danger btn-small">🗑 Retake All</button>
+          <button id="btn-submit" class="btn-success"><i class="ph ph-check-circle"></i> Submit All Photos</button>
+          <button id="btn-retake-current" class="btn-secondary"><i class="ph ph-arrows-clockwise"></i> Retake This Photo</button>
+          <button id="btn-retake-all" class="btn-danger btn-small"><i class="ph ph-trash"></i> Retake All</button>
         </div>
       </div>
 
       <div id="complete-section" class="success" style="display: none;">
-        <h2>✅ All Photos Captured!</h2>
+        <h2><i class="ph ph-check-circle"></i> All Photos Captured!</h2>
         <p>You can now close this window and return to Canva.</p>
         <p style="margin-top: 10px; opacity: 0.9;">Your photos will appear in the app automatically.</p>
       </div>
@@ -937,13 +939,13 @@
     function updateModeIndicator() {
       if (captureMode === 'auto') {
         elements.modeIndicator.className = 'mode-indicator auto';
-        elements.modeIcon.textContent = '⚡';
+        elements.modeIcon.innerHTML = '<i class="ph ph-lightning"></i>';
         elements.modeText.textContent = 'Auto Mode';
         elements.controls.style.display = 'none';
         elements.autoControls.style.display = 'flex';
       } else {
         elements.modeIndicator.className = 'mode-indicator manual';
-        elements.modeIcon.textContent = '👆';
+        elements.modeIcon.innerHTML = '<i class="ph ph-hand-pointing"></i>';
         elements.modeText.textContent = 'Manual Mode';
         elements.controls.style.display = 'flex';
         elements.autoControls.style.display = 'none';
@@ -963,11 +965,11 @@
       // Update capture button text
       if (captureMode === 'manual') {
         if (photos.length === 0) {
-          elements.btnCapture.textContent = '📸 Take Photo';
+          elements.btnCapture.innerHTML = '<i class="ph ph-camera"></i> Take Photo';
         } else if (photos.length < frameCount) {
-          elements.btnCapture.textContent = `📸 Take Photo ${photos.length + 1}`;
+          elements.btnCapture.innerHTML = `<i class="ph ph-camera"></i> Take Photo ${photos.length + 1}`;
         } else {
-          elements.btnCapture.textContent = '📸 View Photos';
+          elements.btnCapture.innerHTML = '<i class="ph ph-camera"></i> View Photos';
         }
         elements.btnRetake.style.display = photos.length > 0 ? 'inline-block' : 'none';
       }
@@ -977,7 +979,7 @@
         `<div class="thumbnail-wrapper" onclick="retakePhoto(${i})" title="Click to retake photo ${i + 1}">
           <img src="${photo.dataUrl}" class="thumbnail ${i === photos.length - 1 ? 'latest' : ''}" alt="Photo ${i + 1}">
           <span class="thumbnail-number">${i + 1}</span>
-          <span class="thumbnail-retake">🔄</span>
+          <span class="thumbnail-retake"><i class="ph ph-arrows-clockwise"></i></span>
         </div>`
       ).join('');
 
@@ -1252,10 +1254,10 @@
       isPaused = !isPaused;
       
       if (isPaused) {
-        elements.btnPause.textContent = '▶️ Resume';
+        elements.btnPause.innerHTML = '<i class="ph ph-play"></i> Resume';
         elements.pauseIndicator.classList.add('visible');
       } else {
-        elements.btnPause.textContent = '⏸️ Pause';
+        elements.btnPause.innerHTML = '<i class="ph ph-pause"></i> Pause';
         elements.pauseIndicator.classList.remove('visible');
         runAutoCapture();
       }
@@ -1269,7 +1271,7 @@
       elements.btnStopAuto.style.display = 'none';
       elements.timerDisplay.style.display = 'none';
       elements.pauseIndicator.classList.remove('visible');
-      elements.btnPause.textContent = '⏸️ Pause';
+      elements.btnPause.innerHTML = '<i class="ph ph-pause"></i> Pause';
     }
 
     // ========================================================================
@@ -1282,7 +1284,7 @@
       elements.btnSubmit.disabled = true;
       elements.btnRetakeCurrent.disabled = true;
       elements.btnRetakeAll.disabled = true;
-      elements.btnSubmit.textContent = '⏳ Submitting...';
+      elements.btnSubmit.innerHTML = '<i class="ph ph-spinner"></i> Submitting...';
       
       try {
         for (let i = 0; i < photos.length; i++) {
@@ -1316,7 +1318,7 @@
         elements.btnSubmit.disabled = false;
         elements.btnRetakeCurrent.disabled = false;
         elements.btnRetakeAll.disabled = false;
-        elements.btnSubmit.textContent = '✅ Submit All Photos';
+        elements.btnSubmit.innerHTML = '<i class="ph ph-check-circle"></i> Submit All Photos';
       }
     }
 
@@ -1351,7 +1353,7 @@
           try { window.close(); } catch (e) {}
           setTimeout(() => {
             if (!window.closed) {
-              closeCountdownEl.textContent = '✅ All photos captured! You can now close this tab.';
+              closeCountdownEl.textContent = 'All photos captured! You can now close this tab.';
             }
           }, 500);
         }

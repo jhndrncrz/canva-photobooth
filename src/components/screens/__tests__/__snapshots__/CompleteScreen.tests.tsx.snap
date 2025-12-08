@@ -18,13 +18,9 @@ exports[`CompleteScreen Snapshots should match snapshot with session 1`] = `
           style="--NZu1Zw: 16px; --okeDpw: center;"
         >
           <div
-            style="width: 80px; height: 80px; border-radius: 50%; background-color: rgb(0, 200, 83); display: flex; align-items: center; justify-content: center; margin: 0px auto;"
+            style="width: 80px; height: 80px; border-radius: 50%; background-color: rgb(0, 200, 83); display: flex; align-items: center; justify-content: center; margin: 0px auto; color: white; font-size: 40px; font-weight: bold;"
           >
-            <span
-              style="font-size: 40px; color: white;"
-            >
-              ✓
-            </span>
+            ✓
           </div>
           <h2
             class="_8yjy_A aZskFA u16U_g"
@@ -79,7 +75,7 @@ exports[`CompleteScreen Snapshots should match snapshot with session 1`] = `
           <h5
             class="liTStw aZskFA u16U_g"
           >
-            💡 Next Steps
+            Next Steps
           </h5>
           <p
             class="JYIidw aZskFA u16U_g"
@@ -109,7 +105,7 @@ exports[`CompleteScreen Snapshots should match snapshot with session 1`] = `
           <span
             class="khPe7Q"
           >
-            📥 Export Design
+            Export Design
           </span>
         </button>
         <button
@@ -156,13 +152,9 @@ exports[`CompleteScreen Snapshots should match snapshot without session 1`] = `
           style="--NZu1Zw: 16px; --okeDpw: center;"
         >
           <div
-            style="width: 80px; height: 80px; border-radius: 50%; background-color: rgb(0, 200, 83); display: flex; align-items: center; justify-content: center; margin: 0px auto;"
+            style="width: 80px; height: 80px; border-radius: 50%; background-color: rgb(0, 200, 83); display: flex; align-items: center; justify-content: center; margin: 0px auto; color: white; font-size: 40px; font-weight: bold;"
           >
-            <span
-              style="font-size: 40px; color: white;"
-            >
-              ✓
-            </span>
+            ✓
           </div>
           <h2
             class="_8yjy_A aZskFA u16U_g"
@@ -217,7 +209,7 @@ exports[`CompleteScreen Snapshots should match snapshot without session 1`] = `
           <h5
             class="liTStw aZskFA u16U_g"
           >
-            💡 Next Steps
+            Next Steps
           </h5>
           <p
             class="JYIidw aZskFA u16U_g"
@@ -247,7 +239,7 @@ exports[`CompleteScreen Snapshots should match snapshot without session 1`] = `
           <span
             class="khPe7Q"
           >
-            📥 Export Design
+            Export Design
           </span>
         </button>
         <button

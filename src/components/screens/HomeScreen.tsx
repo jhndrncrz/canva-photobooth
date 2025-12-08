@@ -79,9 +79,12 @@ export const HomeScreen: React.FC<ScreenProps> = ({
                 alignItems: "center",
                 justifyContent: "center",
                 margin: "0 auto",
+                color: "white",
+                fontSize: "24px",
+                fontWeight: "bold",
               }}
             >
-              <span style={{ fontSize: "32px" }}>📷</span>
+              PB
             </div>
             <Title size="large" alignment="center">
               <FormattedMessage

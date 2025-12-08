@@ -17,13 +17,9 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
           style="--NZu1Zw: 8px; --okeDpw: center;"
         >
           <div
-            style="width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0px auto;"
+            style="width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0px auto; color: white; font-size: 28px; font-weight: bold;"
           >
-            <span
-              style="font-size: 28px;"
-            >
-              ❓
-            </span>
+            ?
           </div>
           <h2
             class="_8yjy_A B8t6MQ u16U_g"
@@ -81,11 +77,6 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                     <p
                       class="VgvqkQ aZskFA u16U_g"
                     >
-                      <span
-                        style="margin-right: 8px;"
-                      >
-                        🎨
-                      </span>
                       Design Your Template
                     </p>
                   </div>
@@ -96,7 +87,7 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                   <p
                     class="aWBg0w aZskFA QxuLlQ"
                   >
-                    ▶
+                    +
                   </p>
                 </div>
               </div>
@@ -134,11 +125,6 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                     <p
                       class="VgvqkQ aZskFA u16U_g"
                     >
-                      <span
-                        style="margin-right: 8px;"
-                      >
-                        🖼️
-                      </span>
                       Select Frame Placeholders
                     </p>
                   </div>
@@ -149,7 +135,7 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                   <p
                     class="aWBg0w aZskFA QxuLlQ"
                   >
-                    ▶
+                    +
                   </p>
                 </div>
               </div>
@@ -187,11 +173,6 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                     <p
                       class="VgvqkQ aZskFA u16U_g"
                     >
-                      <span
-                        style="margin-right: 8px;"
-                      >
-                        📄
-                      </span>
                       Duplicate Your Template
                     </p>
                   </div>
@@ -202,7 +183,7 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                   <p
                     class="aWBg0w aZskFA QxuLlQ"
                   >
-                    ▶
+                    +
                   </p>
                 </div>
               </div>
@@ -240,11 +221,6 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                     <p
                       class="VgvqkQ aZskFA u16U_g"
                     >
-                      <span
-                        style="margin-right: 8px;"
-                      >
-                        📸
-                      </span>
                       Capture Photos
                     </p>
                   </div>
@@ -255,7 +231,7 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                   <p
                     class="aWBg0w aZskFA QxuLlQ"
                   >
-                    ▶
+                    +
                   </p>
                 </div>
               </div>
@@ -293,11 +269,6 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                     <p
                       class="VgvqkQ aZskFA u16U_g"
                     >
-                      <span
-                        style="margin-right: 8px;"
-                      >
-                        ✨
-                      </span>
                       Review & Place
                     </p>
                   </div>
@@ -308,7 +279,7 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                   <p
                     class="aWBg0w aZskFA QxuLlQ"
                   >
-                    ▶
+                    +
                   </p>
                 </div>
               </div>
@@ -382,7 +353,7 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                 <p
                   class="JYIidw aZskFA QxuLlQ"
                 >
-                  💡
+                  •
                 </p>
               </div>
               <div
@@ -410,7 +381,7 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                 <p
                   class="JYIidw aZskFA QxuLlQ"
                 >
-                  💡
+                  •
                 </p>
               </div>
               <div
@@ -438,7 +409,7 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                 <p
                   class="JYIidw aZskFA QxuLlQ"
                 >
-                  💡
+                  •
                 </p>
               </div>
               <div
@@ -466,7 +437,7 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                 <p
                   class="JYIidw aZskFA QxuLlQ"
                 >
-                  💡
+                  •
                 </p>
               </div>
               <div
@@ -494,7 +465,7 @@ exports[`HelpScreen Snapshot should match snapshot 1`] = `
                 <p
                   class="JYIidw aZskFA QxuLlQ"
                 >
-                  💡
+                  •
                 </p>
               </div>
               <div

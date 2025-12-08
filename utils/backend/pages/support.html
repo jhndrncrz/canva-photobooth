@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support - JPCS Photo Booth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      color: #e2e8f0;
+      line-height: 1.7;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #c41e3a 100%);
+      padding: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .header p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-top: 5px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    h2 {
+      color: #ff6b35;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 i {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      color: #f7931e;
+      font-size: 1.1rem;
+      margin: 20px 0 10px 0;
+    }
+
+    p {
+      margin-bottom: 15px;
+      color: #cbd5e1;
+    }
+
+    ul {
+      margin: 15px 0;
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      color: #cbd5e1;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .contact-card {
+      background: rgba(255, 107, 53, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid rgba(255, 107, 53, 0.2);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-2px);
+      border-color: #ff6b35;
+    }
+
+    .contact-card i {
+      font-size: 2rem;
+      color: #ff6b35;
+      margin-bottom: 10px;
+    }
+
+    .contact-card h4 {
+      color: #e2e8f0;
+      margin-bottom: 8px;
+    }
+
+    .contact-card a {
+      color: #ff6b35;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-left: 3px solid #ff6b35;
+    }
+
+    .faq-question {
+      color: #e2e8f0;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .faq-question i {
+      color: #ff6b35;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .faq-answer {
+      color: #94a3b8;
+      margin-left: 28px;
+    }
+
+    .troubleshooting-step {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-content h4 {
+      color: #e2e8f0;
+      margin-bottom: 5px;
+    }
+
+    .step-content p {
+      color: #94a3b8;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+
+    .footer a {
+      color: #ff6b35;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    code {
+      background: rgba(255, 107, 53, 0.2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: #f7931e;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1><i class="ph ph-lifebuoy"></i> Support</h1>
+    <p>JPCS Photo Booth - Canva App</p>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2><i class="ph ph-envelope"></i> Contact Us</h2>
+      <p>Need help with JPCS Photo Booth? We're here to assist you!</p>
+      
+      <div class="contact-grid">
+        <div class="contact-card">
+          <i class="ph ph-envelope-simple"></i>
+          <h4>Email Support</h4>
+          <a href="mailto:jpcs.ue.manila@gmail.com">jpcs.ue.manila@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <i class="ph ph-github-logo"></i>
+          <h4>GitHub Issues</h4>
+          <a href="https://github.com/jhndrncrz/canva-photobooth/issues" target="_blank">Report a Bug</a>
+        </div>
+        <div class="contact-card">
+          <i class="ph ph-book-open"></i>
+          <h4>Documentation</h4>
+          <a href="https://github.com/jhndrncrz/canva-photobooth#readme" target="_blank">View README</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="ph ph-question"></i> Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <i class="ph ph-camera"></i>
+          <span>Why can't the app access my camera?</span>
+        </div>
+        <p class="faq-answer">Make sure you've granted camera permissions in your browser. Click the camera/lock icon in your browser's address bar to check permissions. Some browsers require HTTPS for camera access.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <i class="ph ph-link-break"></i>
+          <span>The camera link isn't working. What should I do?</span>
+        </div>
+        <p class="faq-answer">Camera links expire after 30 minutes. Try generating a new link by clicking "Copy Camera Link" again in the Canva app. Make sure you're using the complete URL.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <i class="ph ph-images"></i>
+          <span>My photos aren't appearing in the design.</span>
+        </div>
+        <p class="faq-answer">Ensure you clicked "Submit All Photos" after capturing. The photos should automatically appear in the designated frame positions. If not, try refreshing the Canva editor.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <i class="ph ph-arrows-clockwise"></i>
+          <span>Can I switch between front and back cameras?</span>
+        </div>
+        <p class="faq-answer">Yes! Click the "Switch" button in the camera toolbar to toggle between available cameras on your device.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <i class="ph ph-devices"></i>
+          <span>Does this work on mobile devices?</span>
+        </div>
+        <p class="faq-answer">Yes, the camera page works on mobile devices with modern browsers. Open the camera link on your phone to capture photos using your mobile camera.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="ph ph-wrench"></i> Troubleshooting</h2>
+      
+      <div class="troubleshooting-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Clear Browser Cache</h4>
+          <p>Sometimes cached data can cause issues. Try clearing your browser cache or using an incognito/private window.</p>
+        </div>
+      </div>
+
+      <div class="troubleshooting-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Check Camera Permissions</h4>
+          <p>Go to your browser settings and ensure camera access is allowed for the camera page domain.</p>
+        </div>
+      </div>
+
+      <div class="troubleshooting-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Try a Different Browser</h4>
+          <p>If issues persist, try using Chrome, Firefox, or Edge. Safari may have additional permission requirements.</p>
+        </div>
+      </div>
+
+      <div class="troubleshooting-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Generate a New Session</h4>
+          <p>If the session expired, go back to the Canva app and start a new capture session.</p>
+        </div>
+      </div>
+
+      <div class="troubleshooting-step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h4>Check Your Connection</h4>
+          <p>Ensure you have a stable internet connection for photo transfer between the camera page and Canva.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="ph ph-bug"></i> Report a Bug</h2>
+      <p>Found a bug or have a feature request? Please report it on our GitHub repository:</p>
+      <ul>
+        <li>Visit <a href="https://github.com/jhndrncrz/canva-photobooth/issues" style="color: #ff6b35;">github.com/jhndrncrz/canva-photobooth/issues</a></li>
+        <li>Click "New Issue"</li>
+        <li>Include steps to reproduce the problem</li>
+        <li>Describe what you expected vs what happened</li>
+        <li>Include browser and device information if relevant</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><i class="ph ph-clock"></i> Response Times</h2>
+      <p>We're a student organization, so response times may vary. Generally:</p>
+      <ul>
+        <li><strong>GitHub Issues:</strong> Within 1-3 days</li>
+        <li><strong>Email:</strong> Within 3-5 business days</li>
+      </ul>
+      <p>For urgent issues, please create a GitHub issue with the "urgent" label.</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 JPCS UE Manila Chapter. All rights reserved.</p>
+    <div class="nav-links">
+      <a href="/terms">Terms and Conditions</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/about">About</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -34,35 +34,35 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
     title: "Design Your Template",
     description:
       "Create a page with placeholder images where you want photos to appear. Add text, decorations, and backgrounds around them.",
-    icon: "🎨",
+    icon: "",
   },
   {
     number: 2,
     title: "Select Frame Placeholders",
     description:
       "Use the app to mark which images should be replaced with captured photos. Set the capture order by dragging frames.",
-    icon: "🖼️",
+    icon: "",
   },
   {
     number: 3,
     title: "Duplicate Your Template",
     description:
       "Before each photo session, right-click your template page and select 'Duplicate page'. Navigate to the new page.",
-    icon: "📄",
+    icon: "",
   },
   {
     number: 4,
     title: "Capture Photos",
     description:
       "Use your webcam to capture photos. A countdown timer helps you prepare for each shot.",
-    icon: "📸",
+    icon: "",
   },
   {
     number: 5,
     title: "Review & Place",
     description:
       "Review your photos, then place them on your duplicated template page. Delete the placeholder images underneath.",
-    icon: "✨",
+    icon: "",
   },
 ];
 
@@ -103,9 +103,12 @@ export const HelpScreen: React.FC<ScreenProps> = ({ navigateTo }) => {
                 alignItems: "center",
                 justifyContent: "center",
                 margin: "0 auto",
+                color: "white",
+                fontSize: "28px",
+                fontWeight: "bold",
               }}
             >
-              <span style={{ fontSize: "28px" }}>❓</span>
+              ?
             </div>
             <Title size="large" alignment="center">
               <FormattedMessage
@@ -172,7 +175,6 @@ export const HelpScreen: React.FC<ScreenProps> = ({ navigateTo }) => {
                     <Column>
                       <Rows spacing="0.5u">
                         <Text variant="bold">
-                          <span style={{ marginRight: "8px" }}>{step.icon}</span>
                           {step.title}
                         </Text>
                         {expandedStep === step.number && (
@@ -184,7 +186,7 @@ export const HelpScreen: React.FC<ScreenProps> = ({ navigateTo }) => {
                     </Column>
                     <Column width="content">
                       <Text tone="tertiary">
-                        {expandedStep === step.number ? "▼" : "▶"}
+                        {expandedStep === step.number ? "-" : "+"}
                       </Text>
                     </Column>
                   </Columns>
@@ -255,7 +257,7 @@ export const HelpScreen: React.FC<ScreenProps> = ({ navigateTo }) => {
                 <Columns spacing="1u" alignY="start">
                   <Column width="content">
                     <Text size="small" tone="tertiary">
-                      {"💡"}
+                      {"•"}
                     </Text>
                   </Column>
                   <Column>

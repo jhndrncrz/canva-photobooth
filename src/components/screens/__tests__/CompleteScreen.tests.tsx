@@ -157,7 +157,7 @@ describe("CompleteScreen", () => {
     it("should display next steps section", () => {
       renderInTestProvider(<CompleteScreen {...defaultProps} />);
 
-      expect(screen.getByText(/💡 Next Steps/i)).toBeInTheDocument();
+      expect(screen.getByText(/Next Steps/i)).toBeInTheDocument();
       expect(screen.getByText(/Review and adjust photo positions/i)).toBeInTheDocument();
     });
 

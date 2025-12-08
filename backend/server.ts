@@ -305,6 +305,45 @@ router.get("/photobooth/camera.html", (_req, res) => {
 });
 
 // ============================================================================
+// Legal & Info Pages
+// ============================================================================
+
+/**
+ * Terms and Conditions page
+ */
+router.get("/terms", (_req, res) => {
+  res.sendFile(path.join(__dirname, "../utils/backend/pages/terms.html"));
+});
+
+/**
+ * Privacy Policy page
+ */
+router.get("/privacy", (_req, res) => {
+  res.sendFile(path.join(__dirname, "../utils/backend/pages/privacy.html"));
+});
+
+/**
+ * Support page
+ */
+router.get("/support", (_req, res) => {
+  res.sendFile(path.join(__dirname, "../utils/backend/pages/support.html"));
+});
+
+/**
+ * About / Developer Website page
+ */
+router.get("/about", (_req, res) => {
+  res.sendFile(path.join(__dirname, "../utils/backend/pages/about.html"));
+});
+
+/**
+ * Root redirect to About page
+ */
+router.get("/", (_req, res) => {
+  res.redirect("/about");
+});
+
+// ============================================================================
 // Start Server
 // ============================================================================
 

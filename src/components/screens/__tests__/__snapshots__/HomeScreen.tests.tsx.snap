@@ -18,13 +18,9 @@ exports[`HomeScreen Snapshot should match snapshot when not configured 1`] = `
           style="--NZu1Zw: 8px; --okeDpw: center;"
         >
           <div
-            style="width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0px auto;"
+            style="width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0px auto; color: white; font-size: 24px; font-weight: bold;"
           >
-            <span
-              style="font-size: 32px;"
-            >
-              📷
-            </span>
+            PB
           </div>
           <h2
             class="_8yjy_A B8t6MQ u16U_g"
@@ -163,13 +159,9 @@ exports[`HomeScreen Snapshot should match snapshot when ready 1`] = `
           style="--NZu1Zw: 8px; --okeDpw: center;"
         >
           <div
-            style="width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0px auto;"
+            style="width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0px auto; color: white; font-size: 24px; font-weight: bold;"
           >
-            <span
-              style="font-size: 32px;"
-            >
-              📷
-            </span>
+            PB
           </div>
           <h2
             class="_8yjy_A B8t6MQ u16U_g"

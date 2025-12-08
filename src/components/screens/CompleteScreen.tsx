@@ -85,9 +85,12 @@ export const CompleteScreen: React.FC<ScreenProps> = ({
                 alignItems: "center",
                 justifyContent: "center",
                 margin: "0 auto",
+                color: "white",
+                fontSize: "40px",
+                fontWeight: "bold",
               }}
             >
-              <span style={{ fontSize: "40px", color: "white" }}>✓</span>
+              ✓
             </div>
 
             <Title size="large">
@@ -146,7 +149,7 @@ export const CompleteScreen: React.FC<ScreenProps> = ({
           <Rows spacing="1u">
             <Title size="xsmall">
               <FormattedMessage
-                defaultMessage="💡 Next Steps"
+                defaultMessage="Next Steps"
                 description="Tips header"
               />
             </Title>
@@ -188,7 +191,7 @@ export const CompleteScreen: React.FC<ScreenProps> = ({
             loading={isExporting}
           >
             {intl.formatMessage({
-              defaultMessage: "📥 Export Design",
+              defaultMessage: "Export Design",
               description: "Export button",
             })}
           </Button>

@@ -19,7 +19,7 @@ exports[`SettingsScreen Snapshots should match snapshot with config 1`] = `
           <h3
             class="_7ATl0g aZskFA u16U_g"
           >
-            ⚙️ Capture Settings
+            Capture Settings
           </h3>
           <p
             class="aWBg0w aZskFA QxuLlQ"
@@ -144,7 +144,7 @@ exports[`SettingsScreen Snapshots should match snapshot with config 1`] = `
                 <p
                   class="JYIidw aZskFA QxuLlQ"
                 >
-                  👆 Manual: Click to take each photo individually
+                  Manual: Click to take each photo individually
                 </p>
               </div>
             </div>
@@ -519,7 +519,7 @@ exports[`SettingsScreen Snapshots should match snapshot with config 1`] = `
           <p
             class="JYIidw aZskFA QxuLlQ"
           >
-            📷 Photos to capture: 1 (based on frame count)
+            Photos to capture: 1 (based on frame count)
           </p>
         </div>
       </div>

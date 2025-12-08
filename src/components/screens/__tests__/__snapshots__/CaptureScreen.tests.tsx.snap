@@ -20,7 +20,7 @@ exports[`CaptureScreen Snapshots should match snapshot in loading state 1`] = `
           <h3
             class="_7ATl0g aZskFA u16U_g"
           >
-            📸 Capture Session Active
+            Capture Session Active
           </h3>
           <p
             class="aWBg0w aZskFA QxuLlQ"
@@ -67,7 +67,7 @@ exports[`CaptureScreen Snapshots should match snapshot in loading state 1`] = `
               <p
                 class="aWBg0w aZskFA u16U_g"
               >
-                ✅ Camera link copied to clipboard! Paste it in a new browser tab.
+                Camera link copied to clipboard! Paste it in a new browser tab.
               </p>
             </div>
           </div>
@@ -80,7 +80,7 @@ exports[`CaptureScreen Snapshots should match snapshot in loading state 1`] = `
         <span
           class="khPe7Q"
         >
-          ✓ Link Copied!
+          Link Copied!
         </span>
       </button>
       <div

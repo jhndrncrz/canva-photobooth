@@ -148,7 +148,7 @@ export const SettingsScreen: React.FC<ScreenProps> = ({
           <Rows spacing="1u">
             <Title size="medium">
               <FormattedMessage
-                defaultMessage="⚙️ Capture Settings"
+                defaultMessage="Capture Settings"
                 description="Screen title"
               />
             </Title>
@@ -229,12 +229,12 @@ export const SettingsScreen: React.FC<ScreenProps> = ({
                   <Text size="small" tone="tertiary">
                     {settings.captureMode === "auto" ? (
                       <FormattedMessage
-                        defaultMessage="📸 Auto: Takes all photos automatically with countdown between each"
+                        defaultMessage="Auto: Takes all photos automatically with countdown between each"
                         description="Auto mode description"
                       />
                     ) : (
                       <FormattedMessage
-                        defaultMessage="👆 Manual: Click to take each photo individually"
+                        defaultMessage="Manual: Click to take each photo individually"
                         description="Manual mode description"
                       />
                     )}
@@ -397,7 +397,7 @@ export const SettingsScreen: React.FC<ScreenProps> = ({
           <Rows spacing="1u">
             <Text size="small" tone="tertiary">
               <FormattedMessage
-                defaultMessage="📷 Photos to capture: {count} (based on frame count)"
+                defaultMessage="Photos to capture: {count} (based on frame count)"
                 description="Photo count info"
                 values={{ count: config.frames.length }}
               />
