@@ -23,6 +23,7 @@ import {
 } from "@canva/design";
 import type { ScreenProps } from "../../types";
 import { TEMPLATE_PAGE_TITLE } from "../../constants";
+import { extractTemplateFromCurrentPage } from "../../services/templateService";
 import * as styles from "styles/components.css";
 
 export const SetupTemplateScreen: React.FC<ScreenProps> = ({
@@ -133,15 +134,35 @@ export const SetupTemplateScreen: React.FC<ScreenProps> = ({
     setError(null);
 
     try {
+      // Extract all elements from the current page for later duplication
+      console.log("[SetupTemplateScreen] Extracting template elements...");
+      const templateData = await extractTemplateFromCurrentPage();
+
+      if (!templateData) {
+        throw new Error("Failed to extract template elements from page");
+      }
+
+      console.log(
+        `[SetupTemplateScreen] Extracted ${templateData.elements.length} elements from template`
+      );
+
+      // Get page dimensions
+      const pageContext = await getCurrentPageContext();
+      if (pageContext.dimensions) {
+        templateData.pageWidth = pageContext.dimensions.width;
+        templateData.pageHeight = pageContext.dimensions.height;
+      }
+
       // Generate a unique template identifier
       const templateId = `template_${Date.now()}`;
 
-      // Reset frames when changing template
+      // Reset frames when changing template and store template data
       if (config) {
         const updatedConfig = {
           ...config,
           templatePageId: templateId,
           frames: [], // Reset frames
+          templateData, // Store extracted template elements
           captureSettings: {
             ...config.captureSettings,
             captureCount: 0,
@@ -155,6 +176,7 @@ export const SetupTemplateScreen: React.FC<ScreenProps> = ({
           templatePageId: templateId,
           configPageId: "",
           frames: [],
+          templateData, // Store extracted template elements
           captureSettings: {
             countdownSeconds: 3,
             captureCount: 0,

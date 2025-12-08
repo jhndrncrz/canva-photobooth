@@ -20,6 +20,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { addPage } from "@canva/design";
 import { upload, type ImageRef } from "@canva/asset";
 import type { ScreenProps, CapturedPhoto } from "../../types";
+import { convertTemplateToPageElements } from "../../services/templateService";
 import * as styles from "styles/components.css";
 
 export const ReviewScreen: React.FC<ScreenProps> = ({
@@ -128,8 +129,30 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
       setProgressMessage("Creating output page...");
       setProgress(80);
 
-      // Step 2: Build elements array for the new page
-      const elements: Array<{
+      // Step 2: Get template elements (excluding frame placeholders)
+      // Frame placeholders are the images that will be replaced by captured photos
+      const frameImageRefs = frames
+        .filter((f) => f.imageRef)
+        .map((f) => f.imageRef as string);
+
+      let templateElements: ReturnType<typeof convertTemplateToPageElements> = [];
+      if (config.templateData) {
+        console.log(
+          `Converting ${config.templateData.elements.length} template elements...`
+        );
+        templateElements = convertTemplateToPageElements(
+          config.templateData,
+          frameImageRefs
+        );
+        console.log(
+          `Got ${templateElements.length} template elements (after excluding frame placeholders)`
+        );
+      } else {
+        console.log("No template data stored, only adding photos");
+      }
+
+      // Step 3: Build photo elements array for the new page
+      const photoElements: Array<{
         type: "image";
         ref: ImageRef;
         altText: { text: string; decorative: boolean };
@@ -156,7 +179,7 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
             rotation: normalizeRotation(frame.rotation || 0),
           };
           
-          console.log(`Element ${i + 1}:`, {
+          console.log(`Photo element ${i + 1}:`, {
             top: element.top,
             left: element.left,
             width: element.width,
@@ -164,18 +187,26 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
             rotation: element.rotation,
           });
           
-          elements.push(element);
+          photoElements.push(element);
         }
       }
 
       setProgress(90);
-      console.log(`Creating page with ${elements.length} elements...`);
       
-      // Step 3: Create a new page with the photo elements
+      // Step 4: Combine template elements with photo elements
+      // Template elements go first (background, decorations), photos on top
+      const allElements = [...templateElements, ...photoElements];
+      
+      console.log(
+        `Creating page with ${allElements.length} elements ` +
+        `(${templateElements.length} template + ${photoElements.length} photos)...`
+      );
+      
+      // Step 5: Create a new page with all elements
       try {
         await addPage({
           title: `Photo Booth - ${new Date().toLocaleString()}`,
-          elements,
+          elements: allElements,
         });
         console.log("addPage completed successfully");
       } catch (addPageError) {
@@ -184,7 +215,7 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
       }
 
       setProgress(100);
-      setProgressMessage(`Created output page with ${elements.length} photo${elements.length !== 1 ? "s" : ""}!`);
+      setProgressMessage(`Created output page with ${photoElements.length} photo${photoElements.length !== 1 ? "s" : ""}!`);
 
       // Update session status
       if (session) {
