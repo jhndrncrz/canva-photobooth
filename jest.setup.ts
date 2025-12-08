@@ -1,5 +1,8 @@
 // For usage information, see the README.md file.
 
+// Note: @testing-library/jest-dom is loaded via setupFilesAfterEnv in jest.config.mjs
+// This provides DOM matchers like toBeInTheDocument, toBeDisabled, etc.
+
 // Import Canva SDK testing utilities
 import * as asset from "@canva/asset/test";
 import * as design from "@canva/design/test";
@@ -25,6 +28,11 @@ jest.mock("@canva/asset");
 jest.mock("@canva/design");
 jest.mock("@canva/platform");
 jest.mock("@canva/user");
+
+/*
+  Mock global constants that are normally provided by webpack
+*/
+(global as any).BACKEND_HOST = "http://localhost:3001";
 
 /*
   Important: @canva/error should not be mocked

@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JPCS Photo Booth</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: #2d3748;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #c41e3a 100%);
+      padding: 15px 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .header-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+    }
+
+    .header-text {
+      text-align: left;
+    }
+
+    .header-title {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .header-subtitle {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* Main content */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px 15px;
+      color: white;
+      overflow-y: auto;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Roboto Mono', monospace;
+      margin-bottom: 8px;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    /* Mode indicator */
+    .mode-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.9rem;
+    }
+
+    .mode-indicator.auto {
+      background: linear-gradient(90deg, rgba(0, 200, 83, 0.3), rgba(0, 150, 136, 0.3));
+      border: 1px solid rgba(0, 200, 83, 0.5);
+    }
+
+    .mode-indicator.manual {
+      background: linear-gradient(90deg, rgba(255, 107, 53, 0.3), rgba(247, 147, 30, 0.3));
+      border: 1px solid rgba(255, 107, 53, 0.5);
+    }
+
+    /* Video container */
+    .video-container {
+      position: relative;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+      border: 3px solid rgba(255, 107, 53, 0.3);
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #video {
+      width: 100%;
+      display: block;
+      transform: scaleX(-1); /* Mirror for selfie - can be toggled */
+    }
+
+    #video.no-mirror {
+      transform: scaleX(1);
+    }
+
+    /* Grid overlay */
+    .grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      display: none;
+    }
+
+    .grid-overlay.visible {
+      display: block;
+    }
+
+    .grid-overlay::before,
+    .grid-overlay::after {
+      content: '';
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .grid-overlay::before {
+      left: 33.33%;
+      right: 33.33%;
+      top: 0;
+      bottom: 0;
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .grid-overlay::after {
+      top: 33.33%;
+      bottom: 33.33%;
+      left: 0;
+      right: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .countdown-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .countdown-overlay.visible {
+      opacity: 1;
+    }
+
+    .countdown-number {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 100px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 40px rgba(255, 107, 53, 0.8), 0 0 80px rgba(255, 107, 53, 0.4);
+      animation: pulse 1s ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 0; }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .flash-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: white;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .flash-overlay.flash {
+      animation: flash 0.3s ease-out;
+    }
+
+    @keyframes flash {
+      0% { opacity: 0.9; }
+      100% { opacity: 0; }
+    }
+
+    /* Progress bar */
+    .progress-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ff6b35 0%, #f7931e 50%, #c41e3a 100%);
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+
+    .status {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    button {
+      font-family: 'Roboto Mono', monospace;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #ff6b35 0%, #f7931e 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-success {
+      background: linear-gradient(90deg, #00c853 0%, #00bfa5 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 200, 83, 0.4);
+    }
+
+    .btn-success:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 200, 83, 0.5);
+    }
+
+    .btn-danger {
+      background: linear-gradient(90deg, #ff5252 0%, #d32f2f 100%);
+      color: white;
+    }
+
+    .btn-small {
+      padding: 8px 16px;
+      font-size: 0.85rem;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .toolbar-btn {
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toolbar-btn:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .toolbar-btn.active {
+      background: rgba(255, 107, 53, 0.3);
+      border-color: rgba(255, 107, 53, 0.5);
+    }
+
+    /* Thumbnails */
+    .thumbnails {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .thumbnail-wrapper {
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .thumbnail-wrapper:hover {
+      transform: scale(1.08);
+    }
+
+    .thumbnail-wrapper:hover .thumbnail-retake {
+      opacity: 1;
+    }
+
+    .thumbnail {
+      width: 70px;
+      height: 52px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .thumbnail.latest {
+      border-color: #ff6b35;
+      box-shadow: 0 0 15px rgba(255, 107, 53, 0.6);
+    }
+
+    .thumbnail-number {
+      position: absolute;
+      bottom: 3px;
+      left: 3px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-size: 9px;
+      font-weight: bold;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    .thumbnail-retake {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 107, 53, 0.9);
+      color: white;
+      font-size: 14px;
+      padding: 3px 6px;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    /* Carousel for review mode */
+    .carousel-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .carousel-container.visible {
+      display: flex;
+    }
+
+    .carousel {
+      position: relative;
+      max-width: 640px;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+      border: 3px solid rgba(255, 107, 53, 0.3);
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      display: block;
+    }
+
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      padding: 15px 12px;
+      cursor: pointer;
+      font-size: 24px;
+      transition: background 0.2s;
+      z-index: 10;
+    }
+
+    .carousel-nav:hover {
+      background: rgba(255, 107, 53, 0.8);
+    }
+
+    .carousel-nav.prev {
+      left: 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .carousel-nav.next {
+      right: 0;
+      border-radius: 8px 0 0 8px;
+    }
+
+    .carousel-indicators {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 12px;
+    }
+
+    .carousel-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .carousel-indicator.active {
+      background: #ff6b35;
+      transform: scale(1.2);
+    }
+
+    .carousel-indicator:hover {
+      background: rgba(255, 107, 53, 0.6);
+    }
+
+    .carousel-caption {
+      text-align: center;
+      margin-top: 10px;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    /* Error & Success states */
+    .error {
+      background: linear-gradient(135deg, #c53030 0%, #9b2c2c 100%);
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .success {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #c41e3a 100%);
+      padding: 25px;
+      border-radius: 16px;
+      margin-top: 20px;
+      color: white;
+      box-shadow: 0 10px 40px rgba(255, 107, 53, 0.4);
+    }
+
+    .success h2 {
+      font-family: 'Roboto Mono', monospace;
+      margin-bottom: 10px;
+    }
+
+    #canvas {
+      display: none;
+    }
+
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      color: white;
+      padding: 40px;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      border-top-color: #ff6b35;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #f7fafc;
+      padding: 15px 20px;
+      text-align: center;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .footer-title {
+      font-family: 'Roboto Mono', monospace;
+      color: #2d3748;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      display: inline-block;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+    }
+
+    .footer-links img {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* Timer display */
+    .timer-display {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 10px;
+    }
+
+    /* Pause indicator */
+    .pause-indicator {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px 30px;
+      border-radius: 12px;
+      display: none;
+    }
+
+    .pause-indicator.visible {
+      display: block;
+    }
+
+    .pause-indicator span {
+      font-size: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.3rem; }
+      .countdown-number { font-size: 80px; }
+      .toolbar { gap: 5px; }
+      .toolbar-btn { padding: 6px 10px; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <img src="https://drive.usercontent.google.com/download?id=1uBFbivwHUiADD__9DmcdcEnQOvst_CDb" alt="JPCS Logo" class="header-logo">
+      <div class="header-text">
+        <div class="header-title">JPCS Photo Booth</div>
+        <div class="header-subtitle">UE Manila Chapter</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <h1>📸 Capture Your Moment</h1>
+      <p class="subtitle" id="subtitle">Get ready to take your photos!</p>
+
+      <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Initializing camera...</p>
+      </div>
+
+      <div id="error" class="error" style="display: none;"></div>
+
+      <div id="camera-section" style="display: none;">
+        <!-- Mode indicator -->
+        <div class="mode-indicator" id="mode-indicator">
+          <span id="mode-icon">📸</span>
+          <span id="mode-text">Manual Mode</span>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress" style="width: 0%;"></div>
+        </div>
+
+        <!-- Timer display for auto mode -->
+        <div class="timer-display" id="timer-display" style="display: none;">
+          Next photo in: <span id="timer-seconds">0</span>s
+        </div>
+
+        <!-- Video container -->
+        <div class="video-container" id="video-container">
+          <video id="video" autoplay playsinline muted></video>
+          <div class="grid-overlay" id="grid-overlay"></div>
+          <div class="countdown-overlay" id="countdown-overlay">
+            <span class="countdown-number" id="countdown-number">3</span>
+          </div>
+          <div class="flash-overlay" id="flash-overlay"></div>
+          <div class="pause-indicator" id="pause-indicator">
+            <span>⏸️</span>
+          </div>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+          <button class="toolbar-btn" id="btn-mirror" title="Toggle mirror">
+            🪞 Mirror
+          </button>
+          <button class="toolbar-btn" id="btn-grid" title="Toggle grid overlay">
+            ⊞ Grid
+          </button>
+          <button class="toolbar-btn" id="btn-switch-camera" title="Switch camera">
+            🔄 Switch
+          </button>
+          <button class="toolbar-btn" id="btn-fullscreen" title="Fullscreen">
+            ⛶ Fullscreen
+          </button>
+        </div>
+
+        <p class="status" id="status">Photo 1 of 3</p>
+
+        <!-- Main controls -->
+        <div class="controls" id="controls">
+          <button id="btn-capture" class="btn-primary">📸 Take Photo</button>
+          <button id="btn-retake" class="btn-secondary" style="display: none;">↩️ Retake Last</button>
+        </div>
+
+        <!-- Auto mode controls -->
+        <div class="controls" id="auto-controls" style="display: none;">
+          <button id="btn-start-auto" class="btn-success">▶️ Start Auto Capture</button>
+          <button id="btn-pause" class="btn-secondary" style="display: none;">⏸️ Pause</button>
+          <button id="btn-stop-auto" class="btn-danger btn-small" style="display: none;">⏹ Stop</button>
+        </div>
+
+        <!-- Thumbnails -->
+        <div class="thumbnails" id="thumbnails"></div>
+      </div>
+
+      <!-- Review Carousel -->
+      <div class="carousel-container" id="carousel-container">
+        <h2 style="margin-bottom: 15px;">📷 Review Your Photos</h2>
+        <div class="carousel" id="carousel">
+          <div class="carousel-inner" id="carousel-inner"></div>
+          <button class="carousel-nav prev" id="carousel-prev">❮</button>
+          <button class="carousel-nav next" id="carousel-next">❯</button>
+        </div>
+        <div class="carousel-indicators" id="carousel-indicators"></div>
+        <div class="carousel-caption" id="carousel-caption">Photo 1 of 3</div>
+        
+        <div class="controls" style="margin-top: 20px;">
+          <button id="btn-submit" class="btn-success">✅ Submit All Photos</button>
+          <button id="btn-retake-current" class="btn-secondary">🔄 Retake This Photo</button>
+          <button id="btn-retake-all" class="btn-danger btn-small">🗑 Retake All</button>
+        </div>
+      </div>
+
+      <div id="complete-section" class="success" style="display: none;">
+        <h2>✅ All Photos Captured!</h2>
+        <p>You can now close this window and return to Canva.</p>
+        <p style="margin-top: 10px; opacity: 0.9;">Your photos will appear in the app automatically.</p>
+      </div>
+
+      <canvas id="canvas"></canvas>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-title">JPCS - UE Manila Chapter</div>
+    <div class="footer-links">
+      <a href="https://www.facebook.com/jpcs.uemanila" target="_blank" title="Facebook">
+        <img src="https://img.icons8.com/ios-filled/50/718096/facebook-new.png" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/jpcs.uemanila" target="_blank" title="Instagram">
+        <img src="https://img.icons8.com/ios-filled/50/718096/instagram-new.png" alt="Instagram">
+      </a>
+      <a href="https://www.linkedin.com/company/107503272/" target="_blank" title="LinkedIn">
+        <img src="https://img.icons8.com/ios-filled/50/718096/linkedin.png" alt="LinkedIn">
+      </a>
+      <a href="mailto:jpcs.uemanila@gmail.com" target="_blank" title="Email">
+        <img src="https://img.icons8.com/ios-filled/50/718096/mail.png" alt="Email">
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // ========================================================================
+    // Configuration & State
+    // ========================================================================
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('session');
+    const baseUrl = window.location.origin;
+
+    // DOM Elements
+    const elements = {
+      loading: document.getElementById('loading'),
+      error: document.getElementById('error'),
+      cameraSection: document.getElementById('camera-section'),
+      completeSection: document.getElementById('complete-section'),
+      video: document.getElementById('video'),
+      videoContainer: document.getElementById('video-container'),
+      canvas: document.getElementById('canvas'),
+      countdownOverlay: document.getElementById('countdown-overlay'),
+      countdownNumber: document.getElementById('countdown-number'),
+      flashOverlay: document.getElementById('flash-overlay'),
+      gridOverlay: document.getElementById('grid-overlay'),
+      pauseIndicator: document.getElementById('pause-indicator'),
+      progress: document.getElementById('progress'),
+      status: document.getElementById('status'),
+      subtitle: document.getElementById('subtitle'),
+      thumbnails: document.getElementById('thumbnails'),
+      modeIndicator: document.getElementById('mode-indicator'),
+      modeIcon: document.getElementById('mode-icon'),
+      modeText: document.getElementById('mode-text'),
+      timerDisplay: document.getElementById('timer-display'),
+      timerSeconds: document.getElementById('timer-seconds'),
+      // Buttons
+      btnCapture: document.getElementById('btn-capture'),
+      btnRetake: document.getElementById('btn-retake'),
+      btnMirror: document.getElementById('btn-mirror'),
+      btnGrid: document.getElementById('btn-grid'),
+      btnSwitchCamera: document.getElementById('btn-switch-camera'),
+      btnFullscreen: document.getElementById('btn-fullscreen'),
+      // Controls containers
+      controls: document.getElementById('controls'),
+      autoControls: document.getElementById('auto-controls'),
+      btnStartAuto: document.getElementById('btn-start-auto'),
+      btnPause: document.getElementById('btn-pause'),
+      btnStopAuto: document.getElementById('btn-stop-auto'),
+      // Carousel
+      carouselContainer: document.getElementById('carousel-container'),
+      carousel: document.getElementById('carousel'),
+      carouselInner: document.getElementById('carousel-inner'),
+      carouselPrev: document.getElementById('carousel-prev'),
+      carouselNext: document.getElementById('carousel-next'),
+      carouselIndicators: document.getElementById('carousel-indicators'),
+      carouselCaption: document.getElementById('carousel-caption'),
+      btnSubmit: document.getElementById('btn-submit'),
+      btnRetakeCurrent: document.getElementById('btn-retake-current'),
+      btnRetakeAll: document.getElementById('btn-retake-all'),
+    };
+
+    // State
+    let stream = null;
+    let frameCount = 3;
+    let countdownSeconds = 3;
+    let photos = [];
+    let isCapturing = false;
+    let isPaused = false;
+    let isAutoRunning = false;
+    let autoTimeoutId = null;
+    let currentCarouselIndex = 0;
+    let currentFacingMode = 'user';
+    let isMirrored = true;
+    let isGridVisible = false;
+    
+    // Settings from session
+    let captureMode = 'manual'; // 'auto' or 'manual'
+    let playShutterSound = true;
+    let playCountdownSound = true;
+    let showFlashEffect = true;
+
+    // Audio context
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      return audioCtx;
+    }
+
+    // ========================================================================
+    // Audio Functions
+    // ========================================================================
+
+    function playBeep(frequency, duration, volume = 0.5) {
+      try {
+        const ctx = getAudioContext();
+        const oscillator = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(ctx.destination);
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(frequency, ctx.currentTime);
+        gainNode.gain.setValueAtTime(0, ctx.currentTime);
+        gainNode.gain.linearRampToValueAtTime(volume, ctx.currentTime + 0.01);
+        gainNode.gain.linearRampToValueAtTime(0, ctx.currentTime + duration);
+        oscillator.start(ctx.currentTime);
+        oscillator.stop(ctx.currentTime + duration);
+      } catch (e) {
+        console.warn('Audio playback failed:', e);
+      }
+    }
+
+    function playCountdownTick() {
+      if (playCountdownSound) playBeep(440, 0.15, 0.3);
+    }
+
+    function playCountdownFinal() {
+      if (playCountdownSound) playBeep(880, 0.2, 0.4);
+    }
+
+    function playShutter() {
+      if (!playShutterSound) return;
+      try {
+        const ctx = getAudioContext();
+        const bufferSize = ctx.sampleRate * 0.1;
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          const t = i / bufferSize;
+          data[i] = (Math.random() * 2 - 1) * Math.exp(-t * 30) * 0.5;
+        }
+        const source = ctx.createBufferSource();
+        source.buffer = buffer;
+        const highpass = ctx.createBiquadFilter();
+        highpass.type = 'highpass';
+        highpass.frequency.setValueAtTime(2000, ctx.currentTime);
+        const gainNode = ctx.createGain();
+        gainNode.gain.setValueAtTime(0.8, ctx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+        source.connect(highpass);
+        highpass.connect(gainNode);
+        gainNode.connect(ctx.destination);
+        source.start();
+        playBeep(1200, 0.05, 0.2);
+      } catch (e) {
+        console.warn('Shutter sound failed:', e);
+      }
+    }
+
+    // ========================================================================
+    // UI Functions
+    // ========================================================================
+
+    function showError(message) {
+      elements.loading.style.display = 'none';
+      elements.cameraSection.style.display = 'none';
+      elements.carouselContainer.classList.remove('visible');
+      elements.error.style.display = 'block';
+      elements.error.textContent = message;
+    }
+
+    function updateModeIndicator() {
+      if (captureMode === 'auto') {
+        elements.modeIndicator.className = 'mode-indicator auto';
+        elements.modeIcon.textContent = '⚡';
+        elements.modeText.textContent = 'Auto Mode';
+        elements.controls.style.display = 'none';
+        elements.autoControls.style.display = 'flex';
+      } else {
+        elements.modeIndicator.className = 'mode-indicator manual';
+        elements.modeIcon.textContent = '👆';
+        elements.modeText.textContent = 'Manual Mode';
+        elements.controls.style.display = 'flex';
+        elements.autoControls.style.display = 'none';
+      }
+    }
+
+    function updateUI() {
+      const remaining = frameCount - photos.length;
+      const progress = (photos.length / frameCount) * 100;
+      
+      elements.progress.style.width = `${progress}%`;
+      elements.status.textContent = `Photo ${Math.min(photos.length + 1, frameCount)} of ${frameCount}`;
+      elements.subtitle.textContent = remaining > 0 
+        ? `${remaining} photo${remaining !== 1 ? 's' : ''} remaining` 
+        : 'All photos captured!';
+
+      // Update capture button text
+      if (captureMode === 'manual') {
+        if (photos.length === 0) {
+          elements.btnCapture.textContent = '📸 Take Photo';
+        } else if (photos.length < frameCount) {
+          elements.btnCapture.textContent = `📸 Take Photo ${photos.length + 1}`;
+        } else {
+          elements.btnCapture.textContent = '📸 View Photos';
+        }
+        elements.btnRetake.style.display = photos.length > 0 ? 'inline-block' : 'none';
+      }
+
+      // Update thumbnails
+      elements.thumbnails.innerHTML = photos.map((photo, i) => 
+        `<div class="thumbnail-wrapper" onclick="retakePhoto(${i})" title="Click to retake photo ${i + 1}">
+          <img src="${photo.dataUrl}" class="thumbnail ${i === photos.length - 1 ? 'latest' : ''}" alt="Photo ${i + 1}">
+          <span class="thumbnail-number">${i + 1}</span>
+          <span class="thumbnail-retake">🔄</span>
+        </div>`
+      ).join('');
+
+      // Check if all photos captured - delay to let flash effect complete
+      if (photos.length >= frameCount) {
+        setTimeout(() => showReviewCarousel(), 400); // Wait for flash (300ms) + buffer
+      }
+    }
+
+    function showReviewCarousel() {
+      elements.cameraSection.style.display = 'none';
+      elements.carouselContainer.classList.add('visible');
+      currentCarouselIndex = 0;
+      renderCarousel();
+    }
+
+    function hideReviewCarousel() {
+      elements.carouselContainer.classList.remove('visible');
+      elements.cameraSection.style.display = 'block';
+    }
+
+    function renderCarousel() {
+      // Render slides
+      elements.carouselInner.innerHTML = photos.map((photo, i) => 
+        `<div class="carousel-slide">
+          <img src="${photo.dataUrl}" alt="Photo ${i + 1}">
+        </div>`
+      ).join('');
+
+      // Render indicators
+      elements.carouselIndicators.innerHTML = photos.map((_, i) => 
+        `<div class="carousel-indicator ${i === currentCarouselIndex ? 'active' : ''}" onclick="goToSlide(${i})"></div>`
+      ).join('');
+
+      updateCarouselPosition();
+    }
+
+    function updateCarouselPosition() {
+      elements.carouselInner.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+      elements.carouselCaption.textContent = `Photo ${currentCarouselIndex + 1} of ${photos.length}`;
+      
+      // Update indicators
+      document.querySelectorAll('.carousel-indicator').forEach((ind, i) => {
+        ind.classList.toggle('active', i === currentCarouselIndex);
+      });
+    }
+
+    function goToSlide(index) {
+      currentCarouselIndex = Math.max(0, Math.min(index, photos.length - 1));
+      updateCarouselPosition();
+    }
+
+    function nextSlide() {
+      goToSlide(currentCarouselIndex + 1 >= photos.length ? 0 : currentCarouselIndex + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentCarouselIndex - 1 < 0 ? photos.length - 1 : currentCarouselIndex - 1);
+    }
+
+    // ========================================================================
+    // Camera Functions
+    // ========================================================================
+
+    async function initCamera(facingMode = 'user') {
+      try {
+        if (stream) {
+          stream.getTracks().forEach(track => track.stop());
+        }
+
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            facingMode: facingMode,
+            width: { ideal: 1280 },
+            height: { ideal: 720 }
+          },
+          audio: false
+        });
+
+        elements.video.srcObject = stream;
+        await elements.video.play();
+        currentFacingMode = facingMode;
+        
+        return true;
+      } catch (err) {
+        console.error('Camera init error:', err);
+        return false;
+      }
+    }
+
+    async function switchCamera() {
+      const newMode = currentFacingMode === 'user' ? 'environment' : 'user';
+      const success = await initCamera(newMode);
+      if (success) {
+        // Auto-disable mirror for back camera
+        if (newMode === 'environment') {
+          isMirrored = false;
+          elements.video.classList.add('no-mirror');
+          elements.btnMirror.classList.remove('active');
+        } else {
+          isMirrored = true;
+          elements.video.classList.remove('no-mirror');
+          elements.btnMirror.classList.add('active');
+        }
+      }
+    }
+
+    function toggleMirror() {
+      isMirrored = !isMirrored;
+      elements.video.classList.toggle('no-mirror', !isMirrored);
+      elements.btnMirror.classList.toggle('active', isMirrored);
+    }
+
+    function toggleGrid() {
+      isGridVisible = !isGridVisible;
+      elements.gridOverlay.classList.toggle('visible', isGridVisible);
+      elements.btnGrid.classList.toggle('active', isGridVisible);
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        elements.videoContainer.requestFullscreen?.() || 
+        elements.videoContainer.webkitRequestFullscreen?.();
+      } else {
+        document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+      }
+    }
+
+    // ========================================================================
+    // Capture Functions
+    // ========================================================================
+
+    async function capturePhoto() {
+      if (isCapturing || photos.length >= frameCount) return;
+      
+      isCapturing = true;
+      elements.btnCapture.disabled = true;
+      elements.btnRetake.disabled = true;
+
+      // Countdown
+      elements.countdownOverlay.classList.add('visible');
+      for (let i = countdownSeconds; i > 0; i--) {
+        if (isPaused) {
+          elements.countdownOverlay.classList.remove('visible');
+          isCapturing = false;
+          elements.btnCapture.disabled = false;
+          elements.btnRetake.disabled = false;
+          return;
+        }
+        
+        elements.countdownNumber.textContent = i;
+        elements.countdownNumber.style.animation = 'none';
+        elements.countdownNumber.offsetHeight;
+        elements.countdownNumber.style.animation = 'pulse 1s ease-in-out';
+        
+        if (i === 1) playCountdownFinal();
+        else playCountdownTick();
+        
+        await new Promise(r => setTimeout(r, 1000));
+      }
+      elements.countdownOverlay.classList.remove('visible');
+
+      // Flash effect
+      if (showFlashEffect) {
+        elements.flashOverlay.classList.add('flash');
+        setTimeout(() => elements.flashOverlay.classList.remove('flash'), 300);
+      }
+      
+      playShutter();
+
+      // Capture frame
+      const ctx = elements.canvas.getContext('2d');
+      elements.canvas.width = elements.video.videoWidth;
+      elements.canvas.height = elements.video.videoHeight;
+      
+      // Mirror based on setting
+      if (isMirrored) {
+        ctx.translate(elements.canvas.width, 0);
+        ctx.scale(-1, 1);
+      }
+      ctx.drawImage(elements.video, 0, 0);
+
+      const dataUrl = elements.canvas.toDataURL('image/jpeg', 0.9);
+
+      photos.push({
+        id: `local_${Date.now()}`,
+        dataUrl,
+        capturedAt: new Date().toISOString(),
+        frameIndex: photos.length
+      });
+
+      updateUI();
+
+      isCapturing = false;
+      elements.btnCapture.disabled = false;
+      elements.btnRetake.disabled = false;
+      
+      return true;
+    }
+
+    function retakePhoto(index) {
+      if (isCapturing) return;
+      photos.splice(index, 1);
+      photos = photos.map((p, i) => ({ ...p, frameIndex: i }));
+      
+      if (elements.carouselContainer.classList.contains('visible')) {
+        hideReviewCarousel();
+      }
+      
+      updateUI();
+    }
+
+    function retakeLast() {
+      if (photos.length === 0 || isCapturing) return;
+      photos.pop();
+      updateUI();
+    }
+
+    function retakeAll() {
+      if (isCapturing) return;
+      photos = [];
+      hideReviewCarousel();
+      stopAutoCapture();
+      updateUI();
+    }
+
+    function retakeCurrent() {
+      retakePhoto(currentCarouselIndex);
+    }
+
+    // ========================================================================
+    // Auto Capture Functions
+    // ========================================================================
+
+    async function startAutoCapture() {
+      if (isAutoRunning || photos.length >= frameCount) return;
+      
+      isAutoRunning = true;
+      isPaused = false;
+      elements.btnStartAuto.style.display = 'none';
+      elements.btnPause.style.display = 'inline-block';
+      elements.btnStopAuto.style.display = 'inline-block';
+      elements.pauseIndicator.classList.remove('visible');
+      
+      await runAutoCapture();
+    }
+
+    async function runAutoCapture() {
+      while (isAutoRunning && !isPaused && photos.length < frameCount) {
+        const success = await capturePhoto();
+        
+        if (!success || photos.length >= frameCount) break;
+        
+        // Wait between photos (show timer)
+        if (photos.length < frameCount) {
+          elements.timerDisplay.style.display = 'block';
+          for (let i = 2; i > 0; i--) {
+            if (isPaused || !isAutoRunning) break;
+            elements.timerSeconds.textContent = i;
+            await new Promise(r => setTimeout(r, 1000));
+          }
+          elements.timerDisplay.style.display = 'none';
+        }
+      }
+      
+      if (photos.length >= frameCount) {
+        stopAutoCapture();
+      }
+    }
+
+    function pauseAutoCapture() {
+      isPaused = !isPaused;
+      
+      if (isPaused) {
+        elements.btnPause.textContent = '▶️ Resume';
+        elements.pauseIndicator.classList.add('visible');
+      } else {
+        elements.btnPause.textContent = '⏸️ Pause';
+        elements.pauseIndicator.classList.remove('visible');
+        runAutoCapture();
+      }
+    }
+
+    function stopAutoCapture() {
+      isAutoRunning = false;
+      isPaused = false;
+      elements.btnStartAuto.style.display = 'inline-block';
+      elements.btnPause.style.display = 'none';
+      elements.btnStopAuto.style.display = 'none';
+      elements.timerDisplay.style.display = 'none';
+      elements.pauseIndicator.classList.remove('visible');
+      elements.btnPause.textContent = '⏸️ Pause';
+    }
+
+    // ========================================================================
+    // Submit Functions
+    // ========================================================================
+
+    async function submitAllPhotos() {
+      if (photos.length === 0) return;
+      
+      elements.btnSubmit.disabled = true;
+      elements.btnRetakeCurrent.disabled = true;
+      elements.btnRetakeAll.disabled = true;
+      elements.btnSubmit.textContent = '⏳ Submitting...';
+      
+      try {
+        for (let i = 0; i < photos.length; i++) {
+          const photo = photos[i];
+          elements.carouselCaption.textContent = `Uploading photo ${i + 1} of ${photos.length}...`;
+          
+          const response = await fetch(`${baseUrl}/api/photobooth/session/${sessionId}/photo`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+              dataUrl: photo.dataUrl, 
+              frameIndex: i 
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error(`Failed to upload photo ${i + 1}`);
+          }
+        }
+        
+        await fetch(`${baseUrl}/api/photobooth/session/${sessionId}/complete`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        
+        showComplete();
+        
+      } catch (err) {
+        console.error('Failed to submit photos:', err);
+        showError('Failed to submit photos. Please try again.');
+        elements.btnSubmit.disabled = false;
+        elements.btnRetakeCurrent.disabled = false;
+        elements.btnRetakeAll.disabled = false;
+        elements.btnSubmit.textContent = '✅ Submit All Photos';
+      }
+    }
+
+    function showComplete() {
+      elements.cameraSection.style.display = 'none';
+      elements.carouselContainer.classList.remove('visible');
+      elements.completeSection.style.display = 'block';
+      
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+
+      let countdown = 5;
+      const closeCountdownEl = document.createElement('p');
+      closeCountdownEl.style.marginTop = '15px';
+      closeCountdownEl.style.color = 'rgba(255,255,255,0.8)';
+      
+      function updateCountdownText() {
+        closeCountdownEl.textContent = `This window will close in ${countdown} second${countdown !== 1 ? 's' : ''}...`;
+      }
+      
+      updateCountdownText();
+      elements.completeSection.appendChild(closeCountdownEl);
+
+      const countdownInterval = setInterval(() => {
+        countdown--;
+        if (countdown > 0) {
+          updateCountdownText();
+        } else {
+          clearInterval(countdownInterval);
+          closeCountdownEl.textContent = 'Closing...';
+          try { window.close(); } catch (e) {}
+          setTimeout(() => {
+            if (!window.closed) {
+              closeCountdownEl.textContent = '✅ All photos captured! You can now close this tab.';
+            }
+          }, 500);
+        }
+      }, 1000);
+    }
+
+    // ========================================================================
+    // Initialization
+    // ========================================================================
+
+    async function init() {
+      if (!sessionId) {
+        showError('No session ID provided. Please start capture from the Canva app.');
+        return;
+      }
+
+      try {
+        // Fetch session info
+        const response = await fetch(`${baseUrl}/api/photobooth/session/${sessionId}`);
+        if (!response.ok) {
+          throw new Error('Session not found or expired');
+        }
+
+        const session = await response.json();
+        frameCount = session.frameCount;
+        countdownSeconds = session.countdownSeconds || 3;
+        playShutterSound = session.playShutterSound !== false;
+        playCountdownSound = session.playCountdownSound !== false;
+        showFlashEffect = session.showFlashEffect !== false;
+        captureMode = session.captureMode || 'manual';
+
+        // Initialize camera
+        const cameraSuccess = await initCamera('user');
+        if (!cameraSuccess) {
+          throw new Error('Failed to access camera');
+        }
+
+        // Update mirror button state
+        elements.btnMirror.classList.add('active');
+
+        // Show camera section
+        elements.loading.style.display = 'none';
+        elements.cameraSection.style.display = 'block';
+        
+        updateModeIndicator();
+        updateUI();
+
+      } catch (err) {
+        console.error('Init error:', err);
+        if (err.name === 'NotAllowedError') {
+          showError('Camera permission denied. Please allow camera access and refresh the page.');
+        } else if (err.name === 'NotFoundError') {
+          showError('No camera found. Please connect a camera and refresh the page.');
+        } else {
+          showError(err.message || 'Failed to initialize. Please try again.');
+        }
+      }
+    }
+
+    // ========================================================================
+    // Event Listeners
+    // ========================================================================
+
+    // Manual mode buttons
+    elements.btnCapture.addEventListener('click', () => {
+      if (photos.length >= frameCount) {
+        showReviewCarousel();
+      } else {
+        capturePhoto();
+      }
+    });
+    elements.btnRetake.addEventListener('click', retakeLast);
+
+    // Auto mode buttons
+    elements.btnStartAuto.addEventListener('click', startAutoCapture);
+    elements.btnPause.addEventListener('click', pauseAutoCapture);
+    elements.btnStopAuto.addEventListener('click', stopAutoCapture);
+
+    // Toolbar buttons
+    elements.btnMirror.addEventListener('click', toggleMirror);
+    elements.btnGrid.addEventListener('click', toggleGrid);
+    elements.btnSwitchCamera.addEventListener('click', switchCamera);
+    elements.btnFullscreen.addEventListener('click', toggleFullscreen);
+
+    // Carousel buttons
+    elements.carouselPrev.addEventListener('click', prevSlide);
+    elements.carouselNext.addEventListener('click', nextSlide);
+    elements.btnSubmit.addEventListener('click', submitAllPhotos);
+    elements.btnRetakeCurrent.addEventListener('click', retakeCurrent);
+    elements.btnRetakeAll.addEventListener('click', retakeAll);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === ' ' && captureMode === 'manual' && !elements.carouselContainer.classList.contains('visible')) {
+        e.preventDefault();
+        capturePhoto();
+      }
+    });
+
+    // Handle page visibility
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+    });
+
+    // Start
+    init();
+  </script>
+</body>
+</html>

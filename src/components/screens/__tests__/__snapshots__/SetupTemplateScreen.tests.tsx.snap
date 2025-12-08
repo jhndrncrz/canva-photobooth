@@ -1,0 +1,427 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SetupTemplateScreen Snapshots should match snapshot with config 1`] = `
+<div>
+  <div
+    class="scrollContainer"
+  >
+    <div
+      class="jv_R6g"
+      style="--NZu1Zw: 24px;"
+    >
+      <div
+        class="BMOCzQ LuBWVA"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <h3
+            class="_7ATl0g aZskFA u16U_g"
+          >
+            Step 1: Select Template
+          </h3>
+          <p
+            class="aWBg0w aZskFA QxuLlQ"
+          >
+            Choose a page to use as your photo booth template
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <h5
+            class="liTStw aZskFA u16U_g"
+          >
+            Instructions
+          </h5>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            1. Add image placeholders where you want photos to appear
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            2. Position and size the images as placeholders
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            3. Add decorations, text, and backgrounds around the frames
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            4. Select the page you want to use as template
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            5. Click 'Use Current Page as Template'
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 16px;"
+        >
+          <h5
+            class="liTStw aZskFA u16U_g"
+          >
+            Current Page
+          </h5>
+          <div
+            class="jv_R6g"
+            style="--NZu1Zw: 12px;"
+          >
+            <div
+              class="BMOCzQ jhljBg rCi29A EC2pjw LuBWVA"
+              style="--gms-pw: 12px;"
+            >
+              <div
+                class="jv_R6g"
+                style="--NZu1Zw: 4px;"
+              >
+                <p
+                  class="JYIidw aZskFA u16U_g"
+                >
+                  Page Size: 1920 × 1080px
+                </p>
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  3 elements on page
+                </p>
+              </div>
+            </div>
+            <div
+              class="bZlJMA aMUpPw BMOCzQ sI2_9Q V9xfvg fOwrSw EC2pjw LuBWVA"
+              role="note"
+              style="--TPsgaw: 12px; --Wk647Q: 8px; --ZGnFiQ: var(--WCLNrQ);"
+            >
+              <div
+                class="JYIidw aZskFA T5LNnw"
+              >
+                <div
+                  class="Ka9auQ"
+                  style="--PmK0MA: 8px; --TPF5Nw: baseline;"
+                >
+                  <div
+                    class="aDc6Yg oNSf9w"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="uRWxVA dkWypw"
+                    >
+                      <svg
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m5.72 12.53-3.26-3.3c-.7-.72.36-1.77 1.06-1.06l2.73 2.77 6.35-6.35a.75.75 0 0 1 1.06 1.06l-6.88 6.88a.78.78 0 0 1-.5.23.83.83 0 0 1-.56-.23z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="aDc6Yg"
+                  >
+                    Found 2 element(s) that can be used as photo frames!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bZlJMA aMUpPw BMOCzQ sI2_9Q V9xfvg fOwrSw EC2pjw LuBWVA"
+        role="note"
+        style="--TPsgaw: 12px; --Wk647Q: 8px; --ZGnFiQ: var(--WCLNrQ);"
+      >
+        <div
+          class="JYIidw aZskFA T5LNnw"
+        >
+          <div
+            class="Ka9auQ"
+            style="--PmK0MA: 8px; --TPF5Nw: baseline;"
+          >
+            <div
+              class="aDc6Yg oNSf9w"
+            >
+              <span
+                aria-hidden="true"
+                class="uRWxVA dkWypw"
+              >
+                <svg
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m5.72 12.53-3.26-3.3c-.7-.72.36-1.77 1.06-1.06l2.73 2.77 6.35-6.35a.75.75 0 0 1 1.06 1.06l-6.88 6.88a.78.78 0 0 1-.5.23.83.83 0 0 1-.56-.23z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </div>
+            <div
+              class="aDc6Yg"
+            >
+              Template page is already configured. You can update it or proceed to frame setup.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="jv_R6g"
+        style="--NZu1Zw: 16px;"
+      >
+        <button
+          class="_5KtATA LQzFZw VgvqkQ _8ERLTg rV61VQ LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+          type="button"
+        >
+          <span
+            class="khPe7Q"
+          >
+            Use Current Page as Template
+          </span>
+        </button>
+      </div>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          Skip to Frame Setup
+        </span>
+      </button>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          ↻ Refresh Page Info
+        </span>
+      </button>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          ← Back
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SetupTemplateScreen Snapshots should match snapshot without config 1`] = `
+<div>
+  <div
+    class="scrollContainer"
+  >
+    <div
+      class="jv_R6g"
+      style="--NZu1Zw: 24px;"
+    >
+      <div
+        class="BMOCzQ LuBWVA"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <h3
+            class="_7ATl0g aZskFA u16U_g"
+          >
+            Step 1: Select Template
+          </h3>
+          <p
+            class="aWBg0w aZskFA QxuLlQ"
+          >
+            Choose a page to use as your photo booth template
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <h5
+            class="liTStw aZskFA u16U_g"
+          >
+            Instructions
+          </h5>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            1. Add image placeholders where you want photos to appear
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            2. Position and size the images as placeholders
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            3. Add decorations, text, and backgrounds around the frames
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            4. Select the page you want to use as template
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            5. Click 'Use Current Page as Template'
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 16px;"
+        >
+          <h5
+            class="liTStw aZskFA u16U_g"
+          >
+            Current Page
+          </h5>
+          <div
+            class="jv_R6g"
+            style="--NZu1Zw: 12px;"
+          >
+            <div
+              class="BMOCzQ jhljBg rCi29A EC2pjw LuBWVA"
+              style="--gms-pw: 12px;"
+            >
+              <div
+                class="jv_R6g"
+                style="--NZu1Zw: 4px;"
+              >
+                <p
+                  class="JYIidw aZskFA u16U_g"
+                >
+                  Page Size: 1920 × 1080px
+                </p>
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  3 elements on page
+                </p>
+              </div>
+            </div>
+            <div
+              class="bZlJMA aMUpPw BMOCzQ sI2_9Q V9xfvg fOwrSw EC2pjw LuBWVA"
+              role="note"
+              style="--TPsgaw: 12px; --Wk647Q: 8px; --ZGnFiQ: var(--WCLNrQ);"
+            >
+              <div
+                class="JYIidw aZskFA T5LNnw"
+              >
+                <div
+                  class="Ka9auQ"
+                  style="--PmK0MA: 8px; --TPF5Nw: baseline;"
+                >
+                  <div
+                    class="aDc6Yg oNSf9w"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="uRWxVA dkWypw"
+                    >
+                      <svg
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m5.72 12.53-3.26-3.3c-.7-.72.36-1.77 1.06-1.06l2.73 2.77 6.35-6.35a.75.75 0 0 1 1.06 1.06l-6.88 6.88a.78.78 0 0 1-.5.23.83.83 0 0 1-.56-.23z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="aDc6Yg"
+                  >
+                    Found 2 element(s) that can be used as photo frames!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="jv_R6g"
+        style="--NZu1Zw: 16px;"
+      >
+        <button
+          class="_5KtATA LQzFZw VgvqkQ _8ERLTg rV61VQ LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+          type="button"
+        >
+          <span
+            class="khPe7Q"
+          >
+            Use Current Page as Template
+          </span>
+        </button>
+      </div>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          ↻ Refresh Page Info
+        </span>
+      </button>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          ← Back
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

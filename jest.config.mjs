@@ -32,4 +32,5 @@ export default {
     ],
   },
   setupFiles: ["<rootDir>/jest.setup.ts"],
+  setupFilesAfterEnv: ["@testing-library/jest-dom"],
 };

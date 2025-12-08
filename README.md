@@ -19,6 +19,79 @@ This is a starting point for your app using your chosen template. The complete d
 npm install
 ```
 
+## Testing
+
+This project includes comprehensive unit tests using Jest and React Testing Library.
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm test -- --watch
+
+# Run specific test file
+npm test -- path/to/test.ts
+
+# Update snapshots
+npm test -- -u
+```
+
+### Test Coverage
+
+The test suite covers:
+
+- **Services** (`src/services/__tests__/`)
+  - `storageService.tests.ts` - localStorage persistence for config
+  - `audioService.tests.ts` - Web Audio API sound playback
+
+- **Screen Components** (`src/components/screens/__tests__/`)
+  - `HomeScreen.tests.tsx` - Main app entry point
+  - `SetupTemplateScreen.tests.tsx` - Template configuration
+  - `SetupFramesScreen.tests.tsx` - Frame selection and ordering
+  - `CaptureScreen.tests.tsx` - Photo capture session management
+  - `CompleteScreen.tests.tsx` - Session completion and export
+  - `SettingsScreen.tests.tsx` - Capture settings configuration
+
+- **Utility Hooks** (`utils/__tests__/`)
+  - `use_selection_hook.tests.ts` - Canvas element selection
+  - `use_overlay_hook.tests.ts` - Overlay management
+  - `use_feature_support.tests.ts` - Feature detection
+
+- **Main App** (`src/tests/`)
+  - `app.tests.tsx` - App component integration tests
+
+### Writing Tests
+
+When writing tests for Canva apps:
+
+1. **Wrap components with test providers:**
+   ```tsx
+   import { TestAppI18nProvider } from "@canva/app-i18n-kit";
+   import { TestAppUiProvider } from "@canva/app-ui-kit";
+
+   function renderInTestProvider(node: ReactNode): RenderResult {
+     return render(
+       <TestAppI18nProvider>
+         <TestAppUiProvider>{node}</TestAppUiProvider>
+       </TestAppI18nProvider>
+     );
+   }
+   ```
+
+2. **Check disabled state with aria-disabled:**
+   Canva UI Kit buttons use `aria-disabled` instead of the native `disabled` attribute:
+   ```tsx
+   expect(button.getAttribute("aria-disabled")).toBe("true");
+   ```
+
+3. **Mock Canva SDK packages:**
+   The test setup automatically mocks `@canva/asset`, `@canva/design`, `@canva/platform`, and `@canva/user`.
+
+For more information on testing with the Canva Apps SDK, see [Testing Documentation](https://www.canva.dev/docs/apps/testing/).
+
 ## Running your Canva App
 
 ### Step 1: Start the local development server

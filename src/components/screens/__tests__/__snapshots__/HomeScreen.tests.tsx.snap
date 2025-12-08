@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Photo Booth App Component Tests Snapshot should have a consistent snapshot for home screen 1`] = `
+exports[`HomeScreen Snapshot should match snapshot when not configured 1`] = `
 <div>
   <div
     class="scrollContainer"
@@ -112,6 +112,126 @@ exports[`Photo Booth App Component Tests Snapshot should have a consistent snaps
             class="khPe7Q"
           >
             🚀 Get Started
+          </span>
+        </button>
+      </div>
+      <div
+        class="BMOCzQ EC2pjw LuBWVA"
+        style="--KtVHvQ: 8px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 4px;"
+        >
+          <p
+            class="JYIidw B8t6MQ QxuLlQ"
+          >
+            Select images → Capture photos → Generate output
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`HomeScreen Snapshot should match snapshot when ready 1`] = `
+<div>
+  <div
+    class="scrollContainer"
+  >
+    <div
+      class="jv_R6g"
+      style="--NZu1Zw: 24px;"
+    >
+      <div
+        class="BMOCzQ EC2pjw LuBWVA"
+        style="--WtUbjw: 8px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px; --okeDpw: center;"
+        >
+          <div
+            style="width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0px auto;"
+          >
+            <span
+              style="font-size: 32px;"
+            >
+              📷
+            </span>
+          </div>
+          <h2
+            class="_8yjy_A B8t6MQ u16U_g"
+          >
+            Photo Booth
+          </h2>
+          <p
+            class="JYIidw B8t6MQ QxuLlQ"
+          >
+            Capture and place photos in your designs
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px; --okeDpw: center;"
+        >
+          <div
+            style="display: flex; align-items: center; justify-content: center; gap: 8px;"
+          >
+            <div
+              style="width: 12px; height: 12px; border-radius: 50%; background-color: rgb(0, 200, 83);"
+            />
+            <p
+              class="aWBg0w aZskFA u16U_g"
+            >
+              Ready to capture
+            </p>
+          </div>
+          <p
+            class="JYIidw aZskFA QxuLlQ"
+          >
+            1 frame • 3s countdown
+          </p>
+        </div>
+      </div>
+      <div
+        class="jv_R6g"
+        style="--NZu1Zw: 16px;"
+      >
+        <button
+          class="_5KtATA LQzFZw VgvqkQ _8ERLTg rV61VQ LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+          type="button"
+        >
+          <span
+            class="khPe7Q"
+          >
+            📸 Start Capture
+          </span>
+        </button>
+        <button
+          class="_5KtATA LQzFZw VgvqkQ _8ERLTg Z3nT2A LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+          type="button"
+        >
+          <span
+            class="khPe7Q"
+          >
+            Edit Frames
+          </span>
+        </button>
+        <button
+          class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+          type="button"
+        >
+          <span
+            class="khPe7Q"
+          >
+            ⚙️ Settings
           </span>
         </button>
       </div>

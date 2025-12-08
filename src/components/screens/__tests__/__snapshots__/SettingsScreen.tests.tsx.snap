@@ -1,0 +1,644 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SettingsScreen Snapshots should match snapshot with config 1`] = `
+<div>
+  <div
+    class="scrollContainer"
+  >
+    <div
+      class="jv_R6g"
+      style="--NZu1Zw: 24px;"
+    >
+      <div
+        class="BMOCzQ LuBWVA"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <h3
+            class="_7ATl0g aZskFA u16U_g"
+          >
+            ⚙️ Capture Settings
+          </h3>
+          <p
+            class="aWBg0w aZskFA QxuLlQ"
+          >
+            Configure how photos are captured
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 16px;"
+        >
+          <div
+            class="Ka9auQ"
+            style="--PmK0MA: 8px; --TPF5Nw: center;"
+          >
+            <div
+              class="aDc6Yg"
+            >
+              <div
+                class="jv_R6g"
+                style="--NZu1Zw: 4px;"
+              >
+                <h4
+                  class="_5Gynyg aZskFA u16U_g"
+                >
+                  Countdown Duration
+                </h4>
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  Seconds before each photo is taken
+                </p>
+              </div>
+            </div>
+            <div
+              class="aDc6Yg oNSf9w"
+            >
+              <div>
+                <div
+                  id="_r_a6_"
+                />
+                <div
+                  id="_r_a7_"
+                >
+                  <div
+                    class="FJA3UA"
+                  >
+                    <div
+                      class="BTLpWw"
+                    >
+                      <button
+                        aria-controls="_r_a4_"
+                        aria-expanded="false"
+                        aria-haspopup="listbox"
+                        aria-labelledby="_r_a5_"
+                        class="PuABGQ ZA7_OA BMOCzQ _4tv94w V9xfvg fOwrSw EC2pjw _6Mu4Ow FQ64gg LuBWVA q2t60g a1ZYkQ YnfReg vFBXLA"
+                        role="combobox"
+                        style="--s_rwAw: inline-flex; --TPsgaw: 12px; --Zy1MMQ: var(--3ifkTA); --flkbuA: var(--3ifkTA); --DYmj-w: var(--3ifkTA); --ay7Jgg: var(--W1_3nw); --jVIKfw: var(--igdHlg); --KOHiag: var(--_kLulA); --TRxkXw: var(--uHakiw); --rAXYhQ: var(--TCEPKw);"
+                        type="button"
+                      >
+                        <span
+                          class="aWBg0w aZskFA T5LNnw snQKTg ArvBWg"
+                          id="_r_a5_"
+                        >
+                          3 seconds
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          class="NA_Img dkWypw"
+                        >
+                          <svg
+                            fill="none"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="m16.384 9.225-4.207 4.207a.25.25 0 0 1-.353 0L7.623 9.224a.75.75 0 0 0-1.059.002.75.75 0 0 0-.002 1.059l4.201 4.21c.681.68 1.787.678 2.47-.005l4.207-4.207a.75.75 0 0 0 .002-1.059.75.75 0 0 0-1.058.002"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 16px;"
+        >
+          <div
+            class="Ka9auQ"
+            style="--PmK0MA: 8px; --TPF5Nw: center;"
+          >
+            <div
+              class="aDc6Yg"
+            >
+              <div
+                class="jv_R6g"
+                style="--NZu1Zw: 4px;"
+              >
+                <h4
+                  class="_5Gynyg aZskFA u16U_g"
+                >
+                  Capture Mode
+                </h4>
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  👆 Manual: Click to take each photo individually
+                </p>
+              </div>
+            </div>
+            <div
+              class="aDc6Yg oNSf9w"
+            >
+              <div>
+                <div
+                  id="_r_ac_"
+                />
+                <div
+                  id="_r_ad_"
+                >
+                  <div
+                    class="FJA3UA"
+                  >
+                    <div
+                      class="BTLpWw"
+                    >
+                      <button
+                        aria-controls="_r_aa_"
+                        aria-expanded="false"
+                        aria-haspopup="listbox"
+                        aria-labelledby="_r_ab_"
+                        class="PuABGQ ZA7_OA BMOCzQ _4tv94w V9xfvg fOwrSw EC2pjw _6Mu4Ow FQ64gg LuBWVA q2t60g a1ZYkQ YnfReg vFBXLA"
+                        role="combobox"
+                        style="--s_rwAw: inline-flex; --TPsgaw: 12px; --Zy1MMQ: var(--3ifkTA); --flkbuA: var(--3ifkTA); --DYmj-w: var(--3ifkTA); --ay7Jgg: var(--W1_3nw); --jVIKfw: var(--igdHlg); --KOHiag: var(--_kLulA); --TRxkXw: var(--uHakiw); --rAXYhQ: var(--TCEPKw);"
+                        type="button"
+                      >
+                        <span
+                          class="aWBg0w aZskFA T5LNnw snQKTg ArvBWg"
+                          id="_r_ab_"
+                        >
+                          Manual
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          class="NA_Img dkWypw"
+                        >
+                          <svg
+                            fill="none"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="m16.384 9.225-4.207 4.207a.25.25 0 0 1-.353 0L7.623 9.224a.75.75 0 0 0-1.059.002.75.75 0 0 0-.002 1.059l4.201 4.21c.681.68 1.787.678 2.47-.005l4.207-4.207a.75.75 0 0 0 .002-1.059.75.75 0 0 0-1.058.002"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 16px;"
+        >
+          <div
+            class="Ka9auQ"
+            style="--PmK0MA: 8px; --TPF5Nw: center;"
+          >
+            <div
+              class="aDc6Yg"
+            >
+              <div
+                class="jv_R6g"
+                style="--NZu1Zw: 4px;"
+              >
+                <h4
+                  class="_5Gynyg aZskFA u16U_g"
+                >
+                  Camera
+                </h4>
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  Which camera to use for capture
+                </p>
+              </div>
+            </div>
+            <div
+              class="aDc6Yg oNSf9w"
+            >
+              <div>
+                <div
+                  id="_r_ai_"
+                />
+                <div
+                  id="_r_aj_"
+                >
+                  <div
+                    class="FJA3UA"
+                  >
+                    <div
+                      class="BTLpWw"
+                    >
+                      <button
+                        aria-controls="_r_ag_"
+                        aria-expanded="false"
+                        aria-haspopup="listbox"
+                        aria-labelledby="_r_ah_"
+                        class="PuABGQ ZA7_OA BMOCzQ _4tv94w V9xfvg fOwrSw EC2pjw _6Mu4Ow FQ64gg LuBWVA q2t60g a1ZYkQ YnfReg vFBXLA"
+                        role="combobox"
+                        style="--s_rwAw: inline-flex; --TPsgaw: 12px; --Zy1MMQ: var(--3ifkTA); --flkbuA: var(--3ifkTA); --DYmj-w: var(--3ifkTA); --ay7Jgg: var(--W1_3nw); --jVIKfw: var(--igdHlg); --KOHiag: var(--_kLulA); --TRxkXw: var(--uHakiw); --rAXYhQ: var(--TCEPKw);"
+                        type="button"
+                      >
+                        <span
+                          class="aWBg0w aZskFA T5LNnw snQKTg ArvBWg"
+                          id="_r_ah_"
+                        >
+                          Front camera
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          class="NA_Img dkWypw"
+                        >
+                          <svg
+                            fill="none"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="m16.384 9.225-4.207 4.207a.25.25 0 0 1-.353 0L7.623 9.224a.75.75 0 0 0-1.059.002.75.75 0 0 0-.002 1.059l4.201 4.21c.681.68 1.787.678 2.47-.005l4.207-4.207a.75.75 0 0 0 .002-1.059.75.75 0 0 0-1.058.002"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 16px;"
+        >
+          <h4
+            class="_5Gynyg aZskFA u16U_g"
+          >
+            Sound Effects
+          </h4>
+          <div
+            class="Ka9auQ"
+            style="--PmK0MA: 8px; --TPF5Nw: center;"
+          >
+            <div
+              class="aDc6Yg"
+            >
+              <div
+                class="jv_R6g"
+                style="--NZu1Zw: 4px;"
+              >
+                <p
+                  class="aWBg0w aZskFA u16U_g"
+                >
+                  Shutter Sound
+                </p>
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  Play sound when photo is taken
+                </p>
+              </div>
+            </div>
+            <div
+              class="aDc6Yg oNSf9w"
+            >
+              <button
+                aria-checked="true"
+                class="PuABGQ cKZQrA ibcvPA nAuNkQ BMOCzQ aysH_g _6Mu4Ow FQ64gg bu_JgA LuBWVA YnfReg vFBXLA"
+                role="switch"
+                style="--s_rwAw: flex; --Zy1MMQ: var(--eGVbng); --flkbuA: var(--M5_pvA); --DYmj-w: var(--M5_pvA); --ay7Jgg: var(--x0GzuQ);"
+                type="button"
+              >
+                <span
+                  class="NwlxLw"
+                >
+                  <span
+                    class="rcaVDg"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="U_N8wQ R3BUpw dkWypw"
+                    >
+                      <svg
+                        fill="none"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        width="12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m5.179 9.104 5.16-5.16a.75.75 0 0 0-1.06-1.061L4.652 7.51 2.738 5.57c-.702-.713-1.77.34-1.068 1.053l2.446 2.48c.344.346.775.27 1.043.02a.785.785 0 0 0 .02-.019Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            class="Ka9auQ"
+            style="--PmK0MA: 8px; --TPF5Nw: center;"
+          >
+            <div
+              class="aDc6Yg"
+            >
+              <div
+                class="jv_R6g"
+                style="--NZu1Zw: 4px;"
+              >
+                <p
+                  class="aWBg0w aZskFA u16U_g"
+                >
+                  Countdown Sound
+                </p>
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  Play beeps during countdown
+                </p>
+              </div>
+            </div>
+            <div
+              class="aDc6Yg oNSf9w"
+            >
+              <button
+                aria-checked="true"
+                class="PuABGQ cKZQrA ibcvPA nAuNkQ BMOCzQ aysH_g _6Mu4Ow FQ64gg bu_JgA LuBWVA YnfReg vFBXLA"
+                role="switch"
+                style="--s_rwAw: flex; --Zy1MMQ: var(--eGVbng); --flkbuA: var(--M5_pvA); --DYmj-w: var(--M5_pvA); --ay7Jgg: var(--x0GzuQ);"
+                type="button"
+              >
+                <span
+                  class="NwlxLw"
+                >
+                  <span
+                    class="rcaVDg"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="U_N8wQ R3BUpw dkWypw"
+                    >
+                      <svg
+                        fill="none"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        width="12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m5.179 9.104 5.16-5.16a.75.75 0 0 0-1.06-1.061L4.652 7.51 2.738 5.57c-.702-.713-1.77.34-1.068 1.053l2.446 2.48c.344.346.775.27 1.043.02a.785.785 0 0 0 .02-.019Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 16px;"
+        >
+          <h4
+            class="_5Gynyg aZskFA u16U_g"
+          >
+            Visual Effects
+          </h4>
+          <div
+            class="Ka9auQ"
+            style="--PmK0MA: 8px; --TPF5Nw: center;"
+          >
+            <div
+              class="aDc6Yg"
+            >
+              <div
+                class="jv_R6g"
+                style="--NZu1Zw: 4px;"
+              >
+                <p
+                  class="aWBg0w aZskFA u16U_g"
+                >
+                  Flash Effect
+                </p>
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  Show flash animation when capturing
+                </p>
+              </div>
+            </div>
+            <div
+              class="aDc6Yg oNSf9w"
+            >
+              <button
+                aria-checked="true"
+                class="PuABGQ cKZQrA ibcvPA nAuNkQ BMOCzQ aysH_g _6Mu4Ow FQ64gg bu_JgA LuBWVA YnfReg vFBXLA"
+                role="switch"
+                style="--s_rwAw: flex; --Zy1MMQ: var(--eGVbng); --flkbuA: var(--M5_pvA); --DYmj-w: var(--M5_pvA); --ay7Jgg: var(--x0GzuQ);"
+                type="button"
+              >
+                <span
+                  class="NwlxLw"
+                >
+                  <span
+                    class="rcaVDg"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="U_N8wQ R3BUpw dkWypw"
+                    >
+                      <svg
+                        fill="none"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        width="12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m5.179 9.104 5.16-5.16a.75.75 0 0 0-1.06-1.061L4.652 7.51 2.738 5.57c-.702-.713-1.77.34-1.068 1.053l2.446 2.48c.344.346.775.27 1.043.02a.785.785 0 0 0 .02-.019Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <p
+            class="JYIidw aZskFA QxuLlQ"
+          >
+            📷 Photos to capture: 1 (based on frame count)
+          </p>
+        </div>
+      </div>
+      <div
+        class="jv_R6g"
+        style="--NZu1Zw: 8px;"
+      >
+        <button
+          class="_5KtATA LQzFZw VgvqkQ _8ERLTg rV61VQ LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+          type="button"
+        >
+          <span
+            class="khPe7Q"
+          >
+            Save Settings
+          </span>
+        </button>
+        <div
+          class="Ka9auQ"
+          style="--PmK0MA: 8px;"
+        >
+          <div
+            class="aDc6Yg"
+          >
+            <button
+              class="_5KtATA LQzFZw VgvqkQ _8ERLTg Z3nT2A LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+              type="button"
+            >
+              <span
+                class="khPe7Q"
+              >
+                Reset Defaults
+              </span>
+            </button>
+          </div>
+          <div
+            class="aDc6Yg"
+          >
+            <button
+              class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+              type="button"
+            >
+              <span
+                class="khPe7Q"
+              >
+                Back
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SettingsScreen Snapshots should match snapshot without config 1`] = `
+<div>
+  <div
+    class="scrollContainer"
+  >
+    <div
+      class="jv_R6g"
+      style="--NZu1Zw: 24px;"
+    >
+      <div
+        class="bZlJMA aMUpPw BMOCzQ _19NBqA V9xfvg fOwrSw EC2pjw LuBWVA"
+        role="note"
+        style="--TPsgaw: 12px; --Wk647Q: 8px; --ZGnFiQ: var(--fs4QpA);"
+      >
+        <div
+          class="JYIidw aZskFA T5LNnw"
+        >
+          <div
+            class="Ka9auQ"
+            style="--PmK0MA: 8px; --TPF5Nw: baseline;"
+          >
+            <div
+              class="aDc6Yg oNSf9w"
+            >
+              <span
+                aria-hidden="true"
+                class="uRWxVA dkWypw"
+              >
+                <svg
+                  fill="none"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M13.773 12.079 9.197 2.764a1.333 1.333 0 0 0-2.394 0L2.227 12.08A1.334 1.334 0 0 0 3.424 14h9.152a1.333 1.333 0 0 0 1.197-1.92ZM8.147 3.053c.066.033.12.086.152.152l4.576 9.314a.333.333 0 0 1-.299.48H3.424a.333.333 0 0 1-.299-.48l4.576-9.314a.333.333 0 0 1 .446-.152ZM8 12.166A.833.833 0 1 0 8 10.5a.833.833 0 0 0 0 1.666Zm.667-5.5a.667.667 0 0 0-1.334 0V9a.667.667 0 1 0 1.334 0V6.666Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </span>
+            </div>
+            <div
+              class="aDc6Yg"
+            >
+              No configuration found. Please set up photo booth first.
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg Z3nT2A LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          Back to Home
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

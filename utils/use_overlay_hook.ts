@@ -1,3 +1,31 @@
+/**
+ * @file useOverlay Hook
+ * @description React hook for managing Canva app overlays.
+ * 
+ * Overlays are UI panels that can be opened on top of the Canva editor,
+ * useful for multi-step workflows, image selection, or configuration screens.
+ * This hook handles overlay lifecycle, state tracking, and cleanup.
+ * 
+ * @example
+ * ```tsx
+ * const overlay = useOverlay("image_selection");
+ * 
+ * // Check if we can open the overlay
+ * if (overlay.canOpen) {
+ *   // Open the overlay
+ *   await overlay.open({ launchParameters: { mode: "select" } });
+ * }
+ * 
+ * // Check if overlay is currently open
+ * if (overlay.isOpen) {
+ *   // Close the overlay
+ *   await overlay.close({ reason: "completed" });
+ * }
+ * ```
+ * 
+ * @see https://www.canva.dev/docs/apps/overlays/
+ */
+
 import type {
   AppProcessId,
   OverlayOpenableEvent,
@@ -8,18 +36,43 @@ import type { CloseParams } from "@canva/platform";
 import { appProcess } from "@canva/platform";
 import { useEffect, useState } from "react";
 
+/** Initial state when no overlay is open */
 const initialOverlayEvent: OverlayOpenableEvent<OverlayTarget> = {
   canOpen: false,
   reason: "",
 };
 
 /**
- * Returns an object which contains the following field:
- *  1. canOpen - a boolean indicate whether the overlay can be opened on the specified target.
- *  2. isOpen - a boolean indicate whether the overlay is currently open.
- *  3. open - a function to open an overlay on the specified target.
- *  4. close - a function close the currently opened overlay.
- * @param target The overlay target to register for whether we can open an overlay.
+ * Hook for managing Canva app overlays.
+ * 
+ * Provides a complete interface for opening, closing, and tracking
+ * overlay state. Automatically handles cleanup when the component unmounts.
+ * 
+ * @template T - The overlay target type (e.g., "image_selection")
+ * @template C - The close params type (defaults to CloseParams)
+ * @param target - The overlay target to register for. Determines what type
+ *                 of overlay can be opened and what data it can access.
+ * @returns An object containing:
+ *          - `canOpen`: Whether the overlay can be opened (depends on context)
+ *          - `isOpen`: Whether the overlay is currently open
+ *          - `open(opts?)`: Async function to open the overlay
+ *          - `close(opts)`: Async function to close the overlay
+ * 
+ * @example
+ * ```tsx
+ * function ImagePicker() {
+ *   const { canOpen, isOpen, open, close } = useOverlay("image_selection");
+ *   
+ *   return (
+ *     <Button 
+ *       disabled={!canOpen}
+ *       onClick={() => open({ launchParameters: { maxImages: 5 } })}
+ *     >
+ *       {isOpen ? "Selecting..." : "Select Images"}
+ *     </Button>
+ *   );
+ * }
+ * ```
  */
 export function useOverlay<
   T extends OverlayTarget,

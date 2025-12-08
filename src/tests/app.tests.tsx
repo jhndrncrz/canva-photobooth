@@ -1,86 +1,161 @@
 /* eslint-disable formatjs/no-literal-string-in-jsx */
+/**
+ * @file App Component Tests
+ * @description Unit tests for the main Photo Booth App component
+ *
+ * Tests cover:
+ * - Initial loading state and config loading
+ * - Screen navigation between different app states
+ * - Error boundary behavior
+ * - Config persistence
+ */
+
 import { TestAppI18nProvider } from "@canva/app-i18n-kit";
 import { TestAppUiProvider } from "@canva/app-ui-kit";
-import { requestOpenExternalUrl } from "@canva/platform";
-import { fireEvent, render } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import type { RenderResult } from "@testing-library/react";
 import type { ReactNode } from "react";
-import { useAddElement } from "utils/use_add_element";
-import { App, DOCS_URL } from "../app";
+import { App } from "../app";
 
+/**
+ * Helper function to render components with required test providers
+ */
 function renderInTestProvider(node: ReactNode): RenderResult {
   return render(
-    // In a test environment, you should wrap your apps in `TestAppI18nProvider` and `TestAppUiProvider`, rather than `AppI18nProvider` and `AppUiProvider`
     <TestAppI18nProvider>
-      <TestAppUiProvider>{node}</TestAppUiProvider>,
-    </TestAppI18nProvider>,
+      <TestAppUiProvider>{node}</TestAppUiProvider>
+    </TestAppI18nProvider>
   );
 }
 
-jest.mock("utils/use_add_element");
+// Mock the storage service
+jest.mock("../services/storageService", () => ({
+  loadConfigFromStorage: jest.fn(),
+  saveConfigToStorage: jest.fn(),
+}));
 
-// This test demonstrates how to test code that uses functions from the Canva Apps SDK
-// For more information on testing with the Canva Apps SDK, see https://www.canva.dev/docs/apps/testing/
-describe("Hello World Tests", () => {
-  // Mocking the useAddElement hook
-  const mockAddElement = jest.fn();
-  const mockAddUseElement = jest.mocked(useAddElement);
-  const mockRequestOpenExternalUrl = jest.mocked(requestOpenExternalUrl);
+// Mock @canva/design
+jest.mock("@canva/design", () => ({
+  selection: {
+    registerOnChange: jest.fn(() => jest.fn()),
+  },
+  overlay: {
+    registerOnCanOpen: jest.fn(() => jest.fn()),
+  },
+  getDefaultPageDimensions: jest.fn(() =>
+    Promise.resolve({ width: 1920, height: 1080 })
+  ),
+  requestExport: jest.fn(),
+  addPage: jest.fn(),
+}));
 
+// Mock @canva/platform
+jest.mock("@canva/platform", () => ({
+  appProcess: {
+    registerOnStateChange: jest.fn(),
+    current: { getInfo: jest.fn(() => Promise.resolve({ context: "design_editor" })) },
+  },
+  requestOpenExternalUrl: jest.fn(),
+}));
+
+// Import mocked functions
+import { loadConfigFromStorage } from "../services/storageService";
+const mockLoadConfig = loadConfigFromStorage as jest.MockedFunction<
+  typeof loadConfigFromStorage
+>;
+
+describe("Photo Booth App Component Tests", () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    mockAddUseElement.mockReturnValue(mockAddElement);
-    mockRequestOpenExternalUrl.mockResolvedValue({ status: "completed" });
+    // Default: no stored config
+    mockLoadConfig.mockReturnValue(null);
   });
 
-  // this test uses a mock in place of the useAddElement hook
-  it("should add a text element when the button is clicked", () => {
-    // assert that the mocks are in the expected clean state
-    expect(mockAddUseElement).not.toHaveBeenCalled();
-    expect(mockAddElement).not.toHaveBeenCalled();
+  describe("Initial Loading", () => {
+    it("should load config from storage on mount", async () => {
+      renderInTestProvider(<App />);
 
-    const result = renderInTestProvider(<App />);
-
-    // the hook should have been called in the render process but not the callback
-    expect(mockAddUseElement).toHaveBeenCalled();
-    expect(mockAddElement).not.toHaveBeenCalled();
-
-    // get a reference to the do something cool button element
-    const doSomethingCoolBtn = result.getByRole("button", {
-      name: "Do something cool",
+      // Should call loadConfigFromStorage
+      expect(mockLoadConfig).toHaveBeenCalled();
     });
 
-    // programmatically simulate clicking the button
-    fireEvent.click(doSomethingCoolBtn);
+    it("should show home screen after loading", async () => {
+      const result = renderInTestProvider(<App />);
 
-    // we expect that addElement has been called by the button's click handler
-    expect(mockAddElement).toHaveBeenCalled();
-  });
-
-  // this test uses a mock in place of the @canva/platform requestOpenExternalUrl function
-  it("should call `requestOpenExternalUrl` when the button is clicked", () => {
-    expect(mockRequestOpenExternalUrl).not.toHaveBeenCalled();
-
-    const result = renderInTestProvider(<App />);
-
-    // get a reference to the Apps SDK button by name
-    const sdkButton = result.getByRole("button", {
-      name: "Open Canva Apps SDK docs",
-    });
-
-    expect(mockRequestOpenExternalUrl).not.toHaveBeenCalled();
-    fireEvent.click(sdkButton);
-    expect(mockRequestOpenExternalUrl).toHaveBeenCalled();
-
-    // assert that the requestOpenExternalUrl function was called with the expected arguments
-    expect(mockRequestOpenExternalUrl.mock.calls[0]?.[0]).toEqual({
-      url: DOCS_URL,
+      // Wait for loading to complete and show home screen
+      await waitFor(() => {
+        expect(result.getByText("Photo Booth")).toBeInTheDocument();
+      });
     });
   });
 
-  // this test demonstrates the use of a snapshot test
-  it("should have a consistent snapshot", () => {
-    const result = renderInTestProvider(<App />);
-    expect(result.container).toMatchSnapshot();
+  describe("Home Screen Display", () => {
+    it("should display home screen when no config exists", async () => {
+      mockLoadConfig.mockReturnValue(null);
+
+      const result = renderInTestProvider(<App />);
+
+      await waitFor(() => {
+        expect(result.getByText("Photo Booth")).toBeInTheDocument();
+      });
+
+      // Should show "Get Started" button
+      expect(result.getByText("🚀 Get Started")).toBeInTheDocument();
+    });
+
+    it("should display start capture option when config exists", async () => {
+      mockLoadConfig.mockReturnValue({
+        version: 1,
+        templatePageId: "page-1",
+        configPageId: "page-2",
+        frames: [
+          {
+            id: "frame-1",
+            elementType: "image" as const,
+            order: 1,
+            top: 0,
+            left: 0,
+            width: 100,
+            height: 100,
+            rotation: 0,
+            transparency: 0,
+            elementIndex: 0,
+          },
+        ],
+        captureSettings: {
+          countdownSeconds: 3,
+          captureCount: 1,
+          playShutterSound: true,
+          playCountdownSound: true,
+          showFlashEffect: true,
+          facingMode: "user" as const,
+          captureMode: "auto" as const,
+        },
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      });
+
+      const result = renderInTestProvider(<App />);
+
+      await waitFor(() => {
+        expect(result.getByText("Photo Booth")).toBeInTheDocument();
+      });
+
+      // Should show start capture and settings buttons when config exists
+      expect(result.getByText("📸 Start Capture")).toBeInTheDocument();
+      expect(result.getByText("⚙️ Settings")).toBeInTheDocument();
+    });
+  });
+
+  describe("Snapshot", () => {
+    it("should have a consistent snapshot for home screen", async () => {
+      const result = renderInTestProvider(<App />);
+
+      await waitFor(() => {
+        expect(result.queryByText("Loading...")).not.toBeInTheDocument();
+      });
+
+      expect(result.container).toMatchSnapshot();
+    });
   });
 });

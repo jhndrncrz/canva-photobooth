@@ -1,0 +1,238 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CaptureScreen Snapshots should match snapshot in loading state 1`] = `
+<div>
+  <div
+    class="scrollContainer"
+  >
+    <div
+      class="jv_R6g"
+      style="--NZu1Zw: 24px;"
+    >
+      <div
+        class="BMOCzQ LuBWVA"
+        style=""
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <h3
+            class="_7ATl0g aZskFA u16U_g"
+          >
+            📸 Capture Session Active
+          </h3>
+          <p
+            class="aWBg0w aZskFA QxuLlQ"
+          >
+            Open the camera page in a new browser tab to take photos
+          </p>
+        </div>
+      </div>
+      <div
+        class="bZlJMA aMUpPw BMOCzQ sI2_9Q V9xfvg fOwrSw EC2pjw LuBWVA"
+        role="note"
+        style="--TPsgaw: 12px; --Wk647Q: 8px; --ZGnFiQ: var(--WCLNrQ);"
+      >
+        <div
+          class="JYIidw aZskFA T5LNnw"
+        >
+          <div
+            class="Ka9auQ"
+            style="--PmK0MA: 8px; --TPF5Nw: baseline;"
+          >
+            <div
+              class="aDc6Yg oNSf9w"
+            >
+              <span
+                aria-hidden="true"
+                class="uRWxVA dkWypw"
+              >
+                <svg
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m5.72 12.53-3.26-3.3c-.7-.72.36-1.77 1.06-1.06l2.73 2.77 6.35-6.35a.75.75 0 0 1 1.06 1.06l-6.88 6.88a.78.78 0 0 1-.5.23.83.83 0 0 1-.56-.23z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </div>
+            <div
+              class="aDc6Yg"
+            >
+              <p
+                class="aWBg0w aZskFA u16U_g"
+              >
+                ✅ Camera link copied to clipboard! Paste it in a new browser tab.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg rV61VQ LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          ✓ Link Copied!
+        </span>
+      </button>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 24px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 16px; --okeDpw: center;"
+        >
+          <p
+            class="_2a6tNg B8t6MQ u16U_g"
+          >
+            Or scan this QR code with your phone:
+          </p>
+          <div
+            class="BMOCzQ ESGcVw rCi29A EC2pjw LuBWVA"
+            style="--gms-pw: 16px;"
+          >
+            <img
+              alt="QR Code for camera page"
+              src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http%3A%2F%2Flocalhost%3A3001%2Fcamera%2Ftest-session-123"
+              style="width: 150px; height: 150px; display: block; margin: 0px auto;"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 12px;"
+        >
+          <p
+            class="_2a6tNg aZskFA u16U_g"
+          >
+            Capture Progress
+          </p>
+          <div
+            aria-label="Capture progress"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="0"
+            class="WOKrpg aBvcYQ"
+            role="progressbar"
+          >
+            <div
+              class="LaSi3g mPCClQ"
+              style="--qaorvg: -100%;"
+            >
+              <div
+                class="LaSi3g mPCClQ"
+                style="--qaorvg: 100%;"
+              >
+                <div
+                  class="QgOdhA mPCClQ"
+                  style="transform: scaleX(0);"
+                />
+              </div>
+            </div>
+          </div>
+          <p
+            class="JYIidw B8t6MQ u16U_g"
+          >
+            0 of 2 photos captured
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px; --okeDpw: center;"
+        >
+          <span
+            class="JtE88A"
+          >
+            <span
+              aria-hidden="true"
+              class="uRWxVA dkWypw _6ti9_A"
+            >
+              <svg
+                fill="none"
+                height="16"
+                viewBox="0 0 16 16"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 2.7c0-.356-.257-.665-.612-.688a6 6 0 1 0 0 11.975c.355-.022.612-.33.612-.686 0-.468-.437-.812-.904-.802L8 12.5a4.5 4.5 0 1 1 .096-8.999c.467.01.904-.334.904-.802Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </span>
+          <p
+            class="JYIidw B8t6MQ QxuLlQ"
+          >
+            Waiting for photos...
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <p
+            class="nbfwjw aZskFA u16U_g"
+          >
+            Instructions:
+          </p>
+          <p
+            class="nbfwjw aZskFA QxuLlQ"
+          >
+            1. Paste the copied link in a new browser tab
+          </p>
+          <p
+            class="nbfwjw aZskFA QxuLlQ"
+          >
+            2. Allow camera access when prompted
+          </p>
+          <p
+            class="nbfwjw aZskFA QxuLlQ"
+          >
+            3. Click 'Start Capture' to begin taking photos
+          </p>
+          <p
+            class="nbfwjw aZskFA QxuLlQ"
+          >
+            4. Photos will automatically appear here as they're captured
+          </p>
+        </div>
+      </div>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          Cancel Session
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

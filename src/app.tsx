@@ -1,63 +1,160 @@
-import { Button, Rows, Text } from "@canva/app-ui-kit";
-import { requestOpenExternalUrl } from "@canva/platform";
-import { FormattedMessage, useIntl } from "react-intl";
-import { useAddElement } from "utils/use_add_element";
+/**
+ * Photo Booth App
+ *
+ * Main application component with screen navigation.
+ */
+
+import React, { useState, useCallback, useEffect } from "react";
+import { LoadingIndicator, Rows, Text, Box } from "@canva/app-ui-kit";
+import type {
+  AppScreen,
+  PhotoBoothConfig,
+  CaptureSession,
+  ScreenProps,
+} from "./types";
+import {
+  HomeScreen,
+  SetupTemplateScreen,
+  SetupFramesScreen,
+  SettingsScreen,
+  CaptureScreen,
+  ReviewScreen,
+  CompleteScreen,
+} from "./components/screens";
+import { ErrorBoundary } from "./components/ErrorBoundary";
+import {
+  loadConfigFromStorage,
+  saveConfigToStorage,
+} from "./services/storageService";
 import * as styles from "styles/components.css";
 
-export const DOCS_URL = "https://www.canva.dev/docs/apps/";
-
 export const App = () => {
-  const addElement = useAddElement();
+  // Navigation state
+  const [currentScreen, setCurrentScreen] = useState<AppScreen>("home");
 
-  const onClick = () => {
-    addElement({
-      type: "text",
-      children: ["Hello world!"],
-    });
+  // Config state (persisted via localStorage)
+  const [config, setConfigState] = useState<PhotoBoothConfig | null>(null);
+
+  // Session state (current capture session)
+  const [session, setSession] = useState<CaptureSession | null>(null);
+
+  // Loading state
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Load config from storage on mount
+  useEffect(() => {
+    const storedConfig = loadConfigFromStorage();
+    if (storedConfig) {
+      setConfigState(storedConfig);
+    }
+    setIsLoading(false);
+  }, []);
+
+  // Wrapper to persist config changes
+  const setConfig = useCallback((newConfig: PhotoBoothConfig | null) => {
+    setConfigState(newConfig);
+    if (newConfig) {
+      saveConfigToStorage(newConfig);
+    }
+  }, []);
+
+  /**
+   * Navigate to a different screen
+   */
+  const navigateTo = useCallback((screen: AppScreen) => {
+    setCurrentScreen(screen);
+  }, []);
+
+  /**
+   * Handle error boundary reset
+   */
+  const handleErrorReset = useCallback(() => {
+    setCurrentScreen("home");
+    setSession(null);
+  }, []);
+
+  /**
+   * Common props for all screens
+   */
+  const screenProps: ScreenProps = {
+    navigateTo,
+    config,
+    setConfig,
+    session,
+    setSession,
   };
 
-  const openExternalUrl = async (url: string) => {
-    const response = await requestOpenExternalUrl({
-      url,
-    });
+  // Loading overlay
+  if (isLoading) {
+    return (
+      <div className={styles.scrollContainer}>
+        <Box padding="4u">
+          <Rows spacing="2u" align="center">
+            <LoadingIndicator size="medium" />
+            <Text alignment="center">Loading...</Text>
+          </Rows>
+        </Box>
+      </div>
+    );
+  }
 
-    if (response.status === "aborted") {
-      // user decided not to navigate to the link
+  /**
+   * Render the appropriate screen based on current navigation state
+   */
+  const renderScreen = () => {
+    switch (currentScreen) {
+      case "home":
+        return <HomeScreen {...screenProps} />;
+
+      case "setup-template":
+        return <SetupTemplateScreen {...screenProps} />;
+
+      case "setup-frames":
+        return <SetupFramesScreen {...screenProps} />;
+
+      case "capture":
+        return <CaptureScreen {...screenProps} />;
+
+      case "review":
+        return <ReviewScreen {...screenProps} />;
+
+      case "complete":
+        return <CompleteScreen {...screenProps} />;
+
+      case "settings":
+        return <SettingsScreen {...screenProps} />;
+
+      case "processing":
+        return (
+          <div className={styles.scrollContainer}>
+            <Box padding="4u">
+              <Rows spacing="2u" align="center">
+                <LoadingIndicator size="medium" />
+                <Text alignment="center">Processing...</Text>
+              </Rows>
+            </Box>
+          </div>
+        );
+
+      case "error":
+        return (
+          <div className={styles.scrollContainer}>
+            <Box padding="4u">
+              <Rows spacing="2u">
+                <Text alignment="center">An error occurred.</Text>
+              </Rows>
+            </Box>
+          </div>
+        );
+
+      default:
+        return <HomeScreen {...screenProps} />;
     }
   };
 
-  const intl = useIntl();
-
   return (
-    <div className={styles.scrollContainer}>
-      <Rows spacing="2u">
-        <Text>
-          <FormattedMessage
-            defaultMessage="
-              To make changes to this app, edit the <code>src/app.tsx</code> file,
-              then close and reopen the app in the editor to preview the changes.
-            "
-            description="Instructions for how to make changes to the app. Do not translate <code>src/app.tsx</code>."
-            values={{
-              code: (chunks) => <code>{chunks}</code>,
-            }}
-          />
-        </Text>
-        <Button variant="primary" onClick={onClick} stretch>
-          {intl.formatMessage({
-            defaultMessage: "Do something cool",
-            description:
-              "Button text to do something cool. Creates a new text element when pressed.",
-          })}
-        </Button>
-        <Button variant="secondary" onClick={() => openExternalUrl(DOCS_URL)}>
-          {intl.formatMessage({
-            defaultMessage: "Open Canva Apps SDK docs",
-            description:
-              "Button text to open Canva Apps SDK docs. Opens an external URL when pressed.",
-          })}
-        </Button>
-      </Rows>
-    </div>
+    <ErrorBoundary onReset={handleErrorReset}>
+      {renderScreen()}
+    </ErrorBoundary>
   );
 };

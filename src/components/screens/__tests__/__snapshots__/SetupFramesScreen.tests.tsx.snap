@@ -1,0 +1,595 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SetupFramesScreen Snapshots should match snapshot with frames 1`] = `
+<div>
+  <div
+    class="scrollContainer"
+  >
+    <div
+      class="jv_R6g"
+      style="--NZu1Zw: 24px;"
+    >
+      <div
+        class="BMOCzQ LuBWVA"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <h3
+            class="_7ATl0g aZskFA u16U_g"
+          >
+            Step 2: Define Frame Placeholders
+          </h3>
+          <p
+            class="aWBg0w aZskFA QxuLlQ"
+          >
+            Select image placeholders for captured photos
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <h5
+            class="liTStw aZskFA u16U_g"
+          >
+            Instructions
+          </h5>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            1. Add placeholder images to your design where photos should appear
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            2. Select one or more images on the canvas, then click the button below
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            3. Drag and drop to reorder the capture sequence
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="Ka9auQ"
+          style="--PmK0MA: 8px; --TPF5Nw: center;"
+        >
+          <div
+            class="aDc6Yg oNSf9w"
+          >
+            <span
+              class="dfv3Cw nlLhLg nbfwjw BMOCzQ rgwUqw LuBWVA"
+            >
+              0 images selected
+            </span>
+          </div>
+          <div
+            class="aDc6Yg"
+          >
+            <p
+              class="JYIidw aZskFA QxuLlQ"
+            >
+              Select images on the canvas to add them
+            </p>
+          </div>
+        </div>
+      </div>
+      <button
+        aria-disabled="true"
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg rV61VQ LQzFZw VgvqkQ _4_iekA _3oHQrw bfFHbg j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          Select Images to Add as Frames
+        </span>
+      </button>
+      <div
+        class="BMOCzQ LuBWVA"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 16px;"
+        >
+          <div
+            class="jv_R6g"
+            style="--NZu1Zw: 4px;"
+          >
+            <h5
+              class="liTStw aZskFA u16U_g"
+            >
+              Frame Placeholders
+            </h5>
+            <span
+              class="dfv3Cw nlLhLg nbfwjw BMOCzQ myvuYA LuBWVA"
+            >
+              2 frames
+            </span>
+          </div>
+          <div
+            class="jv_R6g"
+            style="--NZu1Zw: 8px;"
+          >
+            <div
+              draggable="true"
+              style="cursor: grab; opacity: 1; border-top: 2px solid transparent; border-bottom: 2px solid transparent; transition: border-color 0.15s ease;"
+            >
+              <div
+                class="BMOCzQ jhljBg rCi29A EC2pjw LuBWVA"
+                style="--gms-pw: 16px;"
+              >
+                <div
+                  class="Ka9auQ"
+                  style="--PmK0MA: 16px; --TPF5Nw: center;"
+                >
+                  <div
+                    class="aDc6Yg oNSf9w"
+                  >
+                    <div
+                      style="width: 32px; height: 32px; background-color: rgb(74, 85, 104); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: rgb(255, 255, 255); font-size: 14px; font-weight: bold;"
+                    >
+                      1
+                    </div>
+                  </div>
+                  <div
+                    class="aDc6Yg"
+                  >
+                    <div
+                      class="jv_R6g"
+                      style="--NZu1Zw: 4px;"
+                    >
+                      <p
+                        class="_2a6tNg aZskFA u16U_g"
+                      >
+                        Frame 1
+                      </p>
+                      <p
+                        class="nbfwjw aZskFA QxuLlQ"
+                      >
+                        Position: (100, 100) • Size: 300 × 200
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="aDc6Yg oNSf9w"
+                  >
+                    <button
+                      class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA j34Zww aqbYPg _3FvZZg"
+                      type="button"
+                    >
+                      <span
+                        class="khPe7Q"
+                      >
+                        ✕
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              draggable="true"
+              style="cursor: grab; opacity: 1; border-top: 2px solid transparent; border-bottom: 2px solid transparent; transition: border-color 0.15s ease;"
+            >
+              <div
+                class="BMOCzQ jhljBg rCi29A EC2pjw LuBWVA"
+                style="--gms-pw: 16px;"
+              >
+                <div
+                  class="Ka9auQ"
+                  style="--PmK0MA: 16px; --TPF5Nw: center;"
+                >
+                  <div
+                    class="aDc6Yg oNSf9w"
+                  >
+                    <div
+                      style="width: 32px; height: 32px; background-color: rgb(74, 85, 104); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: rgb(255, 255, 255); font-size: 14px; font-weight: bold;"
+                    >
+                      2
+                    </div>
+                  </div>
+                  <div
+                    class="aDc6Yg"
+                  >
+                    <div
+                      class="jv_R6g"
+                      style="--NZu1Zw: 4px;"
+                    >
+                      <p
+                        class="_2a6tNg aZskFA u16U_g"
+                      >
+                        Frame 2
+                      </p>
+                      <p
+                        class="nbfwjw aZskFA QxuLlQ"
+                      >
+                        Position: (450, 100) • Size: 300 × 200
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="aDc6Yg oNSf9w"
+                  >
+                    <button
+                      class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA j34Zww aqbYPg _3FvZZg"
+                      type="button"
+                    >
+                      <span
+                        class="khPe7Q"
+                      >
+                        ✕
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p
+              class="nbfwjw B8t6MQ QxuLlQ"
+            >
+              Drag frames to reorder the capture sequence
+            </p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg Z3nT2A LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          Clear All Frames
+        </span>
+      </button>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg rV61VQ LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          Save & Continue
+        </span>
+      </button>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          ← Back to Template Selection
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SetupFramesScreen Snapshots should match snapshot with null config 1`] = `
+<div>
+  <div
+    class="scrollContainer"
+  >
+    <div
+      class="jv_R6g"
+      style="--NZu1Zw: 24px;"
+    >
+      <div
+        class="BMOCzQ LuBWVA"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <h3
+            class="_7ATl0g aZskFA u16U_g"
+          >
+            Step 2: Define Frame Placeholders
+          </h3>
+          <p
+            class="aWBg0w aZskFA QxuLlQ"
+          >
+            Select image placeholders for captured photos
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <h5
+            class="liTStw aZskFA u16U_g"
+          >
+            Instructions
+          </h5>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            1. Add placeholder images to your design where photos should appear
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            2. Select one or more images on the canvas, then click the button below
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            3. Drag and drop to reorder the capture sequence
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="Ka9auQ"
+          style="--PmK0MA: 8px; --TPF5Nw: center;"
+        >
+          <div
+            class="aDc6Yg oNSf9w"
+          >
+            <span
+              class="dfv3Cw nlLhLg nbfwjw BMOCzQ rgwUqw LuBWVA"
+            >
+              0 images selected
+            </span>
+          </div>
+          <div
+            class="aDc6Yg"
+          >
+            <p
+              class="JYIidw aZskFA QxuLlQ"
+            >
+              Select images on the canvas to add them
+            </p>
+          </div>
+        </div>
+      </div>
+      <button
+        aria-disabled="true"
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg rV61VQ LQzFZw VgvqkQ _4_iekA _3oHQrw bfFHbg j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          Select Images to Add as Frames
+        </span>
+      </button>
+      <div
+        class="BMOCzQ LuBWVA"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 16px;"
+        >
+          <div
+            class="jv_R6g"
+            style="--NZu1Zw: 4px;"
+          >
+            <h5
+              class="liTStw aZskFA u16U_g"
+            >
+              Frame Placeholders
+            </h5>
+            <span
+              class="dfv3Cw nlLhLg nbfwjw BMOCzQ rgwUqw LuBWVA"
+            >
+              0 frames
+            </span>
+          </div>
+          <div
+            class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+            style="--gms-pw: 24px;"
+          >
+            <p
+              class="JYIidw B8t6MQ QxuLlQ"
+            >
+              No frames added yet. Select images on your template, then click the button above.
+            </p>
+          </div>
+        </div>
+      </div>
+      <button
+        aria-disabled="true"
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg rV61VQ LQzFZw VgvqkQ _4_iekA _3oHQrw bfFHbg j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          Save & Continue
+        </span>
+      </button>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          ← Back to Template Selection
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SetupFramesScreen Snapshots should match snapshot without frames 1`] = `
+<div>
+  <div
+    class="scrollContainer"
+  >
+    <div
+      class="jv_R6g"
+      style="--NZu1Zw: 24px;"
+    >
+      <div
+        class="BMOCzQ LuBWVA"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <h3
+            class="_7ATl0g aZskFA u16U_g"
+          >
+            Step 2: Define Frame Placeholders
+          </h3>
+          <p
+            class="aWBg0w aZskFA QxuLlQ"
+          >
+            Select image placeholders for captured photos
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <h5
+            class="liTStw aZskFA u16U_g"
+          >
+            Instructions
+          </h5>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            1. Add placeholder images to your design where photos should appear
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            2. Select one or more images on the canvas, then click the button below
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            3. Drag and drop to reorder the capture sequence
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="Ka9auQ"
+          style="--PmK0MA: 8px; --TPF5Nw: center;"
+        >
+          <div
+            class="aDc6Yg oNSf9w"
+          >
+            <span
+              class="dfv3Cw nlLhLg nbfwjw BMOCzQ rgwUqw LuBWVA"
+            >
+              0 images selected
+            </span>
+          </div>
+          <div
+            class="aDc6Yg"
+          >
+            <p
+              class="JYIidw aZskFA QxuLlQ"
+            >
+              Select images on the canvas to add them
+            </p>
+          </div>
+        </div>
+      </div>
+      <button
+        aria-disabled="true"
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg rV61VQ LQzFZw VgvqkQ _4_iekA _3oHQrw bfFHbg j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          Select Images to Add as Frames
+        </span>
+      </button>
+      <div
+        class="BMOCzQ LuBWVA"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 16px;"
+        >
+          <div
+            class="jv_R6g"
+            style="--NZu1Zw: 4px;"
+          >
+            <h5
+              class="liTStw aZskFA u16U_g"
+            >
+              Frame Placeholders
+            </h5>
+            <span
+              class="dfv3Cw nlLhLg nbfwjw BMOCzQ rgwUqw LuBWVA"
+            >
+              0 frames
+            </span>
+          </div>
+          <div
+            class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+            style="--gms-pw: 24px;"
+          >
+            <p
+              class="JYIidw B8t6MQ QxuLlQ"
+            >
+              No frames added yet. Select images on your template, then click the button above.
+            </p>
+          </div>
+        </div>
+      </div>
+      <button
+        aria-disabled="true"
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg rV61VQ LQzFZw VgvqkQ _4_iekA _3oHQrw bfFHbg j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          Save & Continue
+        </span>
+      </button>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          ← Back to Template Selection
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

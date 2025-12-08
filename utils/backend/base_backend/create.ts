@@ -35,7 +35,10 @@ export function createBaseServer(router: express.Router): BaseServer {
   const HTTPS_KEY_FILE = process.env?.HTTPS_KEY_FILE;
 
   const app = express();
-  app.use(express.json());
+  
+  // Increase JSON body limit for large image payloads (base64 encoded photos)
+  app.use(express.json({ limit: "50mb" }));
+  app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
   // It can help to provide an extra layer of obsecurity to reduce server fingerprinting.
   app.disable("x-powered-by");

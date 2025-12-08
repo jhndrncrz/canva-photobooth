@@ -11,7 +11,7 @@
       "es2020.promise",
       "es2020.string"
     ],
-    "types": ["node", "webpack-env", "jest"],
+    "types": ["node", "webpack-env", "jest", "@testing-library/jest-dom"],
     "composite": false,
     "declaration": false,
     "declarationMap": false,
