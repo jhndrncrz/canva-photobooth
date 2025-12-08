@@ -142,7 +142,7 @@ describe("SetupTemplateScreen", () => {
         );
       });
 
-      expect(screen.getByText("Instructions")).toBeInTheDocument();
+      expect(screen.getByText("Template Setup")).toBeInTheDocument();
     });
 
     it("should display current page section", async () => {

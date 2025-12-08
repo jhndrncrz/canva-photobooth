@@ -1,29 +1,50 @@
-# Canva App
+# Photo Booth for Canva
 
-Welcome to your Canva App! 🎉
+A Canva app that lets you capture photos from your webcam and place them directly into your designs. Perfect for creating photo booth-style prints, event photography, ID photos, and more.
 
-This is a starting point for your app using your chosen template. The complete documentation for the platform is at [canva.dev/docs/apps](https://www.canva.dev/docs/apps/).
+## Features
 
-**Note:** This code and documentation assumes some experience with TypeScript and React.
+- **Webcam Capture**: Capture photos directly from your webcam
+- **Template-Based**: Define exactly where photos should appear on your design
+- **Countdown Timer**: Configurable countdown (1-10 seconds) before each capture
+- **Multi-Photo Support**: Capture multiple photos in a single session
+- **Frame Placeholders**: Use any image element as a placeholder for captured photos
+- **Sound Effects**: Optional countdown and shutter sounds
+- **Flash Effect**: Visual flash feedback when capturing
+- **Camera Selection**: Choose between front and back cameras
 
-## Requirements
+## How It Works
+
+1. **Design Your Template**: Create a page with placeholder images where you want photos to appear
+2. **Select Frame Placeholders**: Mark which images should be replaced with captured photos
+3. **Duplicate Your Template**: Before each session, manually duplicate the template page in Canva
+4. **Capture Photos**: Use the built-in webcam interface with countdown timer
+5. **Review & Place**: Review your photos and place them on the duplicated template
+
+> **Note**: Canva's API does not support automatic page duplication with full element fidelity. You must manually duplicate your template page (right-click → Duplicate) before each photo session.
+
+## Getting Started
+
+### Requirements
 
 - Node.js `v18` or `v20.10.0`
 - npm `v9` or `v10`
 
-**Note:** To make sure you're running the correct version of Node.js, we recommend using a version manager, such as [nvm](https://github.com/nvm-sh/nvm#intro). The [.nvmrc](/.nvmrc) file in the root directory of this repo will ensure the correct version is used once you run `nvm install`.
-
-## Quick start
+### Installation
 
 ```bash
 npm install
 ```
 
-## Testing
+### Development
 
-This project includes comprehensive unit tests using Jest and React Testing Library.
+```bash
+npm start
+```
 
-### Running Tests
+The server becomes available at <http://localhost:8080>.
+
+### Testing
 
 ```bash
 # Run all tests
@@ -32,221 +53,137 @@ npm test
 # Run tests in watch mode
 npm test -- --watch
 
-# Run specific test file
-npm test -- path/to/test.ts
-
 # Update snapshots
 npm test -- -u
 ```
 
-### Test Coverage
+## Project Structure
 
-The test suite covers:
+```
+src/
+├── app.tsx                 # Main app component
+├── index.tsx              # Entry point
+├── types/
+│   └── index.ts           # TypeScript types
+├── components/
+│   └── screens/           # Screen components
+│       ├── HomeScreen.tsx
+│       ├── HelpScreen.tsx
+│       ├── SetupTemplateScreen.tsx
+│       ├── SetupFramesScreen.tsx
+│       ├── CaptureScreen.tsx
+│       ├── ReviewScreen.tsx
+│       ├── CompleteScreen.tsx
+│       └── SettingsScreen.tsx
+└── services/
+    ├── storageService.ts  # Config persistence
+    └── audioService.ts    # Sound effects
+```
+
+## Configuration
+
+### Capture Settings
+
+- **Countdown Duration**: 1-10 seconds before each photo
+- **Capture Mode**: Auto (captures all photos automatically) or Manual (click for each)
+- **Camera Facing**: Front (selfie) or Back camera
+- **Sound Effects**: Toggle countdown and shutter sounds
+- **Flash Effect**: Toggle visual flash on capture
+
+### Frame Placeholders
+
+Frame placeholders are regular image elements in your Canva design. When setting up:
+
+1. Add placeholder images to your design
+2. Position and size them where you want photos to appear
+3. Select them in Canva and add them as frames in the app
+4. Drag to reorder the capture sequence
+
+## Publishing Your App
+
+### 1. Create Your App in the Developer Portal
+
+1. Go to [Canva Developer Portal](https://www.canva.com/developers/apps)
+2. Click "Create an app"
+3. Fill in your app details
+
+### 2. Configure App Settings
+
+In the Developer Portal:
+- Set your app name and description
+- Upload an app icon
+- Configure the app URL for production
+- Set up any required permissions
+
+### 3. Build for Production
+
+```bash
+npm run build
+```
+
+### 4. Deploy Your Backend (if applicable)
+
+If your app uses a backend, deploy it to a production server and update the `CANVA_BACKEND_HOST` in your `.env` file.
+
+### 5. Submit for Review
+
+1. In the Developer Portal, navigate to your app
+2. Click "Submit for review"
+3. Follow the review guidelines
+4. Wait for approval
+
+## Deployment Checklist
+
+- [ ] All tests pass (`npm test`)
+- [ ] No lint errors (`npm run lint`)
+- [ ] App builds successfully (`npm run build`)
+- [ ] App icon uploaded (256x256 PNG)
+- [ ] Privacy policy URL set
+- [ ] Terms of service URL set (if required)
+- [ ] App description is clear and accurate
+- [ ] Screenshots/preview images uploaded
+- [ ] Backend deployed (if applicable)
+- [ ] Environment variables configured for production
+
+## Technical Notes
+
+### API Limitations
+
+- **Page Duplication**: Canva's API doesn't support automatic page duplication with full element fidelity. Users must manually duplicate their template pages.
+- **Element Placement**: Uses `addElementAtPoint` to place photos on the current page at specified coordinates.
+- **Image Upload**: Photos are uploaded to Canva using the `upload` API before placement.
+
+### Browser Compatibility
+
+The app requires:
+- WebRTC for webcam access
+- Web Audio API for sound effects (optional)
+- Modern browser with ES6+ support
+
+### Privacy
+
+- Photos are captured locally and uploaded directly to Canva
+- No data is sent to third-party servers
+- Configuration is stored in browser localStorage
+
+## Testing Documentation
+
+This project includes comprehensive unit tests:
 
 - **Services** (`src/services/__tests__/`)
-  - `storageService.tests.ts` - localStorage persistence for config
-  - `audioService.tests.ts` - Web Audio API sound playback
-
 - **Screen Components** (`src/components/screens/__tests__/`)
-  - `HomeScreen.tests.tsx` - Main app entry point
-  - `SetupTemplateScreen.tests.tsx` - Template configuration
-  - `SetupFramesScreen.tests.tsx` - Frame selection and ordering
-  - `CaptureScreen.tests.tsx` - Photo capture session management
-  - `CompleteScreen.tests.tsx` - Session completion and export
-  - `SettingsScreen.tests.tsx` - Capture settings configuration
-
 - **Utility Hooks** (`utils/__tests__/`)
-  - `use_selection_hook.tests.ts` - Canvas element selection
-  - `use_overlay_hook.tests.ts` - Overlay management
-  - `use_feature_support.tests.ts` - Feature detection
-
 - **Main App** (`src/tests/`)
-  - `app.tests.tsx` - App component integration tests
 
-### Writing Tests
+See the test files for examples of how to test Canva app components.
 
-When writing tests for Canva apps:
+## Resources
 
-1. **Wrap components with test providers:**
-   ```tsx
-   import { TestAppI18nProvider } from "@canva/app-i18n-kit";
-   import { TestAppUiProvider } from "@canva/app-ui-kit";
+- [Canva Apps SDK Documentation](https://www.canva.dev/docs/apps/)
+- [App UI Kit Components](https://www.canva.dev/docs/apps/app-ui-kit/)
+- [Testing Documentation](https://www.canva.dev/docs/apps/testing/)
+- [Publishing Guidelines](https://www.canva.dev/docs/apps/publishing/)
 
-   function renderInTestProvider(node: ReactNode): RenderResult {
-     return render(
-       <TestAppI18nProvider>
-         <TestAppUiProvider>{node}</TestAppUiProvider>
-       </TestAppI18nProvider>
-     );
-   }
-   ```
+## License
 
-2. **Check disabled state with aria-disabled:**
-   Canva UI Kit buttons use `aria-disabled` instead of the native `disabled` attribute:
-   ```tsx
-   expect(button.getAttribute("aria-disabled")).toBe("true");
-   ```
-
-3. **Mock Canva SDK packages:**
-   The test setup automatically mocks `@canva/asset`, `@canva/design`, `@canva/platform`, and `@canva/user`.
-
-For more information on testing with the Canva Apps SDK, see [Testing Documentation](https://www.canva.dev/docs/apps/testing/).
-
-## Running your Canva App
-
-### Step 1: Start the local development server
-
-To start the boilerplate's development server, run the following command:
-
-```bash
-npm start
-```
-
-The server becomes available at <http://localhost:8080>.
-
-The app's source code is in the `src/app.tsx` file.
-
-### Step 2: Preview the app
-
-The local development server only exposes a JavaScript bundle, so you can't preview an app by visiting <http://localhost:8080>. You can only preview an app via the Canva editor.
-
-To preview an app:
-
-1. Create an app via the [Developer Portal](https://www.canva.com/developers/apps).
-2. Select **App source > Development URL**.
-3. In the **Development URL** field, enter the URL of the development server.
-4. Click **Preview**. This opens the Canva editor (and the app) in a new tab.
-5. Click **Open**. (This screen only appears when using an app for the first time.)
-
-The app will appear in the side panel.
-
-<details>
-  <summary>Previewing apps in Safari</summary>
-
-By default, the development server is not HTTPS-enabled. This is convenient, as there's no need for a security certificate, but it prevents apps from being previewed in Safari.
-
-**Why Safari requires the development server to be HTTPS-enabled?**
-
-Canva itself is served via HTTPS and most browsers prevent HTTPS pages from loading scripts via non-HTTPS connections. Chrome and Firefox make exceptions for local servers, such as `localhost`, but Safari does not, so if you're using Safari, the development server must be HTTPS-enabled.
-
-To learn more, see [Loading mixed-content resources](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content#loading_mixed-content_resources).
-
-To preview apps in Safari:
-
-1. Start the development server with HTTPS enabled:
-
-```bash
-npm start --use-https
-```
-
-2. Navigate to <https://localhost:8080>.
-3. Bypass the invalid security certificate warning:
-   1. Click **Show details**.
-   2. Click **Visit website**.
-4. In the Developer Portal, set the app's **Development URL** to <https://localhost:8080>.
-5. Click preview (or refresh your app if it's already open).
-
-You need to bypass the invalid security certificate warning every time you start the local server. A similar warning will appear in other browsers (and will need to be bypassed) whenever HTTPS is enabled.
-
-</details>
-
-### Step 3 (Optional): Enable Hot Module Replacement
-
-By default, every time you make a change to an app, you have to reload the entire app to see the results of those changes. If you enable [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/) (HMR), changes will be reflected without a full reload, which significantly speeds up the development loop.
-
-**Note:** HMR does **not** work while running the development server in a Docker container.
-
-To enable HMR:
-
-1. Navigate to an app via the [Your apps](https://www.canva.com/developers/apps).
-1. Select **Security** -> **Credentials** -> **.env file**.
-1. Copy the `.env` file contents.
-1. Paste the contents into the starter kit's `.env` file. For example:
-
-   ```bash
-   CANVA_APP_ORIGIN=https://app-aabbccddeeff.canva-apps.com
-   CANVA_HMR_ENABLED=true
-   ```
-
-1. Restart the local development server.
-1. Reload the app manually to ensure that HMR takes effect.
-
-### Step 4 (Optional): Setup the Canva Dev MCP Server
-
-If you're using AI coding tools, such as Cursor or Claude Code, you can connect to the Canva Dev MCP Server to supercharge your development workflow. See this [setup guide](https://www.canva.dev/docs/apps/mcp-server/) to get started.
-
-## Running an app's backend
-
-Some templates provide an example backend. This backend is defined in the template's `backend/server.ts` file, automatically starts when the `npm start` command is run, and becomes available at <http://localhost:3001>.
-
-To run templates that have a backend:
-
-1. Navigate to the [Your apps](https://www.canva.com/developers/apps) page.
-1. Select the app you want to run the example with.
-1. Copy your environment variables from **Security** -> **Credentials** -> **.env file**.
-1. Paste the contents into the starter kit's `.env` file.
-
-   For example:
-
-   ```bash
-   CANVA_APP_ID=AABBccddeeff
-   CANVA_APP_ORIGIN=https://app-aabbccddeeff.canva-apps.com
-   CANVA_BACKEND_PORT=3001
-   CANVA_FRONTEND_PORT=8080
-   CANVA_BACKEND_HOST=http://localhost:3001
-   CANVA_HMR_ENABLED=TRUE
-   ```
-
-1. Start the app:
-
-   ```bash
-   npm start
-   ```
-
-The ID of the app must be explicitly defined because it's required to [send and verify HTTP requests](https://www.canva.dev/docs/apps/verifying-http-requests/). If you don't set up the ID in the `.env` file, an error will be thrown when attempting to run the example.
-
-## Customizing the backend host
-
-If your app has a backend, the URL of the server likely depends on whether it's a development or production build. For example, during development, the backend is probably running on a localhost URL, but once the app's in production, the backend needs to be exposed to the internet.
-
-To more easily customize the URL of the server:
-
-1. Open the `.env` file in the text editor of your choice.
-2. Set the `CANVA_BACKEND_HOST` environment variable to the URL of the server.
-3. When sending a request, use `BACKEND_HOST` as the base URL:
-
-   ```ts
-   const response = await fetch(`${BACKEND_HOST}/custom-route`);
-   ```
-
-   **Note:** `BACKEND_HOST` is a global constant that contains the value of the `CANVA_BACKEND_HOST` environment variable. The variable is made available to the app via webpack and does not need to be imported.
-
-4. Before bundling the app for production, update `CANVA_BACKEND_HOST` to point to the production backend.
-
-## Configure ngrok (optional)
-
-If your app requires authentication with a third party service, your server needs to be exposed via a publicly available URL, so that Canva can send requests to it.
-This step explains how to do this with [ngrok](https://ngrok.com/).
-
-**Note:** ngrok is a useful tool, but it has inherent security risks, such as someone figuring out the URL of your server and accessing proprietary information. Be mindful of the risks, and if you're working as part of an organization, talk to your IT department.
-You must replace ngrok urls with hosted API endpoints for production apps.
-
-To use ngrok, you'll need to do the following:
-
-1. Sign up for a ngrok account at <https://ngrok.com/>.
-2. Locate your ngrok [authtoken](https://dashboard.ngrok.com/get-started/your-authtoken).
-3. Set an environment variable for your authtoken, using the command line. Replace `<YOUR_AUTH_TOKEN>` with your actual ngrok authtoken:
-
-   For macOS and Linux:
-
-   ```bash
-   export NGROK_AUTHTOKEN=<YOUR_AUTH_TOKEN>
-   ```
-
-   For Windows PowerShell:
-
-   ```shell
-   $Env:NGROK_AUTHTOKEN = "<YOUR_AUTH_TOKEN>"
-   ```
-
-This environment variable is available for the current terminal session, so the command must be re-run for each new session. Alternatively, you can add the variable to your terminal's default parameters.
+MIT License - See [LICENSE.md](LICENSE.md) for details.

@@ -132,7 +132,7 @@ describe("CompleteScreen", () => {
       renderInTestProvider(<CompleteScreen {...defaultProps} />);
 
       expect(
-        screen.getByText(/Your photo booth output has been created successfully/i)
+        screen.getByText(/Your photos have been placed on the current page successfully/i)
       ).toBeInTheDocument();
     });
 
@@ -151,14 +151,14 @@ describe("CompleteScreen", () => {
     it("should display output page status", () => {
       renderInTestProvider(<CompleteScreen {...defaultProps} />);
 
-      expect(screen.getByText(/Output page created: Yes/i)).toBeInTheDocument();
+      expect(screen.getByText(/Photos placed on page: Yes/i)).toBeInTheDocument();
     });
 
-    it("should display tips section", () => {
+    it("should display next steps section", () => {
       renderInTestProvider(<CompleteScreen {...defaultProps} />);
 
-      expect(screen.getByText(/💡 Tips/i)).toBeInTheDocument();
-      expect(screen.getByText(/Navigate to the new page/i)).toBeInTheDocument();
+      expect(screen.getByText(/💡 Next Steps/i)).toBeInTheDocument();
+      expect(screen.getByText(/Review and adjust photo positions/i)).toBeInTheDocument();
     });
 
     it("should handle session with no photos", () => {

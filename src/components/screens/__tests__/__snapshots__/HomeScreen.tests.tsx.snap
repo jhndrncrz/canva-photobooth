@@ -99,7 +99,7 @@ exports[`HomeScreen Snapshot should match snapshot when not configured 1`] = `
               <div
                 class="aDc6Yg"
               >
-                Welcome! Set up your photo booth by selecting image placeholders in your design.
+                Welcome! Set up your photo booth by selecting a template page and marking image placeholders.
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@ exports[`HomeScreen Snapshot should match snapshot when not configured 1`] = `
           <span
             class="khPe7Q"
           >
-            🚀 Get Started
+            Get Started
           </span>
         </button>
       </div>
@@ -121,12 +121,22 @@ exports[`HomeScreen Snapshot should match snapshot when not configured 1`] = `
       >
         <div
           class="jv_R6g"
-          style="--NZu1Zw: 4px;"
+          style="--NZu1Zw: 12px;"
         >
+          <button
+            class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+            type="button"
+          >
+            <span
+              class="khPe7Q"
+            >
+              How It Works
+            </span>
+          </button>
           <p
             class="JYIidw B8t6MQ QxuLlQ"
           >
-            Select images → Capture photos → Generate output
+            Design template → Select frames → Capture → Place photos
           </p>
         </div>
       </div>
@@ -211,17 +221,50 @@ exports[`HomeScreen Snapshot should match snapshot when ready 1`] = `
           <span
             class="khPe7Q"
           >
-            📸 Start Capture
+            Start Capture
           </span>
         </button>
+        <div
+          class="Ka9auQ"
+          style="--PmK0MA: 8px;"
+        >
+          <div
+            class="aDc6Yg"
+          >
+            <button
+              class="_5KtATA LQzFZw VgvqkQ _8ERLTg Z3nT2A LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+              type="button"
+            >
+              <span
+                class="khPe7Q"
+              >
+                Edit Frames
+              </span>
+            </button>
+          </div>
+          <div
+            class="aDc6Yg"
+          >
+            <button
+              class="_5KtATA LQzFZw VgvqkQ _8ERLTg Z3nT2A LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+              type="button"
+            >
+              <span
+                class="khPe7Q"
+              >
+                Template
+              </span>
+            </button>
+          </div>
+        </div>
         <button
-          class="_5KtATA LQzFZw VgvqkQ _8ERLTg Z3nT2A LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+          class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
           type="button"
         >
           <span
             class="khPe7Q"
           >
-            Edit Frames
+            Settings
           </span>
         </button>
         <button
@@ -231,7 +274,7 @@ exports[`HomeScreen Snapshot should match snapshot when ready 1`] = `
           <span
             class="khPe7Q"
           >
-            ⚙️ Settings
+            Reset Configuration
           </span>
         </button>
       </div>
@@ -241,12 +284,22 @@ exports[`HomeScreen Snapshot should match snapshot when ready 1`] = `
       >
         <div
           class="jv_R6g"
-          style="--NZu1Zw: 4px;"
+          style="--NZu1Zw: 12px;"
         >
+          <button
+            class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+            type="button"
+          >
+            <span
+              class="khPe7Q"
+            >
+              How It Works
+            </span>
+          </button>
           <p
             class="JYIidw B8t6MQ QxuLlQ"
           >
-            Select images → Capture photos → Generate output
+            Design template → Select frames → Capture → Place photos
           </p>
         </div>
       </div>

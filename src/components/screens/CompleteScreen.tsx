@@ -99,7 +99,7 @@ export const CompleteScreen: React.FC<ScreenProps> = ({
 
             <Text alignment="center" tone="tertiary">
               <FormattedMessage
-                defaultMessage="Your photo booth output has been created successfully."
+                defaultMessage="Your photos have been placed on the current page successfully."
                 description="Success message"
               />
             </Text>
@@ -128,13 +128,13 @@ export const CompleteScreen: React.FC<ScreenProps> = ({
             </Text>
             <Text size="small">
               <FormattedMessage
-                defaultMessage="Output page created: Yes"
+                defaultMessage="Photos placed on page: Yes"
                 description="Output status"
               />
             </Text>
             <Text size="small" tone="tertiary">
               <FormattedMessage
-                defaultMessage="A new page has been added to your design with the captured photos placed in your frame positions."
+                defaultMessage="Your captured photos have been placed at the frame positions on the current page."
                 description="Output description"
               />
             </Text>
@@ -146,25 +146,25 @@ export const CompleteScreen: React.FC<ScreenProps> = ({
           <Rows spacing="1u">
             <Title size="xsmall">
               <FormattedMessage
-                defaultMessage="💡 Tips"
+                defaultMessage="💡 Next Steps"
                 description="Tips header"
               />
             </Title>
             <Text size="small">
               <FormattedMessage
-                defaultMessage="• Navigate to the new page to see your photos"
+                defaultMessage="• Review and adjust photo positions if needed"
                 description="Tip 1"
               />
             </Text>
             <Text size="small">
               <FormattedMessage
-                defaultMessage="• You can adjust photo positions if needed"
+                defaultMessage="• Delete the placeholder images beneath the photos"
                 description="Tip 2"
               />
             </Text>
             <Text size="small">
               <FormattedMessage
-                defaultMessage="• Start a new session to create more outputs"
+                defaultMessage="• Duplicate your template page again for more sessions"
                 description="Tip 3"
               />
             </Text>

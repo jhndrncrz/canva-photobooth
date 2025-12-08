@@ -23,7 +23,7 @@ import {
   Column,
 } from "@canva/app-ui-kit";
 import { FormattedMessage, useIntl } from "react-intl";
-import { openDesign, type DesignEditing } from "@canva/design";
+import { openDesign } from "@canva/design";
 import type { ScreenProps, FrameConfig } from "../../types";
 import { useSelection } from "utils/use_selection_hook";
 import * as styles from "styles/components.css";

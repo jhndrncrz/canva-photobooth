@@ -1,0 +1,546 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelpScreen Snapshot should match snapshot 1`] = `
+<div>
+  <div
+    class="scrollContainer"
+  >
+    <div
+      class="jv_R6g"
+      style="--NZu1Zw: 24px;"
+    >
+      <div
+        class="BMOCzQ LuBWVA"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px; --okeDpw: center;"
+        >
+          <div
+            style="width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0px auto;"
+          >
+            <span
+              style="font-size: 28px;"
+            >
+              ❓
+            </span>
+          </div>
+          <h2
+            class="_8yjy_A B8t6MQ u16U_g"
+          >
+            How It Works
+          </h2>
+          <p
+            class="aWBg0w B8t6MQ QxuLlQ"
+          >
+            Learn how to use Photo Booth in 5 easy steps
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ LuBWVA"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 16px;"
+        >
+          <h4
+            class="_5Gynyg aZskFA u16U_g"
+          >
+            Workflow
+          </h4>
+          <div
+            class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+            style="--gms-pw: 16px;"
+          >
+            <div
+              role="button"
+              style="cursor: pointer;"
+              tabindex="0"
+            >
+              <div
+                class="Ka9auQ"
+                style="--PmK0MA: 16px; --TPF5Nw: center;"
+              >
+                <div
+                  class="aDc6Yg oNSf9w"
+                >
+                  <div
+                    style="width: 40px; height: 40px; border-radius: 50%; background-color: rgb(139, 61, 255); display: flex; align-items: center; justify-content: center; color: rgb(255, 255, 255); font-size: 16px; font-weight: bold;"
+                  >
+                    1
+                  </div>
+                </div>
+                <div
+                  class="aDc6Yg"
+                >
+                  <div
+                    class="jv_R6g"
+                    style="--NZu1Zw: 4px;"
+                  >
+                    <p
+                      class="VgvqkQ aZskFA u16U_g"
+                    >
+                      <span
+                        style="margin-right: 8px;"
+                      >
+                        🎨
+                      </span>
+                      Design Your Template
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="aDc6Yg oNSf9w"
+                >
+                  <p
+                    class="aWBg0w aZskFA QxuLlQ"
+                  >
+                    ▶
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+            style="--gms-pw: 16px;"
+          >
+            <div
+              role="button"
+              style="cursor: pointer;"
+              tabindex="0"
+            >
+              <div
+                class="Ka9auQ"
+                style="--PmK0MA: 16px; --TPF5Nw: center;"
+              >
+                <div
+                  class="aDc6Yg oNSf9w"
+                >
+                  <div
+                    style="width: 40px; height: 40px; border-radius: 50%; background-color: rgb(139, 61, 255); display: flex; align-items: center; justify-content: center; color: rgb(255, 255, 255); font-size: 16px; font-weight: bold;"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  class="aDc6Yg"
+                >
+                  <div
+                    class="jv_R6g"
+                    style="--NZu1Zw: 4px;"
+                  >
+                    <p
+                      class="VgvqkQ aZskFA u16U_g"
+                    >
+                      <span
+                        style="margin-right: 8px;"
+                      >
+                        🖼️
+                      </span>
+                      Select Frame Placeholders
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="aDc6Yg oNSf9w"
+                >
+                  <p
+                    class="aWBg0w aZskFA QxuLlQ"
+                  >
+                    ▶
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+            style="--gms-pw: 16px;"
+          >
+            <div
+              role="button"
+              style="cursor: pointer;"
+              tabindex="0"
+            >
+              <div
+                class="Ka9auQ"
+                style="--PmK0MA: 16px; --TPF5Nw: center;"
+              >
+                <div
+                  class="aDc6Yg oNSf9w"
+                >
+                  <div
+                    style="width: 40px; height: 40px; border-radius: 50%; background-color: rgb(139, 61, 255); display: flex; align-items: center; justify-content: center; color: rgb(255, 255, 255); font-size: 16px; font-weight: bold;"
+                  >
+                    3
+                  </div>
+                </div>
+                <div
+                  class="aDc6Yg"
+                >
+                  <div
+                    class="jv_R6g"
+                    style="--NZu1Zw: 4px;"
+                  >
+                    <p
+                      class="VgvqkQ aZskFA u16U_g"
+                    >
+                      <span
+                        style="margin-right: 8px;"
+                      >
+                        📄
+                      </span>
+                      Duplicate Your Template
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="aDc6Yg oNSf9w"
+                >
+                  <p
+                    class="aWBg0w aZskFA QxuLlQ"
+                  >
+                    ▶
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+            style="--gms-pw: 16px;"
+          >
+            <div
+              role="button"
+              style="cursor: pointer;"
+              tabindex="0"
+            >
+              <div
+                class="Ka9auQ"
+                style="--PmK0MA: 16px; --TPF5Nw: center;"
+              >
+                <div
+                  class="aDc6Yg oNSf9w"
+                >
+                  <div
+                    style="width: 40px; height: 40px; border-radius: 50%; background-color: rgb(139, 61, 255); display: flex; align-items: center; justify-content: center; color: rgb(255, 255, 255); font-size: 16px; font-weight: bold;"
+                  >
+                    4
+                  </div>
+                </div>
+                <div
+                  class="aDc6Yg"
+                >
+                  <div
+                    class="jv_R6g"
+                    style="--NZu1Zw: 4px;"
+                  >
+                    <p
+                      class="VgvqkQ aZskFA u16U_g"
+                    >
+                      <span
+                        style="margin-right: 8px;"
+                      >
+                        📸
+                      </span>
+                      Capture Photos
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="aDc6Yg oNSf9w"
+                >
+                  <p
+                    class="aWBg0w aZskFA QxuLlQ"
+                  >
+                    ▶
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+            style="--gms-pw: 16px;"
+          >
+            <div
+              role="button"
+              style="cursor: pointer;"
+              tabindex="0"
+            >
+              <div
+                class="Ka9auQ"
+                style="--PmK0MA: 16px; --TPF5Nw: center;"
+              >
+                <div
+                  class="aDc6Yg oNSf9w"
+                >
+                  <div
+                    style="width: 40px; height: 40px; border-radius: 50%; background-color: rgb(139, 61, 255); display: flex; align-items: center; justify-content: center; color: rgb(255, 255, 255); font-size: 16px; font-weight: bold;"
+                  >
+                    5
+                  </div>
+                </div>
+                <div
+                  class="aDc6Yg"
+                >
+                  <div
+                    class="jv_R6g"
+                    style="--NZu1Zw: 4px;"
+                  >
+                    <p
+                      class="VgvqkQ aZskFA u16U_g"
+                    >
+                      <span
+                        style="margin-right: 8px;"
+                      >
+                        ✨
+                      </span>
+                      Review & Place
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="aDc6Yg oNSf9w"
+                >
+                  <p
+                    class="aWBg0w aZskFA QxuLlQ"
+                  >
+                    ▶
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 12px;"
+        >
+          <h5
+            class="liTStw aZskFA u16U_g"
+          >
+            Quick Start
+          </h5>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            1. Click 'Get Started' on the home screen
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            2. Navigate to your template page in Canva
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            3. Click 'Use Current Page as Template'
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            4. Select placeholder images and add them as frames
+          </p>
+          <p
+            class="JYIidw aZskFA u16U_g"
+          >
+            5. Save, then start capturing photos!
+          </p>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ LuBWVA"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 12px;"
+        >
+          <h4
+            class="_5Gynyg aZskFA u16U_g"
+          >
+            Tips for Best Results
+          </h4>
+          <div
+            class="BMOCzQ jhljBg rCi29A EC2pjw LuBWVA"
+            style="--gms-pw: 12px;"
+          >
+            <div
+              class="Ka9auQ"
+              style="--PmK0MA: 8px; --TPF5Nw: flex-start;"
+            >
+              <div
+                class="aDc6Yg oNSf9w"
+              >
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  💡
+                </p>
+              </div>
+              <div
+                class="aDc6Yg"
+              >
+                <p
+                  class="JYIidw aZskFA u16U_g"
+                >
+                  Good lighting makes a big difference. Face a window or light source.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="BMOCzQ jhljBg rCi29A EC2pjw LuBWVA"
+            style="--gms-pw: 12px;"
+          >
+            <div
+              class="Ka9auQ"
+              style="--PmK0MA: 8px; --TPF5Nw: flex-start;"
+            >
+              <div
+                class="aDc6Yg oNSf9w"
+              >
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  💡
+                </p>
+              </div>
+              <div
+                class="aDc6Yg"
+              >
+                <p
+                  class="JYIidw aZskFA u16U_g"
+                >
+                  Position yourself at arm's length from the camera for best framing.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="BMOCzQ jhljBg rCi29A EC2pjw LuBWVA"
+            style="--gms-pw: 12px;"
+          >
+            <div
+              class="Ka9auQ"
+              style="--PmK0MA: 8px; --TPF5Nw: flex-start;"
+            >
+              <div
+                class="aDc6Yg oNSf9w"
+              >
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  💡
+                </p>
+              </div>
+              <div
+                class="aDc6Yg"
+              >
+                <p
+                  class="JYIidw aZskFA u16U_g"
+                >
+                  Use simple placeholder images so they're easy to identify and delete later.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="BMOCzQ jhljBg rCi29A EC2pjw LuBWVA"
+            style="--gms-pw: 12px;"
+          >
+            <div
+              class="Ka9auQ"
+              style="--PmK0MA: 8px; --TPF5Nw: flex-start;"
+            >
+              <div
+                class="aDc6Yg oNSf9w"
+              >
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  💡
+                </p>
+              </div>
+              <div
+                class="aDc6Yg"
+              >
+                <p
+                  class="JYIidw aZskFA u16U_g"
+                >
+                  Use a longer countdown (5 seconds) if you need time to pose.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="BMOCzQ jhljBg rCi29A EC2pjw LuBWVA"
+            style="--gms-pw: 12px;"
+          >
+            <div
+              class="Ka9auQ"
+              style="--PmK0MA: 8px; --TPF5Nw: flex-start;"
+            >
+              <div
+                class="aDc6Yg oNSf9w"
+              >
+                <p
+                  class="JYIidw aZskFA QxuLlQ"
+                >
+                  💡
+                </p>
+              </div>
+              <div
+                class="aDc6Yg"
+              >
+                <p
+                  class="JYIidw aZskFA u16U_g"
+                >
+                  Always duplicate your template page before each session to preserve the original.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="BMOCzQ jhljBg DL9KoQ EC2pjw LuBWVA"
+        style="--gms-pw: 16px;"
+      >
+        <div
+          class="jv_R6g"
+          style="--NZu1Zw: 8px;"
+        >
+          <p
+            class="_2a6tNg aZskFA u16U_g"
+          >
+            Important: Manual Page Duplication
+          </p>
+          <p
+            class="JYIidw aZskFA QxuLlQ"
+          >
+            The Canva API does not support automatic page duplication. Before each photo session, you must manually duplicate your template page (right-click the page → Duplicate). This ensures your original template stays intact.
+          </p>
+        </div>
+      </div>
+      <button
+        class="_5KtATA LQzFZw VgvqkQ _8ERLTg rV61VQ LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+        type="button"
+      >
+        <span
+          class="khPe7Q"
+        >
+          ← Back to Home
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

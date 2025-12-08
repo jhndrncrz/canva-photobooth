@@ -39,33 +39,82 @@ exports[`SetupTemplateScreen Snapshots should match snapshot with config 1`] = `
           <h5
             class="liTStw aZskFA u16U_g"
           >
-            Instructions
+            Template Setup
           </h5>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            1. Add image placeholders where you want photos to appear
+            1. Design your template page with image placeholders where photos will appear
           </p>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            2. Position and size the images as placeholders
+            2. Add decorations, text, backgrounds, etc. around the placeholders
           </p>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            3. Add decorations, text, and backgrounds around the frames
+            3. Click 'Use Current Page as Template' below
           </p>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            4. Select the page you want to use as template
+            4. Select image placeholders as photo frames
           </p>
-          <p
-            class="JYIidw aZskFA u16U_g"
+        </div>
+      </div>
+      <div
+        class="bZlJMA aMUpPw BMOCzQ NUKeTg V9xfvg fOwrSw EC2pjw LuBWVA"
+        role="note"
+        style="--TPsgaw: 12px; --Wk647Q: 8px; --ZGnFiQ: var(--v7HVIg);"
+      >
+        <div
+          class="JYIidw aZskFA T5LNnw"
+        >
+          <div
+            class="Ka9auQ"
+            style="--PmK0MA: 8px; --TPF5Nw: baseline;"
           >
-            5. Click 'Use Current Page as Template'
-          </p>
+            <div
+              class="aDc6Yg oNSf9w"
+            >
+              <span
+                aria-hidden="true"
+                class="uRWxVA dkWypw"
+              >
+                <svg
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0-1.25a5.75 5.75 0 1 0 0-11.5 5.75 5.75 0 0 0 0 11.5zM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm-.75 2.06a.75.75 0 1 1 1.5 0v3a.75.75 0 0 1-1.5 0v-3z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </div>
+            <div
+              class="aDc6Yg"
+            >
+              <div
+                class="jv_R6g"
+                style="--NZu1Zw: 4px;"
+              >
+                <p
+                  class="_2a6tNg aZskFA u16U_g"
+                >
+                  Note:
+                </p>
+                <p
+                  class="JYIidw aZskFA u16U_g"
+                >
+                  Before placing photos, you'll need to manually duplicate the template page (right-click page → Duplicate). This is a one-time setup per design.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -277,33 +326,82 @@ exports[`SetupTemplateScreen Snapshots should match snapshot without config 1`] 
           <h5
             class="liTStw aZskFA u16U_g"
           >
-            Instructions
+            Template Setup
           </h5>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            1. Add image placeholders where you want photos to appear
+            1. Design your template page with image placeholders where photos will appear
           </p>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            2. Position and size the images as placeholders
+            2. Add decorations, text, backgrounds, etc. around the placeholders
           </p>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            3. Add decorations, text, and backgrounds around the frames
+            3. Click 'Use Current Page as Template' below
           </p>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            4. Select the page you want to use as template
+            4. Select image placeholders as photo frames
           </p>
-          <p
-            class="JYIidw aZskFA u16U_g"
+        </div>
+      </div>
+      <div
+        class="bZlJMA aMUpPw BMOCzQ NUKeTg V9xfvg fOwrSw EC2pjw LuBWVA"
+        role="note"
+        style="--TPsgaw: 12px; --Wk647Q: 8px; --ZGnFiQ: var(--v7HVIg);"
+      >
+        <div
+          class="JYIidw aZskFA T5LNnw"
+        >
+          <div
+            class="Ka9auQ"
+            style="--PmK0MA: 8px; --TPF5Nw: baseline;"
           >
-            5. Click 'Use Current Page as Template'
-          </p>
+            <div
+              class="aDc6Yg oNSf9w"
+            >
+              <span
+                aria-hidden="true"
+                class="uRWxVA dkWypw"
+              >
+                <svg
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0-1.25a5.75 5.75 0 1 0 0-11.5 5.75 5.75 0 0 0 0 11.5zM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm-.75 2.06a.75.75 0 1 1 1.5 0v3a.75.75 0 0 1-1.5 0v-3z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </div>
+            <div
+              class="aDc6Yg"
+            >
+              <div
+                class="jv_R6g"
+                style="--NZu1Zw: 4px;"
+              >
+                <p
+                  class="_2a6tNg aZskFA u16U_g"
+                >
+                  Note:
+                </p>
+                <p
+                  class="JYIidw aZskFA u16U_g"
+                >
+                  Before placing photos, you'll need to manually duplicate the template page (right-click page → Duplicate). This is a one-time setup per design.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div

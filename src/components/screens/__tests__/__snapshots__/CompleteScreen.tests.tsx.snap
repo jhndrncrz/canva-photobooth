@@ -34,7 +34,7 @@ exports[`CompleteScreen Snapshots should match snapshot with session 1`] = `
           <p
             class="aWBg0w B8t6MQ QxuLlQ"
           >
-            Your photo booth output has been created successfully.
+            Your photos have been placed on the current page successfully.
           </p>
         </div>
       </div>
@@ -59,12 +59,12 @@ exports[`CompleteScreen Snapshots should match snapshot with session 1`] = `
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            Output page created: Yes
+            Photos placed on page: Yes
           </p>
           <p
             class="JYIidw aZskFA QxuLlQ"
           >
-            A new page has been added to your design with the captured photos placed in your frame positions.
+            Your captured photos have been placed at the frame positions on the current page.
           </p>
         </div>
       </div>
@@ -79,22 +79,22 @@ exports[`CompleteScreen Snapshots should match snapshot with session 1`] = `
           <h5
             class="liTStw aZskFA u16U_g"
           >
-            💡 Tips
+            💡 Next Steps
           </h5>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            • Navigate to the new page to see your photos
+            • Review and adjust photo positions if needed
           </p>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            • You can adjust photo positions if needed
+            • Delete the placeholder images beneath the photos
           </p>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            • Start a new session to create more outputs
+            • Duplicate your template page again for more sessions
           </p>
         </div>
       </div>
@@ -172,7 +172,7 @@ exports[`CompleteScreen Snapshots should match snapshot without session 1`] = `
           <p
             class="aWBg0w B8t6MQ QxuLlQ"
           >
-            Your photo booth output has been created successfully.
+            Your photos have been placed on the current page successfully.
           </p>
         </div>
       </div>
@@ -197,12 +197,12 @@ exports[`CompleteScreen Snapshots should match snapshot without session 1`] = `
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            Output page created: Yes
+            Photos placed on page: Yes
           </p>
           <p
             class="JYIidw aZskFA QxuLlQ"
           >
-            A new page has been added to your design with the captured photos placed in your frame positions.
+            Your captured photos have been placed at the frame positions on the current page.
           </p>
         </div>
       </div>
@@ -217,22 +217,22 @@ exports[`CompleteScreen Snapshots should match snapshot without session 1`] = `
           <h5
             class="liTStw aZskFA u16U_g"
           >
-            💡 Tips
+            💡 Next Steps
           </h5>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            • Navigate to the new page to see your photos
+            • Review and adjust photo positions if needed
           </p>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            • You can adjust photo positions if needed
+            • Delete the placeholder images beneath the photos
           </p>
           <p
             class="JYIidw aZskFA u16U_g"
           >
-            • Start a new session to create more outputs
+            • Duplicate your template page again for more sessions
           </p>
         </div>
       </div>

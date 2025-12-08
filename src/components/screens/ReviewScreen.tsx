@@ -1,8 +1,14 @@
 /**
  * ReviewScreen Component
  *
- * Shows captured photos for review before generating the output.
- * Creates a NEW page with captured photos placed at frame positions.
+ * Shows captured photos for review before placing them on the current page.
+ * Uses addElementAtPoint to add photos at frame positions on the user's
+ * manually duplicated template page.
+ *
+ * Important: The user must manually duplicate their template page in Canva
+ * and navigate to that duplicated page before generating output. This is
+ * because Canva's API does not support automatic page duplication with
+ * full element fidelity.
  */
 
 import React, { useState, useCallback } from "react";
@@ -17,10 +23,9 @@ import {
   Grid,
 } from "@canva/app-ui-kit";
 import { FormattedMessage, useIntl } from "react-intl";
-import { addPage } from "@canva/design";
+import { addElementAtPoint } from "@canva/design";
 import { upload, type ImageRef } from "@canva/asset";
-import type { ScreenProps, CapturedPhoto } from "../../types";
-import { convertTemplateToPageElements } from "../../services/templateService";
+import type { ScreenProps } from "../../types";
 import * as styles from "styles/components.css";
 
 export const ReviewScreen: React.FC<ScreenProps> = ({
@@ -39,8 +44,10 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
   const frames = config?.frames || [];
 
   /**
-   * Generate the output by creating a NEW page with captured photos
-   * Uses addPage to create a fresh page with images at frame positions
+   * Place photos on the current page at frame positions.
+   * Uses addElementAtPoint to add each photo to the user's manually duplicated page.
+   *
+   * Important: User must be on their duplicated template page when this runs.
    */
   const handleGenerateOutput = useCallback(async () => {
     if (!config || photos.length === 0) {
@@ -61,7 +68,7 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
     try {
       // Sort frames by order to match photos correctly
       const sortedFrames = [...frames].sort((a, b) => a.order - b.order);
-      
+
       /**
        * Normalize rotation to be within -180 to 180 range (Canva API requirement)
        */
@@ -71,7 +78,7 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
         if (normalized < -180) normalized += 360;
         return Math.round(normalized);
       };
-      
+
       /**
        * Clamp a value to be within a valid range for Canva API
        * Positions: -32768 to 32767
@@ -80,7 +87,7 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
       const clampPosition = (value: number): number => {
         return Math.round(Math.max(-32768, Math.min(32767, value)));
       };
-      
+
       const clampDimension = (value: number): number => {
         return Math.round(Math.max(1, Math.min(32767, value)));
       };
@@ -100,8 +107,10 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
         }
 
         try {
-          console.log(`Uploading photo ${i + 1}, dataUrl length: ${photo.dataUrl.length}`);
-          
+          console.log(
+            `Uploading photo ${i + 1}, dataUrl length: ${photo.dataUrl.length}`
+          );
+
           const result = await upload({
             type: "image",
             url: photo.dataUrl,
@@ -126,47 +135,17 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
         throw new Error("No photos were uploaded successfully");
       }
 
-      setProgressMessage("Creating output page...");
+      setProgressMessage("Placing photos on current page...");
       setProgress(80);
 
-      // Step 2: Get template elements (excluding frame placeholders)
-      // Frame placeholders are the images that will be replaced by captured photos
-      const frameImageRefs = frames
-        .filter((f) => f.imageRef)
-        .map((f) => f.imageRef as string);
-
-      let templateElements: ReturnType<typeof convertTemplateToPageElements> = [];
-      if (config.templateData) {
-        console.log(
-          `Converting ${config.templateData.elements.length} template elements...`
-        );
-        templateElements = convertTemplateToPageElements(
-          config.templateData,
-          frameImageRefs
-        );
-        console.log(
-          `Got ${templateElements.length} template elements (after excluding frame placeholders)`
-        );
-      } else {
-        console.log("No template data stored, only adding photos");
-      }
-
-      // Step 3: Build photo elements array for the new page
-      const photoElements: Array<{
-        type: "image";
-        ref: ImageRef;
-        altText: { text: string; decorative: boolean };
-        top: number;
-        left: number;
-        width: number;
-        height: number;
-        rotation: number;
-      }> = [];
+      // Step 2: Add each photo to the current page at frame positions
+      // Photos are added to whatever page the user currently has selected
+      let photosPlaced = 0;
 
       for (let i = 0; i < sortedFrames.length && i < uploadedRefs.length; i++) {
         const frame = sortedFrames[i];
         const photoRef = uploadedRefs[i];
-        
+
         if (frame && photoRef) {
           const element = {
             type: "image" as const,
@@ -178,44 +157,33 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
             height: clampDimension(frame.height),
             rotation: normalizeRotation(frame.rotation || 0),
           };
-          
-          console.log(`Photo element ${i + 1}:`, {
+
+          console.log(`Adding photo ${i + 1} at position:`, {
             top: element.top,
             left: element.left,
             width: element.width,
             height: element.height,
             rotation: element.rotation,
           });
-          
-          photoElements.push(element);
+
+          try {
+            // Add photo to current page at specified position
+            await addElementAtPoint(element);
+            photosPlaced++;
+            console.log(`Photo ${i + 1} placed successfully`);
+          } catch (placeError) {
+            console.error(`Failed to place photo ${i + 1}:`, placeError);
+            throw new Error(
+              `Failed to place photo ${i + 1}. Please try again.`
+            );
+          }
         }
       }
 
-      setProgress(90);
-      
-      // Step 4: Combine template elements with photo elements
-      // Template elements go first (background, decorations), photos on top
-      const allElements = [...templateElements, ...photoElements];
-      
-      console.log(
-        `Creating page with ${allElements.length} elements ` +
-        `(${templateElements.length} template + ${photoElements.length} photos)...`
-      );
-      
-      // Step 5: Create a new page with all elements
-      try {
-        await addPage({
-          title: `Photo Booth - ${new Date().toLocaleString()}`,
-          elements: allElements,
-        });
-        console.log("addPage completed successfully");
-      } catch (addPageError) {
-        console.error("Failed to create output page:", addPageError);
-        throw new Error("Failed to create the output page. Please try again.");
-      }
-
       setProgress(100);
-      setProgressMessage(`Created output page with ${photoElements.length} photo${photoElements.length !== 1 ? "s" : ""}!`);
+      setProgressMessage(
+        `Placed ${photosPlaced} photo${photosPlaced !== 1 ? "s" : ""} on the current page!`
+      );
 
       // Update session status
       if (session) {
@@ -419,6 +387,24 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
           </Rows>
         </Box>
 
+        {/* Important instruction about page selection */}
+        <Alert tone="info">
+          <Rows spacing="1u">
+            <Text size="small" variant="bold">
+              <FormattedMessage
+                defaultMessage="Before placing photos:"
+                description="Pre-action instruction heading"
+              />
+            </Text>
+            <Text size="small">
+              <FormattedMessage
+                defaultMessage="Navigate to the page where you want to place the photos. If using a template, first duplicate the template page in Canva (right-click → Duplicate page), then select that duplicated page."
+                description="Page selection instruction"
+              />
+            </Text>
+          </Rows>
+        </Alert>
+
         {/* Action buttons */}
         <Rows spacing="2u">
           <Button
@@ -428,8 +414,8 @@ export const ReviewScreen: React.FC<ScreenProps> = ({
             disabled={photos.length === 0}
           >
             {intl.formatMessage({
-              defaultMessage: "Generate Output Page",
-              description: "Generate button",
+              defaultMessage: "Place Photos on Current Page",
+              description: "Place photos button",
             })}
           </Button>
 

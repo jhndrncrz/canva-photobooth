@@ -99,7 +99,7 @@ exports[`Photo Booth App Component Tests Snapshot should have a consistent snaps
               <div
                 class="aDc6Yg"
               >
-                Welcome! Set up your photo booth by selecting image placeholders in your design.
+                Welcome! Set up your photo booth by selecting a template page and marking image placeholders.
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@ exports[`Photo Booth App Component Tests Snapshot should have a consistent snaps
           <span
             class="khPe7Q"
           >
-            🚀 Get Started
+            Get Started
           </span>
         </button>
       </div>
@@ -121,12 +121,22 @@ exports[`Photo Booth App Component Tests Snapshot should have a consistent snaps
       >
         <div
           class="jv_R6g"
-          style="--NZu1Zw: 4px;"
+          style="--NZu1Zw: 12px;"
         >
+          <button
+            class="_5KtATA LQzFZw VgvqkQ _8ERLTg unS_Qw LQzFZw VgvqkQ _4_iekA _3oHQrw j34Zww aqbYPg _3FvZZg"
+            type="button"
+          >
+            <span
+              class="khPe7Q"
+            >
+              How It Works
+            </span>
+          </button>
           <p
             class="JYIidw B8t6MQ QxuLlQ"
           >
-            Select images → Capture photos → Generate output
+            Design template → Select frames → Capture → Place photos
           </p>
         </div>
       </div>

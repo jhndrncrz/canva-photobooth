@@ -299,7 +299,7 @@ describe("HomeScreen", () => {
       const editButton = screen.getByRole("button", { name: /Edit Frames/i });
       fireEvent.click(editButton);
 
-      expect(mockNavigateTo).toHaveBeenCalledWith("setup-template");
+      expect(mockNavigateTo).toHaveBeenCalledWith("setup-frames");
     });
 
     it("should navigate to settings when 'Settings' is clicked", () => {

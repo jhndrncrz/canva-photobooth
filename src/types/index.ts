@@ -74,8 +74,6 @@ export interface PhotoBoothConfig {
   frames: FrameConfig[];
   /** Capture session settings */
   captureSettings: CaptureSettings;
-  /** Serialized template elements for duplication */
-  templateData?: SerializedTemplate;
   /** ISO timestamp when config was created */
   createdAt: string;
   /** ISO timestamp when config was last updated */
@@ -131,6 +129,7 @@ export interface CaptureSession {
  */
 export type AppScreen =
   | "home"
+  | "help"
   | "setup-template"
   | "setup-frames"
   | "settings"
@@ -166,8 +165,12 @@ export interface PhotoBoothAppElementData {
   config: PhotoBoothConfig;
 }
 
+// ============================================================================
+// Page Element Info for reference (used for frame setup)
+// ============================================================================
+
 /**
- * Element information from a page for recreation
+ * Element information from a page for frame setup
  */
 export interface PageElementInfo {
   /** Element type (image, text, shape, etc.) */
@@ -180,207 +183,6 @@ export interface PageElementInfo {
   rotation: number;
   /** Additional element-specific properties */
   properties: Record<string, unknown>;
-}
-
-// ============================================================================
-// Template Element Serialization Types
-// These types represent serializable versions of Canva design elements
-// that can be stored and later recreated when generating output pages
-// ============================================================================
-
-/**
- * Serializable color fill for shapes and rects
- */
-export interface SerializedColorFill {
-  type: "solid";
-  color: {
-    red: number;
-    green: number;
-    blue: number;
-    alpha?: number;
-  };
-}
-
-/**
- * Serializable media fill for images/videos in shapes
- */
-export interface SerializedMediaFill {
-  type: "image";
-  /** Reference to the media asset */
-  ref: string;
-}
-
-/**
- * Combined fill type for serialized elements
- */
-export type SerializedFill = SerializedColorFill | SerializedMediaFill;
-
-/**
- * Stroke information for shapes/rects
- */
-export interface SerializedStroke {
-  weight: number;
-  color: {
-    red: number;
-    green: number;
-    blue: number;
-    alpha?: number;
-  };
-  alignment?: "inside" | "outside" | "center";
-  strokeStyle?: "solid" | "dashed" | "dotted";
-  dashLength?: number;
-  gapLength?: number;
-  lineEndStart?: string;
-  lineEndEnd?: string;
-}
-
-/**
- * Path information for shape elements
- */
-export interface SerializedPath {
-  /** SVG path data */
-  d: string;
-  /** Fill for this path */
-  fill?: SerializedFill;
-}
-
-/**
- * ViewBox for shape elements
- */
-export interface SerializedViewBox {
-  top: number;
-  left: number;
-  width: number;
-  height: number;
-}
-
-/**
- * Base properties shared by all serialized elements
- */
-export interface SerializedElementBase {
-  /** Element type */
-  type: "rect" | "shape" | "text" | "embed" | "image";
-  /** Width in pixels */
-  width: number;
-  /** Height in pixels */
-  height: number;
-  /** Top position */
-  top: number;
-  /** Left position */
-  left: number;
-  /** Rotation in degrees (-180 to 180) */
-  rotation: number;
-  /** Transparency (0-1) */
-  transparency: number;
-  /** Whether the element is locked */
-  locked: boolean;
-}
-
-/**
- * Serialized rect element (includes images and solid colors)
- */
-export interface SerializedRectElement extends SerializedElementBase {
-  type: "rect";
-  /** Fill for the rect */
-  fill?: SerializedFill;
-  /** Stroke/border for the rect */
-  stroke?: SerializedStroke;
-  /** Corner radius for rounded rectangles */
-  cornerRadius?: number;
-}
-
-/**
- * Serialized shape element (vector shapes with paths)
- */
-export interface SerializedShapeElement extends SerializedElementBase {
-  type: "shape";
-  /** View box defining the shape's coordinate system */
-  viewBox: SerializedViewBox;
-  /** Array of paths that define the shape */
-  paths: SerializedPath[];
-  /** Fill applied to the entire shape */
-  fill?: SerializedFill;
-}
-
-/**
- * Text region within a text element
- */
-export interface SerializedTextRegion {
-  /** The text content */
-  text: string;
-  /** Font weight (e.g., "normal", "bold", 400, 700) */
-  fontWeight?: string | number;
-  /** Font style (e.g., "normal", "italic") */
-  fontStyle?: string;
-  /** Font family name */
-  fontFamily?: string;
-  /** Font size in pixels */
-  fontSize?: number;
-  /** Text color as hex string (e.g., "#ff0099") */
-  color?: string;
-  /** Text decoration (e.g., "none", "underline") */
-  textDecoration?: string;
-  /** Whether text is strikethrough */
-  strikethrough?: boolean;
-  /** Text alignment (e.g., "start", "center", "end", "justify") */
-  textAlign?: string;
-}
-
-/**
- * Serialized text element
- */
-export interface SerializedTextElement extends SerializedElementBase {
-  type: "text";
-  /** Plain text content */
-  plainText: string;
-  /** Text regions with formatting */
-  regions: SerializedTextRegion[];
-}
-
-/**
- * Serialized embed element (external content like videos)
- */
-export interface SerializedEmbedElement extends SerializedElementBase {
-  type: "embed";
-  /** URL of the embedded content */
-  url: string;
-}
-
-/**
- * Serialized image element (for standalone images not in rect containers)
- */
-export interface SerializedImageElement extends SerializedElementBase {
-  type: "image";
-  /** Reference to the image asset */
-  ref: string;
-}
-
-/**
- * Union type for all serialized element types
- */
-export type SerializedTemplateElement =
-  | SerializedRectElement
-  | SerializedShapeElement
-  | SerializedTextElement
-  | SerializedEmbedElement
-  | SerializedImageElement;
-
-/**
- * Complete template data including background and all elements
- */
-export interface SerializedTemplate {
-  /** Background color of the template page */
-  backgroundColor?: {
-    red: number;
-    green: number;
-    blue: number;
-    alpha?: number;
-  };
-  /** All serialized elements from the template page */
-  elements: SerializedTemplateElement[];
-  /** Original page dimensions for reference */
-  pageWidth: number;
-  pageHeight: number;
 }
 
 /**

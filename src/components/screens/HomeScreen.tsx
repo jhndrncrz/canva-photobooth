@@ -5,7 +5,7 @@
  * Shows clear status and appropriate actions based on configuration state.
  */
 
-import React from "react";
+import React, { useState, useCallback } from "react";
 import {
   Button,
   Rows,
@@ -13,7 +13,8 @@ import {
   Title,
   Box,
   Alert,
-  Badge,
+  Columns,
+  Column,
 } from "@canva/app-ui-kit";
 import { FormattedMessage, useIntl } from "react-intl";
 import type { ScreenProps } from "../../types";
@@ -25,6 +26,7 @@ export const HomeScreen: React.FC<ScreenProps> = ({
   setConfig,
 }) => {
   const intl = useIntl();
+  const [showResetConfirm, setShowResetConfirm] = useState(false);
   const hasConfig = config !== null;
   const hasFrames = config && config.frames.length > 0;
   const isReady = hasConfig && hasFrames;
@@ -37,13 +39,29 @@ export const HomeScreen: React.FC<ScreenProps> = ({
     navigateTo("capture");
   };
 
-  const handleEditSettings = () => {
+  const handleEditFrames = () => {
+    navigateTo("setup-frames");
+  };
+
+  const handleEditTemplate = () => {
     navigateTo("setup-template");
   };
 
   const handleCaptureSettings = () => {
     navigateTo("settings");
   };
+
+  const handleHelp = () => {
+    navigateTo("help");
+  };
+
+  /**
+   * Reset all configuration to start fresh
+   */
+  const handleResetConfig = useCallback(() => {
+    setConfig(null);
+    setShowResetConfirm(false);
+  }, [setConfig]);
 
   return (
     <div className={styles.scrollContainer}>
@@ -142,14 +160,14 @@ export const HomeScreen: React.FC<ScreenProps> = ({
           <Rows spacing="2u">
             <Alert tone="info">
               <FormattedMessage
-                defaultMessage="Welcome! Set up your photo booth by selecting image placeholders in your design."
+                defaultMessage="Welcome! Set up your photo booth by selecting a template page and marking image placeholders."
                 description="Welcome message"
               />
             </Alert>
 
             <Button variant="primary" onClick={handleSetup} stretch>
               {intl.formatMessage({
-                defaultMessage: "🚀 Get Started",
+                defaultMessage: "Get Started",
                 description: "Setup button",
               })}
             </Button>
@@ -172,33 +190,96 @@ export const HomeScreen: React.FC<ScreenProps> = ({
               disabled={!hasFrames}
             >
               {intl.formatMessage({
-                defaultMessage: "📸 Start Capture",
+                defaultMessage: "Start Capture",
                 description: "Start capture button",
               })}
             </Button>
 
-            <Button variant="secondary" onClick={handleEditSettings} stretch>
-              {intl.formatMessage({
-                defaultMessage: "Edit Frames",
-                description: "Edit frames button",
-              })}
-            </Button>
+            <Columns spacing="1u">
+              <Column>
+                <Button variant="secondary" onClick={handleEditFrames} stretch>
+                  {intl.formatMessage({
+                    defaultMessage: "Edit Frames",
+                    description: "Edit frames button",
+                  })}
+                </Button>
+              </Column>
+              <Column>
+                <Button variant="secondary" onClick={handleEditTemplate} stretch>
+                  {intl.formatMessage({
+                    defaultMessage: "Template",
+                    description: "Edit template button",
+                  })}
+                </Button>
+              </Column>
+            </Columns>
 
             <Button variant="tertiary" onClick={handleCaptureSettings} stretch>
               {intl.formatMessage({
-                defaultMessage: "⚙️ Settings",
+                defaultMessage: "Settings",
                 description: "Settings button",
               })}
             </Button>
+
+            {/* Reset configuration button */}
+            {!showResetConfirm ? (
+              <Button
+                variant="tertiary"
+                onClick={() => setShowResetConfirm(true)}
+                stretch
+              >
+                {intl.formatMessage({
+                  defaultMessage: "Reset Configuration",
+                  description: "Reset config button",
+                })}
+              </Button>
+            ) : (
+              <Alert tone="warn">
+                <Rows spacing="1u">
+                  <Text size="small">
+                    <FormattedMessage
+                      defaultMessage="Are you sure? This will clear all frame settings."
+                      description="Reset confirmation message"
+                    />
+                  </Text>
+                  <div style={{ display: "flex", gap: "8px" }}>
+                    <Button
+                      variant="primary"
+                      onClick={handleResetConfig}
+                    >
+                      {intl.formatMessage({
+                        defaultMessage: "Yes, Reset",
+                        description: "Confirm reset button",
+                      })}
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      onClick={() => setShowResetConfirm(false)}
+                    >
+                      {intl.formatMessage({
+                        defaultMessage: "Cancel",
+                        description: "Cancel reset button",
+                      })}
+                    </Button>
+                  </div>
+                </Rows>
+              </Alert>
+            )}
           </Rows>
         )}
 
-        {/* How it works - collapsible style */}
+        {/* Help button and workflow summary */}
         <Box paddingTop="1u">
-          <Rows spacing="0.5u">
+          <Rows spacing="1.5u">
+            <Button variant="tertiary" onClick={handleHelp} stretch>
+              {intl.formatMessage({
+                defaultMessage: "How It Works",
+                description: "Help button",
+              })}
+            </Button>
             <Text size="small" tone="tertiary" alignment="center">
               <FormattedMessage
-                defaultMessage="Select images → Capture photos → Generate output"
+                defaultMessage="Design template → Select frames → Capture → Place photos"
                 description="Simple workflow"
               />
             </Text>

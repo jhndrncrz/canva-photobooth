@@ -5,6 +5,7 @@
  */
 
 export { HomeScreen } from "./HomeScreen";
+export { HelpScreen } from "./HelpScreen";
 export { SetupTemplateScreen } from "./SetupTemplateScreen";
 export { SetupFramesScreen } from "./SetupFramesScreen";
 export { SettingsScreen } from "./SettingsScreen";

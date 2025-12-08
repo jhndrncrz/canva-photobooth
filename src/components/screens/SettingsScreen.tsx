@@ -18,7 +18,6 @@ import {
   Alert,
   Select,
   Switch,
-  Slider,
   Columns,
   Column,
 } from "@canva/app-ui-kit";

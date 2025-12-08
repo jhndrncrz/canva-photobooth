@@ -14,6 +14,7 @@ import type {
 } from "./types";
 import {
   HomeScreen,
+  HelpScreen,
   SetupTemplateScreen,
   SetupFramesScreen,
   SettingsScreen,
@@ -105,6 +106,9 @@ export const App = () => {
     switch (currentScreen) {
       case "home":
         return <HomeScreen {...screenProps} />;
+
+      case "help":
+        return <HelpScreen {...screenProps} />;
 
       case "setup-template":
         return <SetupTemplateScreen {...screenProps} />;

@@ -100,7 +100,7 @@ describe("Photo Booth App Component Tests", () => {
       });
 
       // Should show "Get Started" button
-      expect(result.getByText("🚀 Get Started")).toBeInTheDocument();
+      expect(result.getByText("Get Started")).toBeInTheDocument();
     });
 
     it("should display start capture option when config exists", async () => {
@@ -142,8 +142,8 @@ describe("Photo Booth App Component Tests", () => {
       });
 
       // Should show start capture and settings buttons when config exists
-      expect(result.getByText("📸 Start Capture")).toBeInTheDocument();
-      expect(result.getByText("⚙️ Settings")).toBeInTheDocument();
+      expect(result.getByText("Start Capture")).toBeInTheDocument();
+      expect(result.getByText("Settings")).toBeInTheDocument();
     });
   });
 

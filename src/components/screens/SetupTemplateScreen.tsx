@@ -3,6 +3,11 @@
  *
  * Screen for selecting the template page from the current design.
  * Shows a preview of the current page and allows the user to use it as a template.
+ *
+ * Note: This screen only records which page is being used as a template and its
+ * frame positions. The user must manually duplicate the template page before
+ * generating output, as Canva's API does not support automatic page duplication
+ * with full element fidelity.
  */
 
 import React, { useState, useCallback, useEffect } from "react";
@@ -23,7 +28,6 @@ import {
 } from "@canva/design";
 import type { ScreenProps } from "../../types";
 import { TEMPLATE_PAGE_TITLE } from "../../constants";
-import { extractTemplateFromCurrentPage } from "../../services/templateService";
 import * as styles from "styles/components.css";
 
 export const SetupTemplateScreen: React.FC<ScreenProps> = ({
@@ -39,7 +43,6 @@ export const SetupTemplateScreen: React.FC<ScreenProps> = ({
     width: number;
     height: number;
   } | null>(null);
-  const [pageTitle, setPageTitle] = useState<string>("Untitled Page");
   const [elementCount, setElementCount] = useState<number>(0);
   const [rectCount, setRectCount] = useState<number>(0);
   const [showConfirmReset, setShowConfirmReset] = useState(false);
@@ -79,10 +82,6 @@ export const SetupTemplateScreen: React.FC<ScreenProps> = ({
             (el) => el.type === "rect" || el.type === "shape"
           );
           setRectCount(rects.length);
-
-          // Get page title from title property if available
-          // Note: title may not be available on all page types
-          setPageTitle("Current Page");
         }
       });
 
@@ -128,41 +127,37 @@ export const SetupTemplateScreen: React.FC<ScreenProps> = ({
 
   /**
    * Use the current page as the template
+   *
+   * Note: We no longer extract template elements here. The user will manually
+   * duplicate the template page in Canva before generating output. We only
+   * record the template ID and allow frame placeholder selection.
    */
   const handleUseCurrentPage = useCallback(async () => {
     setIsLoading(true);
     setError(null);
 
     try {
-      // Extract all elements from the current page for later duplication
-      console.log("[SetupTemplateScreen] Extracting template elements...");
-      const templateData = await extractTemplateFromCurrentPage();
-
-      if (!templateData) {
-        throw new Error("Failed to extract template elements from page");
-      }
-
-      console.log(
-        `[SetupTemplateScreen] Extracted ${templateData.elements.length} elements from template`
-      );
-
-      // Get page dimensions
-      const pageContext = await getCurrentPageContext();
-      if (pageContext.dimensions) {
-        templateData.pageWidth = pageContext.dimensions.width;
-        templateData.pageHeight = pageContext.dimensions.height;
-      }
-
       // Generate a unique template identifier
       const templateId = `template_${Date.now()}`;
 
-      // Reset frames when changing template and store template data
+      console.log(
+        "[SetupTemplateScreen] Using current page as template (no element extraction)"
+      );
+
+      // Get page dimensions for reference
+      const pageContext = await getCurrentPageContext();
+      const dimensions = pageContext.dimensions;
+
+      console.log(
+        `[SetupTemplateScreen] Template page dimensions: ${dimensions?.width}x${dimensions?.height}`
+      );
+
+      // Reset frames when changing template
       if (config) {
         const updatedConfig = {
           ...config,
           templatePageId: templateId,
-          frames: [], // Reset frames
-          templateData, // Store extracted template elements
+          frames: [], // Reset frames when template changes
           captureSettings: {
             ...config.captureSettings,
             captureCount: 0,
@@ -176,7 +171,6 @@ export const SetupTemplateScreen: React.FC<ScreenProps> = ({
           templatePageId: templateId,
           configPageId: "",
           frames: [],
-          templateData, // Store extracted template elements
           captureSettings: {
             countdownSeconds: 3,
             captureCount: 0,
@@ -305,43 +299,55 @@ export const SetupTemplateScreen: React.FC<ScreenProps> = ({
           <Rows spacing="1u">
             <Title size="xsmall">
               <FormattedMessage
-                defaultMessage="Instructions"
+                defaultMessage="Template Setup"
                 description="Instructions header"
               />
             </Title>
 
             <Text size="small">
               <FormattedMessage
-                defaultMessage="1. Add image placeholders where you want photos to appear"
+                defaultMessage="1. Design your template page with image placeholders where photos will appear"
                 description="Instruction 1"
               />
             </Text>
             <Text size="small">
               <FormattedMessage
-                defaultMessage="2. Position and size the images as placeholders"
+                defaultMessage="2. Add decorations, text, backgrounds, etc. around the placeholders"
                 description="Instruction 2"
               />
             </Text>
             <Text size="small">
               <FormattedMessage
-                defaultMessage="3. Add decorations, text, and backgrounds around the frames"
+                defaultMessage="3. Click 'Use Current Page as Template' below"
                 description="Instruction 3"
               />
             </Text>
             <Text size="small">
               <FormattedMessage
-                defaultMessage="4. Select the page you want to use as template"
+                defaultMessage="4. Select image placeholders as photo frames"
                 description="Instruction 4"
-              />
-            </Text>
-            <Text size="small">
-              <FormattedMessage
-                defaultMessage="5. Click 'Use Current Page as Template'"
-                description="Instruction 5"
               />
             </Text>
           </Rows>
         </Box>
+
+        {/* Important note about manual duplication */}
+        <Alert tone="info">
+          <Rows spacing="0.5u">
+            <Text size="small" variant="bold">
+              <FormattedMessage
+                defaultMessage="Note:"
+                description="Important note heading"
+              />
+            </Text>
+            <Text size="small">
+              <FormattedMessage
+                defaultMessage="Before placing photos, you'll need to manually duplicate the template page (right-click page → Duplicate). This is a one-time setup per design."
+                description="Manual duplication note"
+              />
+            </Text>
+          </Rows>
+        </Alert>
 
         {/* Error display */}
         {error && (
