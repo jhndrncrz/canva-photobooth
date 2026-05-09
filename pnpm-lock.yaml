@@ -12,8 +12,8 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1(intl-messageformat@10.7.18)(react-dom@19.2.1(react@19.2.1))(react-intl@7.1.14(react@19.2.1)(typescript@5.9.2))(react@19.2.1)
       '@canva/app-ui-kit':
-        specifier: ^5.2.1
-        version: 5.2.1(@types/react@19.2.2)(mobx@6.15.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+        specifier: ^5.3.0
+        version: 5.3.0(@types/react@19.2.2)(mobx@6.15.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@canva/asset':
         specifier: ^2.2.1
         version: 2.2.1(@canva/error@2.1.0)
@@ -872,12 +872,12 @@ packages:
       react-dom: 18 || 19
       react-intl: '>=6.6.8 <=7.1.11'
 
-  '@canva/app-ui-kit@5.2.1':
-    resolution: {integrity: sha512-OK5pP1NjN+lPInA1aIIAPc0V5Fkv6mWId28grRn5Wcs8bANGx0dAeLSK+gO38gub4jCKiaAjriZxoiU1+ExDXA==}
+  '@canva/app-ui-kit@5.3.0':
+    resolution: {integrity: sha512-k9PmZJ10Vflc/qMULHHfTDXI4giQ9KBf/HT/ASMiOBKR1AXWM3ffQ0Cr5CTDdbLzch/7Z1BEcYIyOe+HPcXT2g==}
     peerDependencies:
       mobx: ^6.13.3
-      react: 19.2.0
-      react-dom: 19.2.0
+      react: ^19.2.1
+      react-dom: ^19.2.1
 
   '@canva/asset@2.2.1':
     resolution: {integrity: sha512-UlBiuhCZjLSXdFKi7aad8ut74Mtu2UWKu70fknMzr2jKot75D3QsFNfkWTGFeXysY6kn++coe1CbV5ny1/IToQ==}
@@ -6160,7 +6160,7 @@ snapshots:
       react-dom: 19.2.1(react@19.2.1)
       react-intl: 7.1.14(react@19.2.1)(typescript@5.9.2)
 
-  '@canva/app-ui-kit@5.2.1(@types/react@19.2.2)(mobx@6.15.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
+  '@canva/app-ui-kit@5.3.0(@types/react@19.2.2)(mobx@6.15.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
       '@floating-ui/react': 0.26.28(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@seznam/compose-react-refs': 1.0.6

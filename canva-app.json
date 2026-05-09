@@ -10,10 +10,6 @@
       {
         "name": "canva:design:content:write",
         "type": "mandatory"
-      },
-      {
-        "name": "canva:design:export:read",
-        "type": "mandatory"
       }
     ]
   }
